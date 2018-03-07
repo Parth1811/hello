@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 import matplotlib.pyplot as plt
 
 
@@ -10,5 +11,9 @@ def index(request):
 def TEST1(request):
     plt.plot([1,2,3,4,5,6,7,8,9])
     plt.show()
-    return render (request, 'home_page/home.html')
+    print ("=====================")
+    print (request.path)
+    print ("=====================")
+#    return render (request, 'home_page/home.html')
+    return HttpResponseRedirect('../')
 
