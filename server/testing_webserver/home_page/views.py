@@ -11,10 +11,12 @@ def index(request):
 def TEST1(request):
 #    rospy.init_node('checker', anonymous=True)
     ch = checker.Checker()
-    status_map = ch.run()
+    status_map = ch.run2()
     print (status_map)
     return HttpResponseRedirect('../')
 
 def TEST2(request):
-    print ("yo")
+    ch = checker.Checker(10) ## 3 seconds
+    running = ch.run()
+    print("************ running:", running)
     return HttpResponseRedirect('../')
