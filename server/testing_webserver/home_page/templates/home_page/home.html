@@ -1,8 +1,12 @@
 {% extends "home_page/header.html" %}
 {% block content %}
-<p><h3>MATSYA COMING ONLINE!!!!!!................</h3></p>
-
+<p><h3>MASTYA COMING ONLINE!!!!!!................</h3></p>
 <a class="btn btn-primary" href="1234/" role="button">TEST1</a>
-<a href="t2/"><button type='button' class="button button1">Green</button></a>
+<a class="btn btn-danger" href="#" role="button">TEST2</a>
+
+
+{%for button in topic_list%}
+<a href= "{{button.id}}/" ><button class="button button1">{{button.title}}</button></a>
+{%endfor%}
 
 {% endblock %}

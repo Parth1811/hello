@@ -25,8 +25,7 @@ SECRET_KEY = 'df$ffcj34sxx=c$ikb7(ullh23x_r379!zgb1w+m78og6ns-57'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["192.168.43.193","10.16.11.106","127.0.0.1"]
-
+ALLOWED_HOSTS = ["10.101.202.69","127.0.0.1"]
 
 
 # Application definition
