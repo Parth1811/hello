@@ -4,6 +4,17 @@
 <a class="btn btn-primary" href="1234/" role="button">TEST1</a>
 <a class="btn btn-danger" href="#" role="button">TEST2</a>
 
+{% if messages %}
+
+    {% for message in messages %}
+ 	
+	<div class="alert {{message.level_tag}}">
+  	<span class="closebtn">&times;</span>  
+	{{message}}
+	</div>
+
+    {% endfor %}
+{% endif %}
 
 {%for button in topic_list%}
 <a href= "{{button.id}}/" ><button class="button button1">{{button.title}}</button></a>
