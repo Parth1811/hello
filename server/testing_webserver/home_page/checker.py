@@ -1,12 +1,14 @@
+import datetime as dt
+from multiprocessing import Process
 import rospy
 import threading
-from multiprocessing import Process
 import time
-import datetime as dt
-from std_msgs.msg import Float64
-from sensor_msgs.msg import Imu
-from auv_msgs.msg import DvlData
-from auv_msgs.msg import ElecAtmegaStatus
+
+import geometry_msgs.msg as geom
+import sensor_msgs.msg as sensor
+import std_msgs.msg as std
+
+import auv_msgs.msg as auv
 
 
 class Checker:
@@ -20,7 +22,8 @@ class Checker:
         self.timeoutFlag = True
         self.mapkey = str(self.title)+"Status"
         self.status_map = {self.mapkey:False}
-        self.sb = rospy.Subscriber(self.topic_name,self.ros_msg(self.msg_type) ,self.cb)
+        self.sb = rospy.Subscriber(self.topic_name,\
+            self.ros_msg(self.msg_type) ,self.cb)
 
     def cb(self,data):
         self.num += 1
@@ -39,6 +42,9 @@ class Checker:
         return self.status_map[self.mapkey]
 
     def ros_msg(self,msg_type):
-        #getattr('DvlData')
-        if msg_type== 'DvlData':
-            return DvlData
+        type_list = [std,sensor,geom,auv]
+        for libtype in type_list:
+            try:
+                return getattr(libtype, msg_type)
+            except AttributeError:
+                pass

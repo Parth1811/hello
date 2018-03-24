@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "lofty-entropy-198006",
+  "private_key_id": "d526dcee7b351afd30e35605be1a70afd74608fa",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCy0uaBrxqBoqZo\nBx3irYKoD0Gv3SzOZi8xfOByJiPh7e+H9d0d9iiMqr5KyxKOisTGgT5AJjA793f/\nBSyLyc/7O38HaPMwSYbvs5AYk57u8DYI215tyOKHB9KZ2x4ACv7VR55/LqONziWF\na1FK+VpiVGJqOHEKtKJZyTU9RJLlJUOJQ1aO+5MtrDpBHzidIERQ3IaQzzU6fqO4\nDPtJsrKn/Wv5scD7Wlpu8gpxOsJxH7iGKOz4f5CORJKz5qVXlKdSnI5QMGnONWR4\nKO4YNMf7tAxSDrnfgW6oLygTZfb3DQVY+Y1XEK49f9O6FwZTz8tXfJkU4FEcaNOD\n5JigJJdtAgMBAAECggEADWO1Boaany4TQQ/JwSrJV5V8D1Op73+ZAgVKwvev6rjh\nNtafqobyoB6HjNvp6EowrXi8G5tTmj6pBl6YG5Sa7sGuMCfy3Mc5amJEcR3aIfCF\n6aGo6OLiDBOqxU7+tVvqNJ43tAGSFbCW5tRs+LmoXShA9DLrF+hqWmGyWFBcCJP8\nBIUhYxB14M7YbbMR39u0zaLxqpBK9nBeNDbbJvY0U6GaFAqQTkCtsYZhPxW4sSvV\ntzdt0JgyKgQHjBsgNmOT2dZJRGVB5tmgdS+QtmEl47qka2oB42uSfOtcwMNhqFsr\nNnLSeQCbQWCszdAkB3lhcvRHSwUtS+JYzwn7ktofGwKBgQD3+RkixYu0vl10QtjD\nZLPmwodx207+4XhtfuigkMElq+yFABMenKg4cZuHpDy66I1RRc8dAswBdsFObeSl\n4M43fo62bBECg6/Z18HwUUOmZLG04e8jypqMKwt7J70OJIexeoWd0aWkE7y1avAn\nsKpQbMuF8DryErq6/efzo5o/lwKBgQC4nMbhyuqG8tHw18DlOKILYcL7CTwVQU52\nzJ8a9HiTb6VIHLDexUr12VZYckLY36bIBdMxaoCw2Zk7XccNBEubekYjlaH2aCGn\nDDmBRye/tgWq2+YHGYwJYv6kVQeRz/qRvv4y5tnBb0q2bNF0tOzZYhRoa04/ZNlQ\nLv1jzJOBmwKBgQCHtOFWsDnGzq+iYrryI/h4f1lUrCrNPmODuQJibRXnIfGsz9+m\nzyEY0sPFNdKuj3pXUhcIz3EKFA2yeF27kg4JPM+pcfbVI3BnjbZraG3XcB/41/Th\n540wzJXZ7mN+i+te66iYOBWod8y8lCud7QcoQIIZaOE5fZqHn1EDezN9PQKBgCKc\nihEFGSlJ1yB/YtPW5VKa9pJYLeKSRuKxBFdqZDzIHsXBU0vA04f6Qlz8txmv/LXd\nmbXXEN+XPEpMD6iaGI7CwumjASWQalbGTPW24HXp63AYIC1OldmgrLskkfG9e23d\n0Ay9CTBh7DD9f9uQnCM5ZzgYfigWgUOuO6V9Ul5nAoGBAOhKG9poLbrb+EzEOeCm\nC3EMw6fGQJduspdHaHXi4f778SbgGWc23oSdTlLiosNJ1XHN227/tODbt0GYLLts\nnNfuZ/2Y3I7yhcpNTU/8xELg+VzA2OAMGiBfz8snaEj4O8R7v9h+0ATwf40fnr0p\nojwCyeX4z/xSTBdUZgeJi308\n-----END PRIVATE KEY-----\n",
+  "client_email": "my-sa-123@lofty-entropy-198006.iam.gserviceaccount.com",
+  "client_id": "117011123052956495633",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/my-sa-123%40lofty-entropy-198006.iam.gserviceaccount.com"
+}
