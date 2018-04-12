@@ -3,10 +3,6 @@
 #include<cmath>
 using namespace std;
 
-//static int ROWS = 9;
-//static int COLUMNS = 4;
-
-
 class game{
     int board_state[9][4];
     bool player1_turn;
@@ -23,11 +19,13 @@ class game{
 
     void run(){
         bool running = true;
+        int intial = 1;
         while (running){
             int input1, input2;
             cin>>input1;
             if(input1 == -1){
                 running = false;
+                cout<<"Encountered -1 exiting the game\nHope to see you again :)\n";
                 break;
             }
 
@@ -36,28 +34,34 @@ class game{
 
             if(player1_turn){
                 player1_playmove(input1, input2);
-                print_board();
-               // player1_turn = false;
             }
             else {
                 player2_playmove(input1, input2);
-                print_board();
-                //player1_turn = true;
             }
-
-        running = !(is_gameover());
+        if(intial >2)
+            running = !(is_gameover());
+        else
+            intial++;
         }
 
+        if(intial>2){
+            if(is_gameover() == 1)
+                cout<<"Player1 WINS!!!!!!\n";
+            if(is_gameover()== -1)
+                cout<<"Player2 WINS!!!!!!\n";
+        }
     }
 
     void player1_playmove(int x, int y){
         if(board_state[x][y] >= 0){
             this->chain_reaction_at(1,x,y);
             player1_turn = false;
+            print_board();
+            cout<<"Player1 plays at ("<<x<<","<<y<<")\n\n";
             return;
         }
         else{
-            cout<<"player1 illegal\n";
+            cout<<"Player1 illegal move\nIts Player1's turn again\n";
             return;
         }
     }
@@ -66,10 +70,12 @@ class game{
         if(board_state[x][y] <= 0){
             this->chain_reaction_at(-1,x,y);
             player1_turn = true;
+            print_board();
+            cout<<"Player2 plays at ("<<x<<","<<y<<")\n\n";
             return;
         }
         else{
-            cout<<"player2 illegal\n";
+            cout<<"Player2 illegal move\nIts Player2's turn again\n";
             return;
         }
     }
@@ -150,14 +156,15 @@ class game{
                     zero_flag = false;
             }
         }
-        if(zero_flag){
-            if(player1_flag)
-                return 1;
-            if(player2_flag)
-                return -1;
-        }
 
-        return false;
+        if(zero_flag)
+            return false;
+        else if(player1_flag)
+            return 1;
+        else if (player2_flag)
+            return -1;
+        else
+            return false;
     }
 
     void print_board(){
@@ -177,6 +184,7 @@ int main(){
 
     game g;
     g.print_board();
+    cout<<endl;
     g.run();
 
     return 0;
