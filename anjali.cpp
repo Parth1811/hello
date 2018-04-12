@@ -3,23 +3,40 @@
 #include<cmath>
 using namespace std;
 
+static const int ROWS = 9;  //number of rows of board
+static const int COLUMNS = 4; //number of coloumns of board
+
 class game{
-    int board_state[9][4];
-    bool player1_turn;
+    int **board_state;
+    bool player1_turn; //if true its player1's turn or else player2's
 
     public:
     game(){
-        for (int i = 0; i < 9; i++){
-            for (int j = 0; j < 4; j++){
+        board_state = new int*[ROWS];
+        for (int i = 0; i < ROWS; i++)
+            //allocating the space in heap memory
+            board_state[i] = new int[COLUMNS];
+
+        for (int i = 0; i < ROWS; i++){
+            for (int j = 0; j < COLUMNS; j++){
+                //initalizing all cells to zero
                 board_state[i][j] = 0;
             }
         }
+
+        //starting the game with player1 playing first
         player1_turn = true;
     }
 
     void run(){
+        /*
+            This is the run function. It takes the input from the user
+            and passes it on to player1_playmove/player2_playmove
+            depending on who's move it is and exits the game it -1 is
+            encoutered. Also exit if the player wins
+        */
         bool running = true;
-        int intial = 1;
+        int intial = 1; //avoids the intial false win of player1
         while (running){
             int input1, input2;
             cin>>input1;
@@ -28,7 +45,6 @@ class game{
                 cout<<"Encountered -1 exiting the game\nHope to see you again :)\n";
                 break;
             }
-
             else
                 cin>>input2;
 
@@ -38,21 +54,26 @@ class game{
             else {
                 player2_playmove(input1, input2);
             }
-        if(intial >2)
-            running = !(is_gameover());
-        else
-            intial++;
+
+            if(intial >2)
+                running = !(is_gameover()); //checks if any of player is winning after playing atleast 1 move
+            else
+                intial++;
         }
 
         if(intial>2){
-            if(is_gameover() == 1)
+            if(is_gameover() == 1)  //if is_gameover() returns 1 player 1 wins
                 cout<<"Player1 WINS!!!!!!\n";
-            if(is_gameover()== -1)
+            if(is_gameover()== -1)  //if is_gameover() returns -1 player 2 wins
                 cout<<"Player2 WINS!!!!!!\n";
         }
     }
 
     void player1_playmove(int x, int y){
+        /*
+            This function makes the move for player1
+            Also checks whether the move is leagal  or not
+        */
         if(board_state[x][y] >= 0){
             this->chain_reaction_at(1,x,y);
             player1_turn = false;
@@ -67,6 +88,10 @@ class game{
     }
 
     void player2_playmove(int x, int y){
+        /*
+            This function makes the move for player2
+            Also checks whether the move is leagal  or not
+        */
         if(board_state[x][y] <= 0){
             this->chain_reaction_at(-1,x,y);
             player1_turn = true;
@@ -81,16 +106,24 @@ class game{
     }
 
     void chain_reaction_at(int player_sign, int x, int y){
+        /*
+            This is a recurrsive function
+            it takes the sign of player i.e. 1 for player1
+            and -1 for player2 , and adds 1 to cell if its value
+            is less than critical value or explodes the cell if it becomes
+            equal to critical value
+        */
         if(abs(board_state[x][y]) < critical_mass(x,y)-1){
             board_state[x][y] = player_sign*abs(board_state[x][y]) + player_sign;
             return ;
         }
         else if (abs(board_state[x][y]) == critical_mass(x,y)-1){
-            board_state[x][y] = 0;
-            int* ortho_list = get_ortho_list(x,y);
-            int no_of_ortho_cells = ortho_list[0];
-            int index = 1;
+            board_state[x][y] = 0;  //empties the current cell after explosion
+            int* ortho_list = get_ortho_list(x,y); //recieves a list of co-ordinates of orthogonal cells
+            int no_of_ortho_cells = critical_mass(x,y); //sets the no of orthognal cells
+            int index = 0;
             for (int i = 0; i < no_of_ortho_cells; i++){
+                //starts a chain reaction at every orthogonal cell
                 chain_reaction_at(player_sign,ortho_list[index],ortho_list[index+1]);
                 index = index + 2;
             }
@@ -98,20 +131,27 @@ class game{
     }
 
     int critical_mass(int x, int y){
+        /*
+            This functions calculates the critical mass of the cell
+            i.e. the number of adajacent orthogonal cells
+        */
         int mass = 4;
-        if(x == 0||x == 8)
+        if(x == 0||x == ROWS-1)
             mass--;
-        if(y == 0||y == 3)
+        if(y == 0||y == COLUMNS-1)
             mass--;
         return mass;
     }
 
     int* get_ortho_list(int x, int y){
+        /*
+            This function returns a list of cordinates of orthogonal cells
+            in the format [x1,y1,x2,y2....]
+            number of elements in the list = 2*critical_mass
+        */
        int *list;
-       int cm = critical_mass(x,y);
-       list = new int[cm*2+1];
-       list[0] =  cm;
-       int index = 1;
+       list = new int[critical_mass(x,y)*2+1];
+       int index = 0;
 
        if(x != 0){
         //storing the upper cell
@@ -119,13 +159,13 @@ class game{
            list[index+1] = y;
            index = index + 2;
        }
-       if(y != 3){
+       if(y != COLUMNS-1){
         //storing the right cell
            list[index] = x;
            list[index+1] = y+1;
            index = index + 2;
        }
-       if(x != 8){
+       if(x != ROWS-1){
         //storing the bottom cell
            list[index] = x + 1;
            list[index+1] = y;
@@ -142,11 +182,17 @@ class game{
     }
 
     int is_gameover(){
+        /*
+            This function check whether either of the player has
+            won the game i.e. it essentially checks if the game is over
+            or not and returns false if game is not over , 1 if player 1 wins,
+            -1 if player 2 wins
+        */
         bool zero_flag = true;
         bool player1_flag = true;
         bool player2_flag = true;
-        for (int i = 0; i < 9; i++){
-            for (int j = 0; j < 4; j++){
+        for (int i = 0; i < ROWS; i++){
+            for (int j = 0; j < COLUMNS; j++){
                 int board_entry = board_state[i][j];
                 if(board_entry > 0)
                     player2_flag = false;
@@ -168,10 +214,13 @@ class game{
     }
 
     void print_board(){
+        /*
+            This functions prints the board
+        */
         cout<<"    0  1  2  3\n";
-        for (int i = 0; i < 9; i++){
+        for (int i = 0; i < ROWS; i++){
         cout<<i<<"   ";
-            for (int j = 0; j < 4; j++){
+            for (int j = 0; j < COLUMNS; j++){
                 cout<<board_state[i][j] <<"  ";
             }
         cout<<endl;
