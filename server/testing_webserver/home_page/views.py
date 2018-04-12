@@ -33,11 +33,12 @@ def index(request):
     return render (request, 'home_page/home.html',data_transfer)
 
 def TEST1(request):
-    if run_function('actuateGripper'):
-        messages.success(request, ' is Working :)')
-    else:
-        messages.success(request, ' is NOt Working :)')
-    return HttpResponseRedirect('../../')
+#    if run_function('actuateGripper'):
+#        messages.success(request, ' is Working :)')
+#    else:
+#        messages.success(request, ' is NOt Working :)')
+#    return HttpResponseRedirect('../../')
+    return HttpResponse("<h1>hey yo baby</h1>")
 
 def test_topic(request,topics_id):
     indata = topics.objects.get(id = topics_id)

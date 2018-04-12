@@ -58,7 +58,7 @@ def sign (x):
 p_arr = fill_data(6/7.0,1317/647.0)
 n = node()
 over_acc = 0
-#n.fit(p_arr)
+n.fit(p_arr)
 
 for i in range (100):
     p_arr = fill_data(6/7.0,1317/647.0)
