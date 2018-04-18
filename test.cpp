@@ -3,9 +3,12 @@
 #include<cmath>
 using namespace std;
 
+static const int row = 3;
+
+
 class game{
 
-    int a[3][3] ;
+    int a[global::row][3] ;
     public:
     game(){
      for (int i=0 ;i<3;i++){
@@ -23,12 +26,6 @@ class game{
 };
 
 int main(){
-    int a=1,b=0,c=-1;
-    bool q,w,e,r;
-    q = false;
-    w = !q;
-    e = !c;
-    r = !a;
-   cout<<q<<" "<<w<<" "<<e<<" "<<r<<endl;
-
+    game g;
+    g.print_a()
 }
