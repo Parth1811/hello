@@ -1,0 +1,14 @@
+bootcamps prep:-
+
+    ip -
+        poster ready.
+        ruchika - will upload the bash files for installtion
+
+    IMU -
+        code is ready.
+
+    motor -
+        slides are ready.
+
+    TL bootcamp -
+        form is ready, waiting to float.

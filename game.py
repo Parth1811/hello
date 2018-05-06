@@ -19,6 +19,7 @@ clock = pygame.time.Clock()
 gameExit = False
 while not gameExit:
     for event in pygame.event.get():
+        print event
         if event.type == pygame.QUIT:
             gameExit = True
         if event.type == pygame.KEYDOWN:

@@ -4,7 +4,7 @@
 using namespace std;
 
 static const int ROWS = 9;  //number of rows of board
-static const int COLUMNS = 4; //number of coloumns of board
+static const int COLUMNS = 6; //number of coloumns of board
 
 class game{
     int **board_state;
@@ -75,7 +75,8 @@ class game{
             Also checks whether the move is leagal  or not
         */
         if(board_state[x][y] >= 0){
-            this->chain_reaction_at(1,x,y);
+            int threshold = 10000;
+            this->chain_reaction_at(1,x,y, threshold);
             player1_turn = false;
             print_board();
             cout<<"Player1 plays at ("<<x<<","<<y<<")\n\n";
@@ -93,7 +94,8 @@ class game{
             Also checks whether the move is leagal  or not
         */
         if(board_state[x][y] <= 0){
-            this->chain_reaction_at(-1,x,y);
+            int threshold = 10000;
+            this->chain_reaction_at(-1,x,y,threshold);
             player1_turn = true;
             print_board();
             cout<<"Player2 plays at ("<<x<<","<<y<<")\n\n";
@@ -105,7 +107,7 @@ class game{
         }
     }
 
-    void chain_reaction_at(int player_sign, int x, int y){
+    void chain_reaction_at(int player_sign, int x, int y, int threshold){
         /*
             This is a recurrsive function
             it takes the sign of player i.e. 1 for player1
@@ -113,6 +115,9 @@ class game{
             is less than critical value or explodes the cell if it becomes
             equal to critical value
         */
+        if (threshold == 0)
+            return;
+
         if(abs(board_state[x][y]) < critical_mass(x,y)-1){
             board_state[x][y] = player_sign*abs(board_state[x][y]) + player_sign;
             return ;
@@ -124,7 +129,7 @@ class game{
             int index = 0;
             for (int i = 0; i < no_of_ortho_cells; i++){
                 //starts a chain reaction at every orthogonal cell
-                chain_reaction_at(player_sign,ortho_list[index],ortho_list[index+1]);
+                chain_reaction_at(player_sign,ortho_list[index],ortho_list[index+1], threshold-1);
                 index = index + 2;
             }
         }
