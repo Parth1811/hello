@@ -22,6 +22,9 @@ while not gameExit:
         print event
         if event.type == pygame.QUIT:
             gameExit = True
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            clickPos = pygame.mouse.get_pos()
+            print clickPos
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
                 lead_x -= 10
