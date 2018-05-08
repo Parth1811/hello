@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ["10.101.202.69","127.0.0.1"]
 
 INSTALLED_APPS = (
     'home_page',
+    'ros_reader',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

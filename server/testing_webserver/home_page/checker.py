@@ -20,6 +20,7 @@ class Checker:
         self.timeout = timeout_
         self.threshold = threshold_
         self.timeoutFlag = True
+        self.getdata = []
         self.mapkey = str(self.title)+"Status"
         self.status_map = {self.mapkey:False}
         self.sb = rospy.Subscriber(self.topic_name,\
@@ -27,6 +28,7 @@ class Checker:
 
     def cb(self,data):
         self.num += 1
+        getdata.append(data)
         if self.num > 10:
             self.status_map[self.mapkey] = True
 
@@ -40,6 +42,15 @@ class Checker:
             self.timeoutFlag = (currTime - startTime).seconds < self.timeout
         T_ros_spin.terminate()
         return self.status_map[self.mapkey]
+
+    def msg_read(self):
+        T_ros_spin = Process(target=rospy.spin)
+        T_ros_spin.start()
+
+    def get_data(self):
+        temp_array = self.getdata[:]
+        self.getdata = []
+        return temp_array
 
     def ros_msg(self,msg_type):
         type_list = [std,sensor,geom,auv]
