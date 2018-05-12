@@ -1,33 +1,30 @@
-# import the pygame module, so you can use it
-import pygame
+import socketio
+import eventlet
+from flask import Flask, render_template
 
-# define a main function
-def main():
+sio = socketio.Server()
+app = Flask(__name__)
 
-    # initialize the pygame module
-    pygame.init()
-    # load and set the logo
-    logo = pygame.image.load("/home/parth/hello/server/testing_webserver/home_page/static/home_page/img/profile.jpg")
-    pygame.display.set_icon(logo)
-    pygame.display.set_caption("minimal program")
+@app.route('/')
+def index():
+    """Serve the client-side application."""
+    return render_template('index.html')
 
-    # create a surface on screen that has the size of 240 x 180
-    screen = pygame.display.set_mode((240,180))
+@sio.on('connect')
+def connect(sid, environ):
+    print('connect ', sid)
 
-    # define a variable to control the main loop
-    running = True
+@sio.on('my message')
+def message(sid, data):
+    print('message ', data)
 
-    # main loop
-    while running:
-        # event handling, gets all event from the eventqueue
-        for event in pygame.event.get():
-            # only do something if the event is of type QUIT
-            if event.type == pygame.QUIT:
-                # change the value to False, to exit the main loop
-                running = False
+@sio.on('disconnect')
+def disconnect(sid):
+    print('disconnect ', sid)
 
-# run the main function only if this module is executed as the main script
-# (if you import this as a module then nothing is executed)
-if __name__=="__main__":
-    # call the main function
-    main()
+if __name__ == '__main__':
+    # wrap Flask application with socketio's middleware
+    app = socketio.Middleware(sio, app)
+
+    # deploy as an eventlet WSGI server
+    eventlet.wsgi.server(eventlet.listen(('', 8000)), app)

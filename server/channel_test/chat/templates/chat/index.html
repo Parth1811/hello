@@ -1,0 +1,29 @@
+<html>
+<head>hey</head>
+<body>
+<div id = "body_text">
+<h1>this working</h1>
+</div>
+<script>
+// Note that the path doesn't matter for routing; any WebSocket
+// connection gets bumped over to WebSocket consumers
+
+var block_to_insert ;
+var container_block ;
+
+block = document.getElementById( 'body_text' );
+
+socket = new WebSocket("ws://" + window.location.host + "/dvl/topic");
+socket.onmessage = function(e) {
+    block.innerHTML += e.data ;
+}
+socket.onopen = function() {
+    socket.send(window.location.href);
+}
+// Call onopen directly if socket is already open
+
+if (socket.readyState == WebSocket.OPEN) socket.onopen();
+
+
+</script>
+</body>
