@@ -1,0 +1,266 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>The Making of Burglar Alarm &#8211; Electronics and Robotics Club, IIT Bombay</title>
+<meta name="description" content="Discussing the concepts behind this elementary circuit and then moving on to build it.">
+<meta name="keywords" content="555 Timer, Monostable">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="The Making of Burglar Alarm">
+<meta name="twitter:description" content="Discussing the concepts behind this elementary circuit and then moving on to build it.">
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tech-iitb.org/erc/images/sitelogo.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Making of Burglar Alarm">
+<meta property="og:description" content="Discussing the concepts behind this elementary circuit and then moving on to build it.">
+<meta property="og:url" content="http://tech-iitb.org/erc/blog/projects/burglar-alarm/">
+<meta property="og:site_name" content="Electronics and Robotics Club, IIT Bombay">
+
+
+
+
+
+<link rel="canonical" href="http://tech-iitb.org/erc/blog/projects/burglar-alarm/">
+<link href="http://tech-iitb.org/erc/feed.xml" type="application/atom+xml" rel="alternate" title="Electronics and Robotics Club, IIT Bombay Feed">
+<link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet"> 
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://tech-iitb.org/erc/assets/css/main.css">
+<link rel="stylesheet" href="http://tech-iitb.org/erc/assets/css/team.css"> 
+<!-- Webfonts -->
+<script src="https://use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://tech-iitb.org/erc/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://tech-iitb.org/erc/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<!-- Modernizr -->
+<script src="http://tech-iitb.org/erc/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://tech-iitb.org/erc/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://tech-iitb.org/erc/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://tech-iitb.org/erc/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://tech-iitb.org/erc/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://tech-iitb.org/erc/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://tech-iitb.org/erc/images/apple-touch-icon-144x144-precomposed.png">
+
+<script src="http://tech-iitb.org/erc/assets/js/scrolltop.js"></script>
+<link rel="stylesheet" href="http://tech-iitb.org/erc/assets/css/scrolltop.css">
+</head>
+
+<body id="post">
+<!-- Return to Top -->
+<div onClick="scrollback()" id="return-to-top"><i class="fa fa-chevron-up"></i></div>
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://tech-iitb.org/erc/" >Home</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/about/" >About</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/event/" >Events</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/blog/" >Blog</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/search/" >Search</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/team/" >The Team</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	<div class="wrap">
+      
+  		<a href="http://tech-iitb.org/erc/" class="site-logo" rel="home" title="Electronics and Robotics Club, IIT Bombay"><img src="http://tech-iitb.org/erc/images/sitelogo.png" width="200" height="200" alt="Electronics and Robotics Club, IIT Bombay logo" class="animated flipInX"></a>
+      
+      <h1 class="site-title animated pulse"><a href="http://tech-iitb.org/erc/">Electronics and Robotics Club, IIT Bombay</a></h1>
+		<h2 class="site-description animated pulse" itemprop="description">A place for tinkerers and the sort!</h2>
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper zoomIn">
+      <header class="entry-header center">
+        
+          <h1 class="entry-title">The Making of Burglar Alarm</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <!--
+        
+        -->
+        <span class="author vcard">By <span class="fn">Arunabh Ghosh</span></span>
+        <span class="entry-date date published"><time datetime="2016-05-13T00:00:00+05:30"><i class="fa fa-calendar-o"></i> May 13, 2016</time></span>
+        
+        
+        
+	<ul class="entry-tags">
+          Tags: <li><a href="http://tech-iitb.org/erc/tags/#555 Timer" title="Pages tagged 555 Timer">555 Timer</a></li><li><a href="http://tech-iitb.org/erc/tags/#Monostable" title="Pages tagged Monostable">Monostable</a></li>
+        </ul>
+      </footer> 
+      <div class="entry-content">
+        <p>In the First semester along with Pranav, I tried to design a burglar alarm circuit that would go off if the burglar tripped over a copper wire. We built a small scale working model of the circuit and presented it in one of the How Things Work Session which is organised by the Robotics Club in association with the Electronics Club of IIT Bombay.</p>
+
+<p>This how we went about designing and building the circuit.</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>A burglar alarm is basically an intruder alert system used to prevent theft/robbery and protect one’s premises. The circuit that we have built over here can be easily built and understood by anyone who has <strong>enthu!!</strong> Most of the components will be available at Tinkerer’s Lab so take a good look before buying anything.</p>
+
+<p>So, Let’s dive in</p>
+
+<h2 id="concepts-and-basic-principles">Concepts and Basic Principles</h2>
+<p>Well, the basic idea is that when someone trips over the copper wire and it snaps the circuit is broken which then triggers an impulse and the speaker starts buzzing.</p>
+
+<p>How is the impulse triggered?<br />
+Here we make use of <strong>555 timer IC</strong>. 
+The figure shown below shows us the basic circuit.
+<br />
+<img src="http://tech-iitb.org/erc/assets/blog/the-making-of-burglar-alarm/image_0.jpg" alt="Timer-circuit" /></p>
+
+<p><br />
+The main pin which is of interest to us is <strong>PIN 2</strong> - It turns on the output when the voltage supplied to it drops below 1/3 of Vcc.</p>
+
+<p>So one can imagine one end of the copper wire being connected to <strong>PIN 2</strong> and one end of the speaker being connected to <strong>PIN 3</strong>. The other end of both these entities would obviously be connected to the ground. When the circuit breaks the voltage at <strong>PIN 2</strong> drops below the threshold which triggers an output at <strong>PIN 3</strong> due to which the speaker starts buzzing.</p>
+
+<p>The only question now remaining is how does the 555 Timer work?<br />
+In this project we operate the 555 timer in <strong>Monostable</strong> mode.</p>
+
+<p>And what is <strong>Monostable</strong> mode?<br />
+This mode works on the principles of Monostable multivibrator. A monostable multivibrator is an electronic circuit that generates an output pulse. When triggered, a pulse of pre-defined duration is produced. The circuit then returns to its quiescent state and produces no more output until triggered again.</p>
+
+<p><strong><em>And this is exactly what we need!!</em></strong></p>
+
+<p>So now having our concepts on solid foundations we can move on to actually building the circuit!</p>
+
+<h2 id="components-required">Components Required</h2>
+<ul>
+  <li><strong>555 Timer IC</strong></li>
+  <li><strong>Speaker</strong></li>
+  <li><strong>Copper wire pf appropriate resistance</strong></li>
+  <li><strong>Resistance and Capacitors</strong></li>
+</ul>
+
+<h2 id="burglar-alarm-circuit-diagram">Burglar Alarm Circuit Diagram</h2>
+<p><img src="http://tech-iitb.org/erc/assets/blog/the-making-of-burglar-alarm/image_1.gif" alt="alarm-circuit" /></p>
+
+<h2 id="build-the-circuit">Build the Circuit</h2>
+<p>What you need to do is produce the exact replica of the above schematic diagram on your breadboard. In theory this sounds simple but we faced a number of problems and we hope to document all of them down in high hopes that you don’t run into them.</p>
+
+<p>After making it try detaching one connection of the copper wire. If you’re speaker buzzes <strong><em>Yayy!!! You’ve done it!</em></strong>. Although the circuit was simple the underlying concepts lay the foundations for a number of complicated projects.</p>
+
+<h2 id="problems-faced-by-us">Problems faced by us</h2>
+<ul>
+  <li>Use the exact values of capacitors and resistances or any other values based on precise calculations as the working of the circuit is greatly dependent on these variables</li>
+  <li>Even the type of copper wire has been specifically chosen and we did run into lot of debugging problems due to this. Just make sure <strong>NOT</strong> to use the thin copper wire that is available in wires.</li>
+</ul>
+
+<h2 id="extend-this-project">Extend this project</h2>
+<p>The concepts we laid down here are the foundations of any burglar alarm systems in general. Burglar alarms or alert systems can be designed in different ways; from very simple sound alarm system (the one we made) to the advanced and feature rich system which will send SMS alerts, activate sound alarm, turn ON lights, turn ON CCTV cameras, close the main gate etc. We hope you can take on the more advanced ones!</p>
+
+<p><strong><em>Hope you had a great time reading this and were able to learn something new!!</em></strong></p>
+
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://tech-iitb.org/erc/blog/projects/game-of-pong/" class="btn" title="Game Of Pong">Previous</a>
+      
+      
+        <a href="http://tech-iitb.org/erc/blog/irc/" class="btn" title="Building a Maze Solving Bot">Next</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2018 Electronics and Robotics Club, IIT Bombay.<!-- Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/so-simple-jekyll-theme/" rel="nofollow">So Simple Theme</a>.--></span>
+<div class="social-icons">
+	
+	<a href="https://facebook.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Facebook" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://github.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  
+	
+  <a href="http://tech-iitb.org/erc/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://tech-iitb.org/erc';
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://tech-iitb.org/erc/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://tech-iitb.org/erc/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

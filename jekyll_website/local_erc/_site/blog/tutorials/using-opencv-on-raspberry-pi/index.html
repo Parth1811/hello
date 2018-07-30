@@ -1,0 +1,244 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Using OpenCV on Raspberry-Pi &#8211; Electronics and Robotics Club, IIT Bombay</title>
+<meta name="description" content="Getting OpenCV installed and running on Rpi, with necessary scripts and files">
+<meta name="keywords" content="Raspberry Pi, OpenCV">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Using OpenCV on Raspberry-Pi">
+<meta name="twitter:description" content="Getting OpenCV installed and running on Rpi, with necessary scripts and files">
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tech-iitb.org/erc/images/sitelogo.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Using OpenCV on Raspberry-Pi">
+<meta property="og:description" content="Getting OpenCV installed and running on Rpi, with necessary scripts and files">
+<meta property="og:url" content="http://tech-iitb.org/erc/blog/tutorials/using-opencv-on-raspberry-pi/">
+<meta property="og:site_name" content="Electronics and Robotics Club, IIT Bombay">
+
+
+
+
+
+<link rel="canonical" href="http://tech-iitb.org/erc/blog/tutorials/using-opencv-on-raspberry-pi/">
+<link href="http://tech-iitb.org/erc/feed.xml" type="application/atom+xml" rel="alternate" title="Electronics and Robotics Club, IIT Bombay Feed">
+<link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet"> 
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://tech-iitb.org/erc/assets/css/main.css">
+<link rel="stylesheet" href="http://tech-iitb.org/erc/assets/css/team.css"> 
+<!-- Webfonts -->
+<script src="https://use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://tech-iitb.org/erc/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://tech-iitb.org/erc/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<!-- Modernizr -->
+<script src="http://tech-iitb.org/erc/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://tech-iitb.org/erc/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://tech-iitb.org/erc/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://tech-iitb.org/erc/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://tech-iitb.org/erc/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://tech-iitb.org/erc/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://tech-iitb.org/erc/images/apple-touch-icon-144x144-precomposed.png">
+
+<script src="http://tech-iitb.org/erc/assets/js/scrolltop.js"></script>
+<link rel="stylesheet" href="http://tech-iitb.org/erc/assets/css/scrolltop.css">
+</head>
+
+<body id="post">
+<!-- Return to Top -->
+<div onClick="scrollback()" id="return-to-top"><i class="fa fa-chevron-up"></i></div>
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://tech-iitb.org/erc/" >Home</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/about/" >About</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/event/" >Events</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/blog/" >Blog</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/search/" >Search</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/team/" >The Team</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	<div class="wrap">
+      
+  		<a href="http://tech-iitb.org/erc/" class="site-logo" rel="home" title="Electronics and Robotics Club, IIT Bombay"><img src="http://tech-iitb.org/erc/images/sitelogo.png" width="200" height="200" alt="Electronics and Robotics Club, IIT Bombay logo" class="animated flipInX"></a>
+      
+      <h1 class="site-title animated pulse"><a href="http://tech-iitb.org/erc/">Electronics and Robotics Club, IIT Bombay</a></h1>
+		<h2 class="site-description animated pulse" itemprop="description">A place for tinkerers and the sort!</h2>
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper zoomIn">
+      <header class="entry-header center">
+        
+          <h1 class="entry-title">Using OpenCV on Raspberry-Pi</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <!--
+        
+        -->
+        <span class="author vcard">By <span class="fn">Riddhish Bhalodia</span></span>
+        <span class="entry-date date published"><time datetime="2016-03-07T00:00:00+05:30"><i class="fa fa-calendar-o"></i> March 07, 2016</time></span>
+        
+        
+        
+	<ul class="entry-tags">
+          Tags: <li><a href="http://tech-iitb.org/erc/tags/#Raspberry Pi" title="Pages tagged Raspberry Pi">Raspberry Pi</a></li><li><a href="http://tech-iitb.org/erc/tags/#OpenCV" title="Pages tagged OpenCV">OpenCV</a></li>
+        </ul>
+      </footer> 
+      <div class="entry-content">
+        <p><img src="http://tech-iitb.org/erc/assets/blog/using-opencv-on-raspberry-pi/rpi.jpeg" alt="raspberry pi logo" /></p>
+
+<p>Raspberry Pi is slowly finding a lot of applications related to image processing. I am going to provide a little overview of how one can get OpenCV up and running on your pi. I will be using tightVNC server for getting the display.</p>
+
+<p>The first step is getting OpenCV installed on your pi, we will follow the exact same procedure of installing OpenCV which I use on ubuntu. I will show you step by step on how to get your opencv setup on rpi ready.</p>
+
+<p><strong><u>Step Zero</u></strong></p>
+
+<p>Before we begin, I will tell you how my pi is connected so there is no confusion after moving further.<br />
+I have my pi connected to my wi-fi router with a LAN cable and have changed it to a <em>static IP configuration.</em> I am accessing it through my terminal using the ssh channel. In short what I have now and what you should have is a rpi with it’s terminal. If you are totally new to rpi, I suggest you to take a look at these tutorials for setting up your pi <a href="http://tech-iitb.org/erc/tutorials/r_pi">get you pi up and running</a>.</p>
+
+<p><strong><u>Step One</u></strong></p>
+
+<p>Install tightvncserver on the rpi as well as your linux powered laptop/desktop where you plan to get the display window of your pi. You can do that by a simple command <code class="highlighter-rouge">sudo apt-get install tightvncserver</code></p>
+
+<p><strong><u>Step Two</u></strong></p>
+
+<p>Now we start the vnc-server in the rpi, this will broadcast the “screen” of the rpi over the server, which then can be accessed remotely from some other laptop/desktop connected with the same server. In order to do this we need to run the following command on the rpi terminal:<br />
+<code class="highlighter-rouge">vncserver :1 -geometry 1366x600 -depth 16 -pixelformat rgb565</code><br />
+If you are doing this for the first time then it will ask you for setting a password (Yes, you need to remember it!). After finishing that you should see the following on the rpi’s terminal.<br />
+<code class="highlighter-rouge">#New ‘X’ desktop is raspberrypi:1</code><br />
+This means you have successfully got your rpi desktop put up on your server, now you need to access it.</p>
+
+<p><strong><u>Step Three</u></strong></p>
+
+<p>Now using the laptop/desktop’s terminal and execute this command:<br />
+<code class="highlighter-rouge">vncviewer rpi_ip:5901</code><br />
+Here, rpi_ip is the static IP which you would have set for your pi. You will be asked for a password which you have set in the previous step, and then voila!. :D</p>
+
+<p><strong><u>Step Four</u></strong></p>
+
+<p>Now all you need is to get opencv installed on your rpi. To get that done just follow the steps which you will use to install opencv in normal ubuntu based system, if you are comfortable with it then this tutorial stops here for you.For OpenCV installation Just follow the steps listed <a href="http://tech-iitb.org/erc/assets/blog/using-opencv-on-raspberry-pi/opencv-installation.pdf">here(OpenCV installation on Ubuntu).</a><br />
+You will also need two scripts in above installation the opencv installation. Get them from here:<br />
+<a href="http://tech-iitb.org/erc/assets/blog/using-opencv-on-raspberry-pi/opencv2_4_6_1.sh">opencv2_4_6_1.sh</a><br />
+<a href="http://tech-iitb.org/erc/assets/blog/using-opencv-on-raspberry-pi/new">new</a></p>
+
+<p><strong>Thank You!</strong></p>
+
+<hr />
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://tech-iitb.org/erc/blog/Aero" class="btn" title="Aerodynamics">Previous</a>
+      
+      
+        <a href="http://tech-iitb.org/erc/blog/projects/remote-controlling-a-bot-with-android/" class="btn" title="Remote Controlling a bot with Android">Next</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2018 Electronics and Robotics Club, IIT Bombay.<!-- Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/so-simple-jekyll-theme/" rel="nofollow">So Simple Theme</a>.--></span>
+<div class="social-icons">
+	
+	<a href="https://facebook.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Facebook" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://github.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  
+	
+  <a href="http://tech-iitb.org/erc/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://tech-iitb.org/erc';
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://tech-iitb.org/erc/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://tech-iitb.org/erc/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

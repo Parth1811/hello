@@ -1,0 +1,13 @@
+diff --git a/_config.yml b/_config.yml
+index f3411cb..fb36be7 100644
+--- a/_config.yml
++++ b/_config.yml
+@@ -5,7 +5,7 @@ locale: en_US
+ description: A place for tinkerers and the sort!
+ logo: sitelogo.png
+ search: true
+-url: http://localhost:4000
++url: https://grubdragon.github.io/erciitb
+ 
+ # Jekyll configuration
+ 

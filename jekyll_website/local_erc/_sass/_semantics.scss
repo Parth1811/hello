@@ -1,0 +1,47 @@
+/*
+@import "bourbon";
+@import "neat";
+*/
+
+// Media queries
+$small: min-width 0;
+$medium: min-width 640px;
+$large: min-width 1024px;
+
+/**
+ * Generates small, medium, large class names 
+ */
+
+@mixin grid-class($from, $to) {
+  @include media($small){
+    @for $i from $from through $to {
+      .sm-#{$i} {
+        @include span-columns($i); 
+      }
+    }
+  }
+  @include media($medium){
+    @for $i from $from through $to {
+     .md-#{$i} {
+        @include span-columns($i); 
+      }
+    }
+  }
+  @include media($large){
+    @for $i from $from through $to {
+    .lg-#{$i} {
+        @include span-columns($i); 
+      }
+    }
+  }
+}
+
+@include grid-class(1,12);
+
+
+// For codepen styling purposes only.
+.o-grid { @include outer-container; margin-bottom: 1rem; }
+[class^="sm-"],
+div[class^="md-"],
+div[class^="lg"] {
+}

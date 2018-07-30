@@ -1,0 +1,282 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Building a Maze Solving Bot &#8211; Electronics and Robotics Club, IIT Bombay</title>
+<meta name="description" content="I was just into my freshman year, and just as everyone else, robotics felt like the cool thing to do. So I decided to participate in the International Robotics Challenge, a premium inter-college competition, with support from Innovation Cell, IIT-B. Here’s a post that covers the journey. Get yourself some food to hog on, ‘cause this one’s gonna be a long one!
+
+
+">
+<meta name="keywords" content="Techfest, Winters, Robotics">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Building a Maze Solving Bot">
+<meta name="twitter:description" content="I was just into my freshman year, and just as everyone else, robotics felt like the cool thing to do. So I decided to participate in the International Robotics Challenge, a premium inter-college competition, with support from Innovation Cell, IIT-B. Here’s a post that covers the journey. Get yourself some food to hog on, ‘cause this one’s gonna be a long one!
+
+
+">
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tech-iitb.org/erc/images/sitelogo.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Building a Maze Solving Bot">
+<meta property="og:description" content="I was just into my freshman year, and just as everyone else, robotics felt like the cool thing to do. So I decided to participate in the International Robotics Challenge, a premium inter-college competition, with support from Innovation Cell, IIT-B. Here’s a post that covers the journey. Get yourself some food to hog on, ‘cause this one’s gonna be a long one!
+
+
+">
+<meta property="og:url" content="http://tech-iitb.org/erc/blog/irc/">
+<meta property="og:site_name" content="Electronics and Robotics Club, IIT Bombay">
+
+
+
+
+
+<link rel="canonical" href="http://tech-iitb.org/erc/blog/irc/">
+<link href="http://tech-iitb.org/erc/feed.xml" type="application/atom+xml" rel="alternate" title="Electronics and Robotics Club, IIT Bombay Feed">
+<link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet"> 
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://tech-iitb.org/erc/assets/css/main.css">
+<link rel="stylesheet" href="http://tech-iitb.org/erc/assets/css/team.css"> 
+<!-- Webfonts -->
+<script src="https://use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://tech-iitb.org/erc/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://tech-iitb.org/erc/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<!-- Modernizr -->
+<script src="http://tech-iitb.org/erc/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://tech-iitb.org/erc/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://tech-iitb.org/erc/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://tech-iitb.org/erc/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://tech-iitb.org/erc/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://tech-iitb.org/erc/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://tech-iitb.org/erc/images/apple-touch-icon-144x144-precomposed.png">
+
+<script src="http://tech-iitb.org/erc/assets/js/scrolltop.js"></script>
+<link rel="stylesheet" href="http://tech-iitb.org/erc/assets/css/scrolltop.css">
+</head>
+
+<body id="post">
+<!-- Return to Top -->
+<div onClick="scrollback()" id="return-to-top"><i class="fa fa-chevron-up"></i></div>
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://tech-iitb.org/erc/" >Home</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/about/" >About</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/event/" >Events</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/blog/" >Blog</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/search/" >Search</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/team/" >The Team</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	<div class="wrap">
+      
+  		<a href="http://tech-iitb.org/erc/" class="site-logo" rel="home" title="Electronics and Robotics Club, IIT Bombay"><img src="http://tech-iitb.org/erc/images/sitelogo.png" width="200" height="200" alt="Electronics and Robotics Club, IIT Bombay logo" class="animated flipInX"></a>
+      
+      <h1 class="site-title animated pulse"><a href="http://tech-iitb.org/erc/">Electronics and Robotics Club, IIT Bombay</a></h1>
+		<h2 class="site-description animated pulse" itemprop="description">A place for tinkerers and the sort!</h2>
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper zoomIn">
+      <header class="entry-header center">
+        
+          <h1 class="entry-title">Building a Maze Solving Bot</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <!--
+        
+        -->
+        <span class="author vcard">By <span class="fn">Dhruv Shah</span></span>
+        <span class="entry-date date published"><time datetime="2016-05-17T00:00:00+05:30"><i class="fa fa-calendar-o"></i> May 17, 2016</time></span>
+        
+        
+        
+	<ul class="entry-tags">
+          Tags: <li><a href="http://tech-iitb.org/erc/tags/#Techfest" title="Pages tagged Techfest">Techfest</a></li><li><a href="http://tech-iitb.org/erc/tags/#Winters" title="Pages tagged Winters">Winters</a></li><li><a href="http://tech-iitb.org/erc/tags/#Robotics" title="Pages tagged Robotics">Robotics</a></li>
+        </ul>
+      </footer> 
+      <div class="entry-content">
+        <p>I was just into my freshman year, and just as everyone else, robotics felt like the cool thing to do. So I decided to participate in the <a href="http://www.techfest.org/irc">International Robotics Challenge</a>, a premium inter-college competition, with support from <a href="http://www.umic-iitb.org/">Innovation Cell, IIT-B</a>. Here’s a post that covers the journey. Get yourself some food to hog on, ‘cause this one’s gonna be a long one!
+<img src="http://tech-iitb.org/erc/assets/blog/irc/irc_fg.jpg" alt="IRC" /></p>
+
+<h3 id="the-problem-statement">The Problem Statement</h3>
+
+<p>Every journey in competitive robotics starts with a well-defined PS, which helps a participant decide his strategy and plan the timeline. A good competition has surprise elements, and taking care of such elements is a daunting task that requires foresight. You can find the PS to IRC 2015 <a href="https://prieuredesion.github.io/img/blogs/irc/irc.pdf">here</a>. <em>As a tip, the first task of any team should be read the PS thoroughly, and try to find out loopholes. The more you exploit, the better.</em></p>
+<h3> The Task at Hand: </h3>
+<p>After having understood the PS, we would have to approach the problem by breaking it down to simpler ones(<em>analytical approach</em>)! Here’s what we’d have to do:</p>
+<ol>
+  <li>
+    <p>Algorithm Development for Grid Following and Solving.</p>
+  </li>
+  <li>
+    <p>Construct code and simulate runs, to analyse accuracy and computation time.</p>
+  </li>
+  <li>
+    <p>Simultaneously, choose the correct physical components that would have to be used. <em>Motors, motor drivers, MCU, sensors, communication modules… The list is endless!</em></p>
+  </li>
+  <li>
+    <p>Make a prototype of the body, for testing and calibration.</p>
+  </li>
+  <li>
+    <p>Make a CAD model of the bot, with best-suited design, optimizing minimal weight, low CoG(<em>to climb the ramp, refer PS</em>) and strong gripper arm. Also, the best-suited gripper would have to be chosen.</p>
+  </li>
+  <li>
+    <p>Procure parts for the manual and autonomous bot and build.</p>
+  </li>
+  <li>
+    <p>Perform trial runs and final optimizations.</p>
+  </li>
+</ol>
+
+<p>And all this, leaving room for last moment modifications, if required. Sounds interesting, doesn’t it? :p</p>
+
+<h3 id="and-then-we-begin">And Then We Begin!</h3>
+
+<p>A team of 5, we decided to split into 2 sub-groups. One taking care of algorithms(<em>software</em>) and other into investigating various choices for the components mentioned. Let’s take a look at all the relevant steps one at a time.</p>
+
+<ul>
+  <li><strong>Algorithms:</strong> One very important thing that you must have understood from the PS, is that you must have a line-following bot first. (And that you <em>may</em> walk over nodes in the dry run, but that comes later.)
+    <ul>
+      <li>For the basic LF-bot, we implemented a 3-sensor array in the front and used the PID algorithm to stabilise it on straight roads. For the turns etc, instead of complicating matters by increasing sensors, we decided to hard-code the length of each block (as unit length) and calibrate, so that the bot can only move in discrete steps. Fair enough!</li>
+      <li>Now comes the main part. The grid recognition, and solving. The first step of recognition would be better explained in the next section, and thus we jump to solving. Let’s assume that we are given a grid, say 4x4, and some of the nodes are restricted. We must solve the grid, and procure a path from Source to Destination via the allowed nodes. Various algorithms exist for the same, the most relevant of which are the <a href="http://math.mit.edu/~rothvoss/18.304.3PM/Presentations/1-Melissa.pdf">Djikstra</a>, <a href="http://www.personal.kent.edu/~rmuhamma/Algorithms/MyAlgorithms/GraphAlgor/breadthSearch.htm">Breadth-First Search</a> and the <a href="https://www.cs.usfca.edu/~galles/visualization/DFS.html">Depth-First Search</a> algos. Since minimisation was not an issue, and BFS sounded <em>cooler</em> :p, we chose to go ahead with BFS. Here’s a simple illustration video I made to explain the situation. Click on the picture below to view it! <a href="https://drive.google.com/file/d/0BzrafcdwRhiEd2YtdG15YlhLemM/view?usp=sharing"><img src="http://tech-iitb.org/erc/assets/blog/irc/grid.png" alt="Algo Demonstration" /></a> For a more detailed and completed explanation, check out the videos <a href="https://drive.google.com/open?id=0BzrafcdwRhiEb09PbGF0MnBYSGc">here</a>.</li>
+      <li>Obstacle detection was also a task, but was achieved rather easily, by using simple response mechanism, that calls the gripper when an obstacle is detected. The bot is hard-coded to drop it at the preset location.</li>
+      <li>The last step, and the easiest one of the section, was to translate the output of above program (node values) to directions, and actuate them.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Components:</strong> Here’s the tricky part. From an infinite number of permutations in specifications, we had to choose the best for us. And boy(girl), was that easy!</p>
+
+    <ul>
+      <li><u>MCU </u>- The familiarity with Arduino, and the simplicity induced by its libraries led it to being our choice for the puposes. We needed more pin than what the <a href="https://www.arduino.cc/en/main/arduinoBoardUno">Arduino Uno</a> offered, but the shield availabilities resulted in us using two Uno boards, one controlling the PID and motion, and the other controlling the gripper and obstacle detection. The manual bot needed no MCU and was controlled simply by a combination of DPDTs and SPDTs.</li>
+      <li><u>Motors</u>- The wheels underneath would have to be standard DC motors, and as small as possible, to minimize the clearance, and give better operation for the photo-sensors. The challenging part was the gripper. What is servo? What is a stepper? And which one would be relevant? You should check the following files before deciding. We eventually chose Stepper Motors with 2 Kg-cm torque for our purpose. <em>Note: Choosing the specification is very important, and I reckon you work your math out well!</em></li>
+      <li><u>Motor Drivers</u>- For the autonomous bot, we used the L293D Motor Driver. There are drivers available for the steppers, but we decided to drive them directly using the Arduino, and its <a href="https://www.arduino.cc/en/Reference/Stepper">Stepper Library</a>. Note that for convenience, we used the <a href="https://www.adafruit.com/product/81">Adafruit Motor Shield</a> in both the applications. <img src="https://cdn-shop.adafruit.com/970x728/81-00.jpg" alt="Adafruit Shield" /></li>
+      <li><u>The Gripper</u>- There are many kinds of grippers and each serve a different kind of purpose and are driven differently. You can have a peek <a href="https://grabcad.com/library/tag/gripper">here</a>. Some rounds of discussion, a couple of nightouts and several simulations later, we agreed on this design. <img src="http://tech-iitb.org/erc/assets/blog/irc/gripper.jpeg" alt="Gripper" /></li>
+    </ul>
+  </li>
+  <li><strong>Prototype:</strong> We built a simple prototype bot with a plain acrylic chassis, 2 wheels and a castor. It seemed to fare well on LF jobs and taking sharp turns. You can check out a trial run <a href="https://drive.google.com/file/d/0BzrafcdwRhiEZHBEdDU4VXZZZ2s/view?usp=sharing">here</a>.</li>
+  <li><strong>Off to Lamington:</strong> Time to shop for parts, and off we go to <a href="https://www.google.co.in/maps/place/Lamington+Rd">Lamington Road</a>! Dozens of shops, and the variety - it’s sure to freak you out! We all love choices, but who would’ve prepared well enough to face THIS! <img src="http://tech-iitb.org/erc/assets/blog/irc/lami.jpg" alt="@ Lamington" />. Three trips to this place, and savoring the treats at Mamaji Sandwich and Merwan Bakery (<em>get in touch for more details!</em>) We also got our parts fabricated from a shop nearby. All set for writing the final chapter. Making the final bot!</li>
+  <li>All was done, and then came <strong>calibration</strong>. Weeks and weeks of it, and as was said - it certainly takes a lot of time and effort. The Pareto principle strikes - 80% of the job takes 20% of the time and 20% of the job takes 80% of the time! We did end up optimizing the bot very well! ;)</li>
+</ul>
+
+<h4 id="the-competition">The Competition</h4>
+<p>It was D-day, 26th of December, and we were all set for the competition. Teams from around the world! We turned out to be the youngest team, and maybe the least experienced as well - the first it was! <img src="http://tech-iitb.org/erc/assets/blog/irc/winners.jpg" alt="Winners" /></p>
+
+<p>A big thank you for all of you who read till the end! Wish you all the best for your endeavours! Robotics sure can be fun, testing multiple skills at once, and hence a true insight into symbiotic engineering! Feel free to ping me should you need any assistance!</p>
+
+<p>Cheers!</p>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://tech-iitb.org/erc/blog/projects/burglar-alarm/" class="btn" title="The Making of Burglar Alarm">Previous</a>
+      
+      
+        <a href="http://tech-iitb.org/erc/blog/informative/deep-learning-based-image-classification/" class="btn" title="Deep Learning Based Image Classification">Next</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2018 Electronics and Robotics Club, IIT Bombay.<!-- Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/so-simple-jekyll-theme/" rel="nofollow">So Simple Theme</a>.--></span>
+<div class="social-icons">
+	
+	<a href="https://facebook.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Facebook" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://github.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  
+	
+  <a href="http://tech-iitb.org/erc/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://tech-iitb.org/erc';
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://tech-iitb.org/erc/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://tech-iitb.org/erc/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

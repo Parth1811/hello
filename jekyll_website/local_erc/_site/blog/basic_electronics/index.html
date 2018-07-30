@@ -1,0 +1,647 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Basic Electronics &#8211; Electronics and Robotics Club, IIT Bombay</title>
+<meta name="description" content="Learn about the basic components of electronic circuits like OPAmps, Multiplexers, etc.  as well as various kinds of sensors like IR, Flex & Ultrasonic sensors.">
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Basic Electronics">
+<meta name="twitter:description" content="Learn about the basic components of electronic circuits like OPAmps, Multiplexers, etc.  as well as various kinds of sensors like IR, Flex & Ultrasonic sensors.">
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tech-iitb.org/erc/images/sitelogo.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Basic Electronics">
+<meta property="og:description" content="Learn about the basic components of electronic circuits like OPAmps, Multiplexers, etc.  as well as various kinds of sensors like IR, Flex & Ultrasonic sensors.">
+<meta property="og:url" content="http://tech-iitb.org/erc/blog/basic_electronics/">
+<meta property="og:site_name" content="Electronics and Robotics Club, IIT Bombay">
+
+
+
+
+
+<link rel="canonical" href="http://tech-iitb.org/erc/blog/basic_electronics/">
+<link href="http://tech-iitb.org/erc/feed.xml" type="application/atom+xml" rel="alternate" title="Electronics and Robotics Club, IIT Bombay Feed">
+<link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet"> 
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://tech-iitb.org/erc/assets/css/main.css">
+<link rel="stylesheet" href="http://tech-iitb.org/erc/assets/css/team.css"> 
+<!-- Webfonts -->
+<script src="https://use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://tech-iitb.org/erc/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://tech-iitb.org/erc/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<!-- Modernizr -->
+<script src="http://tech-iitb.org/erc/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://tech-iitb.org/erc/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://tech-iitb.org/erc/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://tech-iitb.org/erc/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://tech-iitb.org/erc/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://tech-iitb.org/erc/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://tech-iitb.org/erc/images/apple-touch-icon-144x144-precomposed.png">
+
+<script src="http://tech-iitb.org/erc/assets/js/scrolltop.js"></script>
+<link rel="stylesheet" href="http://tech-iitb.org/erc/assets/css/scrolltop.css">
+</head>
+
+<body id="post">
+<!-- Return to Top -->
+<div onClick="scrollback()" id="return-to-top"><i class="fa fa-chevron-up"></i></div>
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://tech-iitb.org/erc/" >Home</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/about/" >About</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/event/" >Events</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/blog/" >Blog</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/search/" >Search</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/team/" >The Team</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	<div class="wrap">
+      
+  		<a href="http://tech-iitb.org/erc/" class="site-logo" rel="home" title="Electronics and Robotics Club, IIT Bombay"><img src="http://tech-iitb.org/erc/images/sitelogo.png" width="200" height="200" alt="Electronics and Robotics Club, IIT Bombay logo" class="animated flipInX"></a>
+      
+      <h1 class="site-title animated pulse"><a href="http://tech-iitb.org/erc/">Electronics and Robotics Club, IIT Bombay</a></h1>
+		<h2 class="site-description animated pulse" itemprop="description">A place for tinkerers and the sort!</h2>
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header center">
+        
+          <h1 class="entry-title pulse">Basic Electronics</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <!--
+        
+        -->
+        <span class="author vcard">By <span class="fn">Darshan Tank, Pranav Sankhe, Om Kolhe, Tanya Chaudhary, Sanket Agrawal, Arkya Chatterjee, Parth Kothari</span></span>
+        
+	
+        <span class="entry-date date published"><time datetime="2016-06-19T00:00:00+05:30"><i class="fa fa-calendar-o"></i>&nbsp;<strong>Last Updated:</strong> 2016-06-19</time></span>
+        
+        <!--
+        
+        -->
+        
+        
+        
+
+        <!--
+        <ul class="entry-tags">
+          Tags: 
+        </ul>
+        -->
+
+      </footer> 
+      <div class="entry-content">
+        <p>New to the world of electronics? Or are you a regular tinkerer who is having troubles in some basic concepts?
+Well you have come to the right place then. A bunch of electronics enthusiasts have compiled a
+wonderful list of topics that you might need in your projects.</p>
+
+<h1>TABLE OF CONTENTS</h1>
+
+<ul id="markdown-toc">
+  <li><a href="#operational-amplifiers" id="markdown-toc-operational-amplifiers">OPERATIONAL AMPLIFIERS</a></li>
+  <li><a href="#multiplexer---demultiplexer" id="markdown-toc-multiplexer---demultiplexer">MULTIPLEXER - DEMULTIPLEXER</a></li>
+  <li><a href="#infrared---passive-infrared-sensors" id="markdown-toc-infrared---passive-infrared-sensors">INFRARED - PASSIVE INFRARED SENSORS</a></li>
+  <li><a href="#flex-sensor" id="markdown-toc-flex-sensor">FLEX SENSOR</a></li>
+  <li><a href="#ultrasonic-sensor" id="markdown-toc-ultrasonic-sensor">ULTRASONIC SENSOR</a></li>
+</ul>
+<hr />
+
+<h2 id="operational-amplifiers">OPERATIONAL AMPLIFIERS</h2>
+
+<h4 id="operational-amplifiers-1">Operational Amplifiers</h4>
+
+<p>The Operational Amplifier, or OpAmp is an extremely versatile device.
+It can be used for anything from simple amplification of a signal to
+solving differential Equations. Here we will discuss mainly OpAmp as an
+amplifier.</p>
+
+<p>The OpAmp is represented by the symbol-</p>
+
+<p><img src="http://tech-iitb.org/erc/assets/blog/basic_electronics/image00.jpg" alt="image" /></p>
+
+<p>(The +Vss and –Vss pins are often not shown)</p>
+
+<p>The +input is called the non-inverting terminal and the –input is called the inverting terminal.
+The +Vss pin is generally connected to +15 V and the –Vss to -15 V, with respect to some ground.</p>
+
+<p>The output and the input voltages are related by the expression</p>
+
+<p><em>Vout= A*(V<sub>+</sub>-V<sub>-</sub>)</em></p>
+
+<p>Where A is of the order of 10<sup>5</sup>. (This varies from OpAmp to OpAmp). <strong>Another thing to
+note about the OpAmp is that it has very high input impedance and very low output impedance-
+meaning very little current can go into or out of the input pins, and a large current (usually
+a few hundred milliampere) can flow through the output pin.</strong> More about why this is important later.</p>
+
+<p>A simple amplifier can be built by grounding the inverting terminal and applying the signal to the
+Non-inverting terminal. However, this places some severe restrictions. For one, the output voltage,
+ Vout cannot go above +Vss or below –Vss. Hence if the signal voltage exceeds around 150 microvolt,
+ the Output pin saturates to 15 V and the OpAmp no longer works as an amplifier. Moreover, the
+ amplification factor, A is not precisely known and the output voltage cannot be predicted with
+ certainty. This behaviour can be seen in the OpAmp characteristics. (Here, V<sub>d</sub> = V<sub>+</sub></p>
+<ul>
+  <li>V<sub>-</sub> and Vcc = Vss).</li>
+</ul>
+
+<p><img src="http://tech-iitb.org/erc/assets/blog/basic_electronics/image01.gif" alt="image" /></p>
+
+<p>(The region where V<sub>out</sub> varies in proportion to V<sub>d</sub> is called the linear region
+and beyond that it is called the saturation region – V<sub>out</sub> is said to have saturated to a
+constant voltage.)</p>
+
+<p>To overcome this difficulty, we come up with another configuration.</p>
+
+<p><img src="http://tech-iitb.org/erc/assets/blog/basic_electronics/image02.png" alt="image" /></p>
+
+<p>The Output voltage is taken between Vout and ground.</p>
+
+<p>Since no current flows into the V- terminal,</p>
+
+<p>V<sub>-</sub> = V<sub>out</sub> * R<sub>2</sub>/ (R<sub>2</sub>+R<sub>F</sub>).</p>
+
+<p>The OpAmp equation becomes-
+V<sub>out</sub> = A (V<sub>IN</sub> – V<sub>out</sub><em>R<sub>2</sub>/ (R<sub>2</sub>+R<sub>F</sub>))
+V<sub>out</sub> = A</em>V<sub>IN</sub>/ (1+A<em>R<sub>2</sub>/ (R<sub>2</sub>+R<sub>F</sub>))
+V<sub>out</sub> ~ V<sub>in</sub></em> (R<sub>2</sub>+R<sub>F</sub>)/R<sub>2</sub>,          (Since A is very large.)
+Well, that was rather tedious, wasn’t it? Turns out there is an easier way. Let’s take a closer look at
+the OpAmp Equation.</p>
+
+<p><em>(V<sub>+</sub>-V<sub>-</sub>) = V<sub>out</sub>/A</em></p>
+
+<p>Well, what does this mean? It means that</p>
+
+<p><em>“The OpAmp will do whatever it can to keep the potential at the input terminals the same”.</em></p>
+
+<p>And all it can do is change the voltage at the output terminal. This is called a virtual short. The potential
+at the input terminals is the same, even though they are not connected. <strong>This assumption is valid only when the
+OpAmp is working in the linear region.</strong> In the saturation region, the potential at the input terminals need not
+be the same.</p>
+
+<p>Let’s analyse the above circuit once again.
+)
+Current through Resistor R<sub>2</sub> would be V<sub>s</sub>/R<sub>2</sub>, and the same current flows through
+R<sub>F</sub>. Hence voltage at V<sub>out</sub> is V<sub>s</sub>/R<sub>2</sub> * (R<sub>2</sub>+R<sub>F</sub>).
+The amplification factor now becomes 1+R<sub>F</sub>/R<sub>2</sub>. The input signal can now be anything from a
+few millivolts to a few volts, and the precise value of A no longer matters. This is one configuration in which
+the OpAmp can be used as an amplifier.</p>
+
+<p>Another such configuration would be,</p>
+
+<p><img src="http://tech-iitb.org/erc/assets/blog/basic_electronics/image03.png" alt="image" /></p>
+
+<p>The output voltage turns out to be
+V<sub>out</sub> = - V<sub>in</sub> * R<sub>F</sub>/R<sub>in</sub>.
+Note that the output is inverted with respect to the input signal. Hence this is the Inverting Amplifier
+Configuration. The previous configuration was called Non Inverting Mode.</p>
+
+<p>Another use of an OpAmp is to provide a <a href="https://en.wikipedia.org/wiki/Buffer_amplifier">‘buffer stage’</a>.
+Normally, large currents cannot be drawn out of sensors, to be used for further processing. However, a reasonably
+large current can be drawn out of the OpAmp’s output terminal, when used in the following configuration.</p>
+
+<p><img src="http://tech-iitb.org/erc/assets/blog/basic_electronics/image04.png" alt="image" /></p>
+
+<p>(Do note that the current drawn by the external circuit comes through the output terminal of the OpAmp, and
+negligible current flows into any of the input pins) While in the expression for the amplification factor,
+only the ratio of resistances appear, care has to be taken to ensure that the resistance values to be used are
+in the range of 1k to 100k. For a voltage magnification of ten in inverting mode, the most preferred resistances
+should be 1.5k and 15k.</p>
+
+<p>Another thing to note is that the circuit has to be as ‘clean’ as possible. If the circuit is made in a bread board,
+care has to be taken to ensure that the wires are as straight as possible, do not form loops, and are only as long
+as required. The stray inductance that may be formed otherwise may lead to severe distortion of the signal.</p>
+
+<p>When connecting the resistor between the output and input pins( R<sub>F</sub> in this case) <strong>only the inverting
+terminal</strong> has to be used. This resistor is said to provide ‘Negative feedback’. (If the non-inverting terminal is used,
+the resulting positive feedback would lead to the OpAmp moving to the saturation region easily. However, in some cases,
+positive feedback is intentionally introduced to create instability. An astable multivibrator, where the output swings
+between positive and negative values without any user intervention, uses a positive feedback system.)</p>
+
+<p>Some popular OpAmp ICs are the LM741 and the LM 324. The LM324 has four high quality OpAmps integrated into a single
+chip. You can find the datasheet of the LM324 <a href="http://www.engineersgarage.com/sites/default/files/LM324.pdf">here</a>.
+Take a look at the LM741 datasheet <a href="http://www.ti.com/lit/ds/symlink/lm741.pdf">here</a>. The datasheet provides additional
+information on the positions of the pins, supply voltage, maximum output current, blah, blah, blah…..in short,
+everything you need to get your circuit running.</p>
+<hr />
+
+<h2 id="multiplexer---demultiplexer">MULTIPLEXER - DEMULTIPLEXER</h2>
+
+<h4 id="multiplexer">Multiplexer</h4>
+
+<p>Multiplexing is the generic term used to describe the operation of sending one or more analog or digital signals over a common transmission line at different times or speeds and as such, the device we use to do just that is called a Multiplexer. The following is a black-box view of the common digital multiplexer, or MUX (as we fondly call it), which has N selection lines, 2<sup>N</sup>, input lines, and a single output line.</p>
+
+<p>The 4-to-1 channel multiplexer that is depicted in the adjoining diagram, selects an input line corresponding to the input provided to the selection bits. In this way, a MUX somehow acts like an equivalent of a mechanical multi-way switch.</p>
+
+<p><img src="http://tech-iitb.org/erc/assets/blog/basic_electronics/image05.jpg" alt="image" />
+<img src="http://tech-iitb.org/erc/assets/blog/basic_electronics/image06.gif" alt="image" /></p>
+
+<p>From a coder’s perspective, a multiplexer could be seen as an analogue of the switch-case statement, with the case values represented by the different input values, say I0, I1, I2, and I3, while the value being tested under switch, represented by the binary number S1S0.</p>
+
+<p>Going a little into the logic aspect of it, the multiplexer’s (4:1) truth table looks like the following:</p>
+
+<p><img src="http://tech-iitb.org/erc/assets/blog/basic_electronics/image07.png" alt="image" /></p>
+
+<p>So when does one use a multiplexer?
+In general, a multiplexer helps transmit multiple data using a single line. For example, a multiplexer is used to increase the efficiency of the communication system by allowing the transmission of data such as audio &amp; video data from different channels via cables and single lines. Another similar application is in linking computer memory to various I/O devices, where multiplexers help reduce number of connecting copper wires.</p>
+
+<h4 id="demultiplexer">Demultiplexer</h4>
+
+<p>The data distributor, known more commonly as a Demultiplexer or “Demux” for short, is the exact opposite of the Multiplexer. The demultiplexer takes one single input data line and then switches it to any one of a number of individual output lines one at a time. The demultiplexer converts a serial data signal at the input to a parallel data.</p>
+
+<p><img src="http://tech-iitb.org/erc/assets/blog/basic_electronics/image08.png" alt="image" /></p>
+
+<p>The function of the Demultiplexer is to switch one common data input line to any one of the 4 output data lines A to D in our example above. As with the multiplexer the individual solid state switches are selected by the binary input address code on the output select pins “a” and “b” as shown.</p>
+
+<p>Truth table for demultiplexer:</p>
+
+<p><img src="http://tech-iitb.org/erc/assets/blog/basic_electronics/image09.png" alt="image" /></p>
+
+<p>A typical application of the demultiplexer is to control multiple circuit lines using few selection lines.
+Demultiplexers are used in combination with multiplexers communication system to carry out the process of data transmission. Demultiplexer are also used in serial to parallel conversion.  In this technique, serial data is given as an input to the De-multiplexer at a regular interval, and a counter is attached to the demultiplexer at the control input to detect the data signal at the output of the demultiplexer.</p>
+
+<h4 id="the-demonstration">The Demonstration</h4>
+
+<p>We did a small demonstration to see the working of a De-multiplexer in action. We made use of an IC called SN7442A. (You can find the Datasheet at <a href="http://www.ti.com/general/docs/lit/getliterature.tsp?genericPartNumber=sn54ls42&amp;fileType=pdf">here</a>.)</p>
+
+<p>Let’s look at the pin configuration of the IC.</p>
+
+<p><img src="http://tech-iitb.org/erc/assets/blog/basic_electronics/image10.png" alt="image" /></p>
+
+<h4 id="connections-of-the-circuit">Connections of the circuit</h4>
+
+<p>Connected Vcc with 5v. Ground to 0v (duh!)
+As we see in the datasheet (do have a  look), D is the most significant input bit and A the least. Since, we wanted to do a quick demo, we keep C and D connected to ground (Low always). So now, we can play with only input pins A and B.</p>
+
+<p>Looking at the output table of the circuit</p>
+
+<p>We see that toggling A,B input pins , we can control pins 0, 1, 2, 3 and hence, we connected 4 LEDs to it. To display the output.
+A,B were made to toggle from 5v to 0v and vice versa by connecting a button each between inputs and 5v. Also, connecting a resistor between the input and ground does the job. Think about it!</p>
+
+<p>So now, on clicking the 2 buttons separately and together, we see the expected LEDs going Low according to the output table!</p>
+<hr />
+
+<h2 id="infrared---passive-infrared-sensors">INFRARED - PASSIVE INFRARED SENSORS</h2>
+
+<p>This summers I took my first project ever in life. Meanwhile I came to
+stop by a problem in which i had to detect a movement of a object
+relative to its postion. After lots of googling and stuff , I found the
+solution to this with the help of sensors , namely IR (infrared) PIR
+(passive infra red sensors. Lets explore what they are !</p>
+
+<h4 id="ir-sensor">IR Sensor</h4>
+
+<p>IR sensor consists of a LED and a photodiode. In the same branch as the
+LED and photodiode there are two resistances with the larger one in the
+branch with photodiode ( since, it is reverse biased , we demand greater
+potential drop with small resistance ).The LED is a infrared LED which
+emits infrared rays and those rays are received by the photodiode when
+they are reflected by some surface. The circuit is assembled as
+following :</p>
+
+<p><img src="http://tech-iitb.org/erc/assets/blog/basic_electronics/image11.png" alt="image" /></p>
+
+<p>To check the circuit connect it with arduino:</p>
+
+<p><img src="http://tech-iitb.org/erc/assets/blog/basic_electronics/image12.png" alt="image" /></p>
+
+<p>Now keep your hand at some height above the LED . Meanwhile open the
+serial monitor on arduino IDE and notice the values on it . Now slowly
+start bringing your hand towards the LED and notice the increase in
+value on the serial monitor. These values are a measure of amount of
+reflection received by the photodiode. The closer your hand is , more is
+the value on the serial monitor. Thus , this serves as a measure of
+distance relative to the sensor.</p>
+
+<h4 id="pir-sensor">PIR sensor</h4>
+
+<p>The next task which i had to conquer was to detect movement . The best
+way to find this out was a PIR sensor . Ever wonder you go into a room
+or washroom it lights up by itself ? you know the reason? The answer
+lies in PIR sensor . Let’s see how this works. The basic function of a
+PIR sensor is to detect a CHANGE in movement.</p>
+
+<p>It is called passive because unlike the IR sensor it does not have
+something which produces energy. In IR sensor IR sensor produces IR rays
+which are detected by the photodiode but here there is no such source.
+The IR rays which the PIR sensor collects is produced by the movement of
+body near it . The circuit of the sensor is as follows :
+<img src="http://tech-iitb.org/erc/assets/blog/basic_electronics/image13.png" alt="image" /></p>
+
+<p>The PIR sensor contains , inside it , a material called pyroelectric
+material which produces current on receiving infrared waves. It contains
+two sensor inside it which give output in opposing ways , thus , any
+constant position isn’t detected whereas a movement is detected.</p>
+
+<p>Thus if you keep your hand moving in front of it you will constantly
+receive output but if you will stabilise it the output reading stops.
+This principle is thus used in washrooms to light up light by itself .</p>
+<hr />
+
+<h2 id="flex-sensor">FLEX SENSOR</h2>
+
+<p>A flex sensor is a variable resistor whose resistance changes when it
+bent. More the sensor is bend, more is the resistance.</p>
+
+<p>The working principle: The black strip is a thin layer of
+carbon/graphite (for flexibility). The light grey material is patterned
+and segmented metal electrode. Deformation of the flex apparently
+increases/decreases the amount of metal in contact with the carbon.</p>
+
+<p>In this tutorial you will learn how to use a flex sensor. In the demo we
+will control the brightness of a LED using a flex sensor.</p>
+
+<p>Material you will need:</p>
+
+<ul>
+  <li>
+    <p>A flex sensor</p>
+  </li>
+  <li>
+    <p>Arduino UNO</p>
+  </li>
+  <li>
+    <p>Breadboard</p>
+  </li>
+  <li>
+    <p>10K Ω and 220Ω resistor</p>
+  </li>
+  <li>
+    <p>A LED</p>
+  </li>
+</ul>
+
+<p>The circuit:</p>
+
+<p><img src="http://tech-iitb.org/erc/assets/blog/basic_electronics/image14.jpg" alt="image" /></p>
+
+<p>In the circuit, we have attached a fixed resistor of 10kΩ. Thus creating
+a voltage divider arrangement. Now when the flex sensor is bent, the
+resistance increases thus increasing the voltage at the junction. This
+voltage is read by the Arduino and it is mapped to control the
+brightness of the LED.</p>
+
+<h4 id="code">Code:</h4>
+
+<figure class="highlight"><pre><code class="language-c" data-lang="c">    <span class="c1">//Constants:
+</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">ledPin</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//pin 3 has PWM function
+</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">flexPin</span> <span class="o">=</span> <span class="n">A0</span><span class="p">;</span> <span class="c1">//pin A0 to read analog input
+</span>
+    <span class="c1">//Variables:
+</span>
+    <span class="kt">int</span> <span class="n">value</span><span class="p">;</span> <span class="c1">//save analog value
+</span>
+    <span class="kt">void</span> <span class="n">setup</span><span class="p">(){</span>
+
+        <span class="n">pinMode</span><span class="p">(</span><span class="n">ledPin</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span> <span class="c1">//Set pin 3 as 'output'
+</span>
+        <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span> <span class="c1">//Begin serial communication
+</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">loop</span><span class="p">(){</span>
+
+    <span class="n">value</span> <span class="o">=</span> <span class="n">analogRead</span><span class="p">(</span><span class="n">flexPin</span><span class="p">);</span> <span class="c1">//Read and save analog value potentiometer
+</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">value</span><span class="p">);</span> <span class="c1">//Print value
+</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">map</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="mi">700</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span><span class="c1">//Map value 0-1023 to 0-255 (PWM)
+</span>
+    <span class="n">analogWrite</span><span class="p">(</span><span class="n">ledPin</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span> <span class="c1">//Send PWM value to led
+</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span> <span class="c1">//Small delay
+</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p>We have read the voltage values using the A0 pin on the Arduino.</p>
+
+<p>For controlling the LED we use Pin 3 which is a PWM pin.</p>
+
+<p>For setting the range of the voltage read, you will have to see what the
+voltage is when the sensor is not bent and when the sensor is bent to
+its maximum value.</p>
+
+<p>Flex sensors can be used to detect finger movements in a gesture control
+robotic arm. Reading the voltage values can tell you how much the finger
+is bent.</p>
+<hr />
+
+<h2 id="ultrasonic-sensor">ULTRASONIC SENSOR</h2>
+
+<p>It is more often than not that we require our model cars or bots or even basic circuits to measure distance of various objects in their surroundings. For this we require ultrasonic sensors. I am going to discuss the use of a ultrasonic sensor module HC-SR04.</p>
+
+<p><img src="http://tech-iitb.org/erc/assets/blog/basic_electronics/image15.jpg" alt="image" /></p>
+
+<p>It has a range of 5-400 cm. It contains two transducers- one ultrasonic transmitter and one receiver as well as a control circuit.</p>
+
+<p>HC-SR04 has 4 pins:</p>
+
+<ul>
+  <li>
+    <p>5V vcc pin</p>
+  </li>
+  <li>
+    <p>Ground pin</p>
+  </li>
+  <li>
+    <p>Trig pin (to input an electronic pulse)</p>
+  </li>
+  <li>
+    <p>Echo pin (to output electronic signal when receiver receives the reflected ultrasonic pulse)</p>
+  </li>
+</ul>
+
+<h4 id="working">Working</h4>
+
+<p>We have to provide a 10uS electronic pulse to Trig pin due to which the transmitter sends a 8 cycle 40kHz ultra sound pulse. Now we calculate the time interval between the sending and receiving of the pulse.<br />
+Since, we know the speed of sound in air and we now also know the time taken by the time to go to the object and come back, we can calculated the distance.<br />
+So the distance of the object will be at half of our calculated distance.</p>
+
+<h4 id="the-demonstration-1">The Demonstration</h4>
+
+<p>I did a small demonstration showing how to use ultrasonic sensor HC-SR04. You can find the datasheet <a href="http://www.electroschematics.com/wp-content/uploads/2013/07/HCSR04-datasheet-version-1.pdf">here</a>.</p>
+
+<h4 id="connections-of-the-circuit-1">Connections of the circuit</h4>
+
+<p>Connections of the circuit are as shown in the below diagram:</p>
+
+<p><img src="http://tech-iitb.org/erc/assets/blog/basic_electronics/image16.jpg" alt="image" /></p>
+
+<p>Connected Vcc with 5v. Ground to 0v.
+Trigpin and echopin are connected to pins 8 and 7 respectively of arduino.</p>
+
+<p>Code is given below.
+So, after the code is uploaded to arduino, press Ctrl + Shift + M to start the Serial Monitor.
+You can see the distance in cm as well as inches that we are printing after converting the signal recieved from the sensor.</p>
+
+<h4 id="code-1">Code:</h4>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">const</span> <span class="kt">int</span> <span class="n">trigPin</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">echoPin</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">long</span> <span class="n">duration</span><span class="p">,</span> <span class="n">inches</span><span class="p">,</span> <span class="n">cm</span><span class="p">;</span>
+    <span class="n">pinMode</span><span class="p">(</span><span class="n">trigPin</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">trigPin</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>     <span class="c1">//sending
+</span>
+    <span class="n">delayMicroseconds</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>           <span class="c1">//a
+</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">trigPin</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>        <span class="c1">//10uS
+</span>
+    <span class="n">delayMicroseconds</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>          <span class="c1">//electronic
+</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">trigPin</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>     <span class="c1">//pulse
+</span>
+    <span class="n">pinMode</span><span class="p">(</span><span class="n">echoPin</span><span class="p">,</span> <span class="n">INPUT</span><span class="p">);</span>
+    <span class="n">duration</span> <span class="o">=</span> <span class="n">pulseIn</span><span class="p">(</span><span class="n">echoPin</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>  <span class="c1">//measure time taken by echo pin to go from low to high
+</span>
+    <span class="n">inches</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="n">duration</span><span class="p">);</span>
+    <span class="n">cm</span> <span class="o">=</span> <span class="n">Centimeters</span><span class="p">(</span><span class="n">duration</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">inches</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"in, "</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">cm</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"cm"</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">();</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">long</span> <span class="nf">Inches</span><span class="p">(</span><span class="kt">long</span> <span class="n">microseconds</span><span class="p">)</span>          <span class="c1">//convert time to inches
+</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">microseconds</span> <span class="o">/</span> <span class="mi">74</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="kt">long</span> <span class="nf">Centimeters</span><span class="p">(</span><span class="kt">long</span> <span class="n">microseconds</span><span class="p">)</span>     <span class="c1">//convert time to cm
+</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">microseconds</span> <span class="o">/</span> <span class="mi">29</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://tech-iitb.org/erc/blog/Batteries" class="btn" title="Batteries">Previous</a>
+      
+      
+        <a href="http://tech-iitb.org/erc/blog/avr/" class="btn" title="AVR Programming">Next</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2018 Electronics and Robotics Club, IIT Bombay.<!-- Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/so-simple-jekyll-theme/" rel="nofollow">So Simple Theme</a>.--></span>
+<div class="social-icons">
+	
+	<a href="https://facebook.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Facebook" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://github.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  
+	
+  <a href="http://tech-iitb.org/erc/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://tech-iitb.org/erc';
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://tech-iitb.org/erc/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://tech-iitb.org/erc/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

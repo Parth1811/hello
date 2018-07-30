@@ -1,0 +1,259 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Experiences with Robotic Arm &#8211; Electronics and Robotics Club, IIT Bombay</title>
+<meta name="description" content="We organised a session on Grippers where enthusiastic freshers participated in an overnight hackathon which was preceded by Tutorial for the same in Tinkerers Laboratory,IIT Bombay.  
+Here is a blog post by one such team which participated in the event and successfully completed the Gripper.
+
+">
+<meta name="keywords" content="Gripper, Automation, Arduino">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Experiences with Robotic Arm">
+<meta name="twitter:description" content="We organised a session on Grippers where enthusiastic freshers participated in an overnight hackathon which was preceded by Tutorial for the same in Tinkerers Laboratory,IIT Bombay.  
+Here is a blog post by one such team which participated in the event and successfully completed the Gripper.
+
+">
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tech-iitb.org/erc/images/sitelogo.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Experiences with Robotic Arm">
+<meta property="og:description" content="We organised a session on Grippers where enthusiastic freshers participated in an overnight hackathon which was preceded by Tutorial for the same in Tinkerers Laboratory,IIT Bombay.  
+Here is a blog post by one such team which participated in the event and successfully completed the Gripper.
+
+">
+<meta property="og:url" content="http://tech-iitb.org/erc/blog/robotic_arm/">
+<meta property="og:site_name" content="Electronics and Robotics Club, IIT Bombay">
+
+
+
+
+
+<link rel="canonical" href="http://tech-iitb.org/erc/blog/robotic_arm/">
+<link href="http://tech-iitb.org/erc/feed.xml" type="application/atom+xml" rel="alternate" title="Electronics and Robotics Club, IIT Bombay Feed">
+<link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet"> 
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://tech-iitb.org/erc/assets/css/main.css">
+<link rel="stylesheet" href="http://tech-iitb.org/erc/assets/css/team.css"> 
+<!-- Webfonts -->
+<script src="https://use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://tech-iitb.org/erc/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://tech-iitb.org/erc/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<!-- Modernizr -->
+<script src="http://tech-iitb.org/erc/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://tech-iitb.org/erc/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://tech-iitb.org/erc/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://tech-iitb.org/erc/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://tech-iitb.org/erc/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://tech-iitb.org/erc/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://tech-iitb.org/erc/images/apple-touch-icon-144x144-precomposed.png">
+
+<script src="http://tech-iitb.org/erc/assets/js/scrolltop.js"></script>
+<link rel="stylesheet" href="http://tech-iitb.org/erc/assets/css/scrolltop.css">
+</head>
+
+<body id="post">
+<!-- Return to Top -->
+<div onClick="scrollback()" id="return-to-top"><i class="fa fa-chevron-up"></i></div>
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://tech-iitb.org/erc/" >Home</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/about/" >About</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/event/" >Events</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/blog/" >Blog</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/search/" >Search</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/team/" >The Team</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	<div class="wrap">
+      
+  		<a href="http://tech-iitb.org/erc/" class="site-logo" rel="home" title="Electronics and Robotics Club, IIT Bombay"><img src="http://tech-iitb.org/erc/images/sitelogo.png" width="200" height="200" alt="Electronics and Robotics Club, IIT Bombay logo" class="animated flipInX"></a>
+      
+      <h1 class="site-title animated pulse"><a href="http://tech-iitb.org/erc/">Electronics and Robotics Club, IIT Bombay</a></h1>
+		<h2 class="site-description animated pulse" itemprop="description">A place for tinkerers and the sort!</h2>
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper zoomIn">
+      <header class="entry-header center">
+        
+          <h1 class="entry-title">Experiences with Robotic Arm</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <!--
+        
+        -->
+        <span class="author vcard">By <span class="fn">Maitrey Gramopadhye, Swadha Sanghvi, Bhuyashi Deka, Vikrant Nagpure</span></span>
+        <span class="entry-date date published"><time datetime="2016-12-20T00:00:00+05:30"><i class="fa fa-calendar-o"></i> December 20, 2016</time></span>
+        
+        
+        
+	<ul class="entry-tags">
+          Tags: <li><a href="http://tech-iitb.org/erc/tags/#Gripper" title="Pages tagged Gripper">Gripper</a></li><li><a href="http://tech-iitb.org/erc/tags/#Automation" title="Pages tagged Automation">Automation</a></li><li><a href="http://tech-iitb.org/erc/tags/#Arduino" title="Pages tagged Arduino">Arduino</a></li>
+        </ul>
+      </footer> 
+      <div class="entry-content">
+        <p>We organised a session on Grippers where enthusiastic freshers participated in an overnight hackathon which was preceded by Tutorial for the same in Tinkerers Laboratory,IIT Bombay.  
+Here is a blog post by one such team which participated in the event and successfully completed the Gripper.</p>
+
+<hr />
+
+<h1 id="center-team-hifi"><center> Team HIFI</center></h1>
+<center> - Maitrey Gramopadhye, Swadha Sanghvi, Bhuyashi Deka, Vikrant Nagpure
+
+<img src="http://tech-iitb.org/erc/assets/blog/Gripper/roboarm.jpg" alt="team" />
+
+<p>
+All at least once we've tried opening up clocks in our house or the batteries of our mobile. Well, to satisfy this techie spirit a gripper bot session was held on 23 November. we had been waiting to get our Xlr8 bots out of our cupboards and and do more with them as our mentors had promised we would. The tech nightout held in tinker's lab started at 9 pm. Mentors were very enthusiastic about explaining the concept of grippers and having attended the get mechanised and get electrified session it wasn't hard to get started.
+</p>
+<p>
+We first set to the planning of the steps to take. After half an hour of debating we decided on making the gripper attached with gears which were rotated by a worm gear, and to attach this gripper mechanism on a ramp, which could move the gripper up and down, which would be on our xlr8 bots. the movement of the gripper, ramp and the bot itself was to be controlled by giving commands from a laptop to an arduino.
+</p>
+<p>
+Starting the work on the gripper we first thought of attaching a 10 rpm motor to the worm gear, but that gave us an angular velocity of 1 rotation per 2.4 minutes with the gripper. so we switched to a 150 rpm motor. Next we had to decide the shape of the gripper arm setup and attach it to the spur gears.
+</p>
+<p>
+Based on a youtube video we chose to have 4 wooden planks in each arm with a setup such that the forward most arm is always pointing in the forward direction. Then to attach the arms to gears we drilled holes in the arms and fitted them to the gears with 5 mm screws, which stayed together by friction.    
+</p>
+<p>
+To fix the worm gear on the motor was a major task, as we had to use a pointed screw to avoid the relative motion of the shaft of motor with gear, but even after that the gear didn't rotate along an axis parallel to the shaft. due to this the spur gears experienced an upward force and bounced out of the screws of which they were attached. we relied once again on friction to resolve this issue and thickened the screws by covering them with tape.    
+</p>
+<p>
+Now having almost completed the gripper we set to work on the ramp. It's called a ramp here because it moved like one. We fitted a rack on it's lower side and a 10 rpm on surface of the bot to move the ramp.In this way the ramp moved forward when it moved up and back when it moved down. To keep it guided along a straight path we attached two small rods on either side of the ramp to support its motion.    
+</p>
+<p>
+After finishing the mechanical aspect of the project it was time to bring the gripper to life and attach the arduino. Choosing to stick as close to the Xlr8 setup as possible we kept the circuit for motion of the bot intact and built another like it for the ramp and the gripper. here the motors were attached to L293D and it to the arduino via an 7806.    
+</p>
+<p>
+In the code of the arduino were 8 commands, forward, back, right and left to control the bot, up and down to control the ramp and open and close to control the gripper. the working principle was simply pin high and pin low, of the motors.     
+</p>
+<p>
+Our next move would now be to sort out the few things still out of shape. We have thought of trying to attach the worm gear to the motor by glue as then it might align parallel to it. Also by installing a bluetooth module in the circuit the bot will no longer be needed to be wired.    
+</p>
+<p>
+Overall, spending 4 days and 5 nights in TL, putting the post Endsem lukkha to tech were worth it. the best part was seeing the bot actually work.    
+</p>
+<p>
+We would like to thank our mentors and technicians of TL for helping us through it.    
+</p>
+Cheers!
+</center>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://tech-iitb.org/erc/blog/informative/improving-adcs-with-noise/" class="btn" title="Improving ADCs by intentionally adding noise">Previous</a>
+      
+      
+        <a href="http://tech-iitb.org/erc/blog/informative/get-electrified-3/" class="btn" title="Get Electrified 3">Next</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2018 Electronics and Robotics Club, IIT Bombay.<!-- Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/so-simple-jekyll-theme/" rel="nofollow">So Simple Theme</a>.--></span>
+<div class="social-icons">
+	
+	<a href="https://facebook.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Facebook" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://github.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  
+	
+  <a href="http://tech-iitb.org/erc/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://tech-iitb.org/erc';
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://tech-iitb.org/erc/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://tech-iitb.org/erc/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,425 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Remote Controlling a bot with Android &#8211; Electronics and Robotics Club, IIT Bombay</title>
+<meta name="description" content="How we implemented an Android+AVR based remote control for bots participating in XLR8 competition.">
+<meta name="keywords" content="XLR8, Bluetooth, ATtiny">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Remote Controlling a bot with Android">
+<meta name="twitter:description" content="How we implemented an Android+AVR based remote control for bots participating in XLR8 competition.">
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tech-iitb.org/erc/images/sitelogo.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Remote Controlling a bot with Android">
+<meta property="og:description" content="How we implemented an Android+AVR based remote control for bots participating in XLR8 competition.">
+<meta property="og:url" content="http://tech-iitb.org/erc/blog/projects/remote-controlling-a-bot-with-android/">
+<meta property="og:site_name" content="Electronics and Robotics Club, IIT Bombay">
+
+
+
+
+
+<link rel="canonical" href="http://tech-iitb.org/erc/blog/projects/remote-controlling-a-bot-with-android/">
+<link href="http://tech-iitb.org/erc/feed.xml" type="application/atom+xml" rel="alternate" title="Electronics and Robotics Club, IIT Bombay Feed">
+<link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet"> 
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://tech-iitb.org/erc/assets/css/main.css">
+<link rel="stylesheet" href="http://tech-iitb.org/erc/assets/css/team.css"> 
+<!-- Webfonts -->
+<script src="https://use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://tech-iitb.org/erc/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://tech-iitb.org/erc/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<!-- Modernizr -->
+<script src="http://tech-iitb.org/erc/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://tech-iitb.org/erc/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://tech-iitb.org/erc/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://tech-iitb.org/erc/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://tech-iitb.org/erc/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://tech-iitb.org/erc/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://tech-iitb.org/erc/images/apple-touch-icon-144x144-precomposed.png">
+
+<script src="http://tech-iitb.org/erc/assets/js/scrolltop.js"></script>
+<link rel="stylesheet" href="http://tech-iitb.org/erc/assets/css/scrolltop.css">
+</head>
+
+<body id="post">
+<!-- Return to Top -->
+<div onClick="scrollback()" id="return-to-top"><i class="fa fa-chevron-up"></i></div>
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://tech-iitb.org/erc/" >Home</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/about/" >About</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/event/" >Events</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/blog/" >Blog</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/search/" >Search</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/team/" >The Team</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	<div class="wrap">
+      
+  		<a href="http://tech-iitb.org/erc/" class="site-logo" rel="home" title="Electronics and Robotics Club, IIT Bombay"><img src="http://tech-iitb.org/erc/images/sitelogo.png" width="200" height="200" alt="Electronics and Robotics Club, IIT Bombay logo" class="animated flipInX"></a>
+      
+      <h1 class="site-title animated pulse"><a href="http://tech-iitb.org/erc/">Electronics and Robotics Club, IIT Bombay</a></h1>
+		<h2 class="site-description animated pulse" itemprop="description">A place for tinkerers and the sort!</h2>
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+<div id="main" role="main">
+  <article class="hentry">
+    <div class="header-img-overflow"><img src="http://tech-iitb.org/erc/assets/blog/remote-controlling-a-bot-with-android/cover.jpg" class="entry-feature-image" alt="Remote Controlling a bot with Android" ></div>
+    <div class="entry-wrapper zoomIn">
+      <header class="entry-header center">
+        
+          <h1 class="entry-title">Remote Controlling a bot with Android</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <!--
+        
+        -->
+        <span class="author vcard">By <span class="fn">Meet Udeshi</span></span>
+        <span class="entry-date date published"><time datetime="2016-03-12T00:00:00+05:30"><i class="fa fa-calendar-o"></i> March 12, 2016</time></span>
+        
+        
+        
+	<ul class="entry-tags">
+          Tags: <li><a href="http://tech-iitb.org/erc/tags/#XLR8" title="Pages tagged XLR8">XLR8</a></li><li><a href="http://tech-iitb.org/erc/tags/#Bluetooth" title="Pages tagged Bluetooth">Bluetooth</a></li><li><a href="http://tech-iitb.org/erc/tags/#ATtiny" title="Pages tagged ATtiny">ATtiny</a></li>
+        </ul>
+      </footer> 
+      <div class="entry-content">
+        <!-- content goes below this -->
+
+<p>For the XLR8 competition 2015, we had made a remote control on android for the teams to operate their bots. The remote control used the android phone’s bluetooth to connect to an HC-05, followed by an ATtiny 2313 chip to decode the incoming bits. The XLR8 bots usually run on differential drive mechanism, so they require four inputs namely:</p>
+
+<ul>
+  <li>Left Front</li>
+  <li>Left Back</li>
+  <li>Right Front</li>
+  <li>Right Back</li>
+</ul>
+
+<p>More on differential drive here: <a href="https://en.wikipedia.org/wiki/Differential_wheeled_robot">wiki/Differential_wheeled_robot</a></p>
+
+<p>Each can be represented by one bit. So we had four output pins of the ATtiny going to four inputs of the Motor Driver (L293D in our case). After that it just boils down send the correct bit sequence from the phone based on the button pressed (i.e. control expected).</p>
+
+<h1 id="attiny-board">ATtiny Board</h1>
+<p><em>Designed by Ajinkya Gorad</em></p>
+
+<h2 id="schematic">Schematic:</h2>
+
+<p><img src="http://tech-iitb.org/erc/assets/blog/remote-controlling-a-bot-with-android/schematic.png" alt="Schematic" /></p>
+
+<ul>
+  <li>JP1 is where the programmer head attaches</li>
+  <li>JP3 is where HC-05 is attached</li>
+  <li>JP5 is the 4 bit output which is sent to motor driver</li>
+</ul>
+
+<p>Connections are pretty straight forward. The RX/TX from HC-05 are joined with TX/RX of ATtiny (PD0 and PD1), and PB0-PB3 are designated the output pins. You should check the programming header connections in the datasheet. One thing we observed while testing was that due to loose connections in the voltage supply, the ATtiny would restart even if the connection went loose for a moment. This happened quite frequently while the bot was running, and this would stop the bot (the init conditions were to set all output pins to 0). For this we soldered a 47uF capacitor externally on the voltage supply pins (polarity matching).</p>
+
+<p>We designed a PCB with respect to this schematic. You can find the necessary Gerber files on the github repo <a href="http://github.com/elec-club-iitb/xlr8-remote-control/tree/master/avr-receiver">here</a>. This is how it finally looks like:</p>
+
+<p><img src="http://tech-iitb.org/erc/assets/blog/remote-controlling-a-bot-with-android/avr_rec.jpg" alt="Final product" /></p>
+
+<h2 id="avr-code">AVR Code:</h2>
+
+<p>Code is pretty straight forward too. Take the bit-sequence from HC-05 through UART and output it on the four pins of PORTB. I have posted the relevant <code class="highlighter-rouge">main()</code> function here. Entire code can be found on github.</p>
+
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    
+    <span class="n">USARTInit</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// initialise uart to baud rate 9600, no parity , 1 stopbit
+</span>    <span class="n">DDRB</span><span class="o">=</span><span class="mh">0xFF</span><span class="p">;</span>			<span class="c1">// make all pins on port B as output
+</span>    <span class="n">PORTB</span>  <span class="o">=</span> <span class="mh">0x00</span><span class="p">;</span>		<span class="c1">// initially make all pins low
+</span>    
+    <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span>		<span class="c1">//endless loop
+</span>        <span class="k">while</span><span class="p">(</span> <span class="o">!</span><span class="p">(</span><span class="n">UCSRA</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">RXC</span><span class="p">)))</span> <span class="p">;</span>	<span class="c1">// wait for data to be received in uart UDR register
+</span>        <span class="kt">char</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">UDR</span><span class="p">;</span>
+        <span class="n">PORTB</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>		<span class="c1">//directly write value of uart data to port
+</span>    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<h1 id="android-app">Android App:</h1>
+
+<p>The ATtiny is programmed to output the bit sequence as is. So once you send a bit sequence corresponding to “move forward”, the bot wont stop until you send another bit sequence corresponding to “stop”. The UI consist of three control modes:</p>
+
+<ul>
+  <li>Motion Control: Front, Back, Left, Right control</li>
+  <li>Individual Motor control: Left Front, Left Back, Right Front, Right Back</li>
+  <li>Swag Mode :D: Hand-tilt based control. Tilt phone forward to move forward, and so on</li>
+</ul>
+
+<p>Motion and Individual Motor control have buttons which on pressed send the bit sequence corresponding to the motion, and on released send bit sequence “stop”. In tilt control mode it check tilt on each axis x and y, if it is beyond a threshold (positive or negative) it sends that motions bit sequence else it sends “stop”.</p>
+
+<p>We also need to consider cases when two buttons are pressed together (which is necessary in Individual Control mode). So we controlled each bit individually on pressed and released rather than sending the whole bit sequence entirely. And we also made a function which would send the latest updated bit sequence which could be called after every update. The entire code is available on <a href="http://github.com/elec-club-iitb/xlr8-remote-control/tree/master/avr-receiver">github</a>.</p>
+
+<p>Here is the <code class="highlighter-rouge">onTouch</code> button code. You can see how the on pressed and on released events ( represented by <code class="highlighter-rouge">ACTION_DOWN</code> and <code class="highlighter-rouge">ACTION_UP</code> respectively). Rest of the functions used are quite obviously named. For the entire file, check the github repo.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onTouch</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">,</span> <span class="n">MotionEvent</span> <span class="n">event</span><span class="o">){</span>
+    <span class="kt">boolean</span> <span class="n">updated</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="k">switch</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getAction</span><span class="o">())</span> <span class="o">{</span>
+        <span class="k">case</span> <span class="n">MotionEvent</span><span class="o">.</span><span class="na">ACTION_DOWN</span><span class="o">:</span>
+            <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">"Action Down"</span><span class="o">);</span>
+            <span class="n">v</span><span class="o">.</span><span class="na">setPressed</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+
+            <span class="c1">// Switch case to set a corresponding</span>
+            <span class="c1">// bit sequence according to the button pressed</span>
+            <span class="k">switch</span> <span class="o">(</span><span class="n">v</span><span class="o">.</span><span class="na">getId</span><span class="o">())</span> <span class="o">{</span>
+                <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">forward</span><span class="o">:</span>
+                    <span class="n">setBit</span><span class="o">(</span><span class="n">LT_MOTOR_FWD</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span>
+                    <span class="n">setBit</span><span class="o">(</span><span class="n">LT_MOTOR_BCK</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+                    <span class="n">setBit</span><span class="o">(</span><span class="n">RT_MOTOR_FWD</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span>
+                    <span class="n">setBit</span><span class="o">(</span><span class="n">RT_MOTOR_BCK</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+                    <span class="k">break</span><span class="o">;</span>
+                <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">backward</span><span class="o">:</span>
+                    <span class="n">setBit</span><span class="o">(</span><span class="n">LT_MOTOR_FWD</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+                    <span class="n">setBit</span><span class="o">(</span><span class="n">LT_MOTOR_BCK</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span>
+                    <span class="n">setBit</span><span class="o">(</span><span class="n">RT_MOTOR_FWD</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+                    <span class="n">setBit</span><span class="o">(</span><span class="n">RT_MOTOR_BCK</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span>
+                    <span class="k">break</span><span class="o">;</span>
+                <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">left</span><span class="o">:</span>
+                    <span class="n">setBit</span><span class="o">(</span><span class="n">LT_MOTOR_FWD</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span>
+                    <span class="n">setBit</span><span class="o">(</span><span class="n">LT_MOTOR_BCK</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+                    <span class="n">setBit</span><span class="o">(</span><span class="n">RT_MOTOR_FWD</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+                    <span class="n">setBit</span><span class="o">(</span><span class="n">RT_MOTOR_BCK</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span>
+                    <span class="k">break</span><span class="o">;</span>
+                <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">right</span><span class="o">:</span>
+                    <span class="n">setBit</span><span class="o">(</span><span class="n">LT_MOTOR_FWD</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+                    <span class="n">setBit</span><span class="o">(</span><span class="n">LT_MOTOR_BCK</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span>
+                    <span class="n">setBit</span><span class="o">(</span><span class="n">RT_MOTOR_FWD</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span>
+                    <span class="n">setBit</span><span class="o">(</span><span class="n">RT_MOTOR_BCK</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+                    <span class="k">break</span><span class="o">;</span>
+                <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">left_fwd</span><span class="o">:</span>
+                    <span class="n">setBit</span><span class="o">(</span><span class="n">LT_MOTOR_FWD</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span>
+                    <span class="k">break</span><span class="o">;</span>
+                <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">left_bck</span><span class="o">:</span>
+                    <span class="n">setBit</span><span class="o">(</span><span class="n">LT_MOTOR_BCK</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span>
+                    <span class="k">break</span><span class="o">;</span>
+                <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">right_fwd</span><span class="o">:</span>
+                    <span class="n">setBit</span><span class="o">(</span><span class="n">RT_MOTOR_FWD</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span>
+                    <span class="k">break</span><span class="o">;</span>
+                <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">right_bck</span><span class="o">:</span>
+                    <span class="n">setBit</span><span class="o">(</span><span class="n">RT_MOTOR_BCK</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span>
+                    <span class="k">break</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="k">break</span><span class="o">;</span>
+        <span class="k">case</span> <span class="n">MotionEvent</span><span class="o">.</span><span class="na">ACTION_UP</span><span class="o">:</span>
+        <span class="k">case</span> <span class="n">MotionEvent</span><span class="o">.</span><span class="na">ACTION_CANCEL</span><span class="o">:</span>
+        <span class="k">case</span> <span class="n">MotionEvent</span><span class="o">.</span><span class="na">ACTION_OUTSIDE</span><span class="o">:</span>
+            <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">"Action Up"</span><span class="o">);</span>
+            <span class="n">v</span><span class="o">.</span><span class="na">setPressed</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+
+            <span class="c1">// Similar switch case to reset bits when button is left</span>
+            <span class="c1">// In effect the motion of bot will last till the button is pressed</span>
+            <span class="k">switch</span> <span class="o">(</span><span class="n">v</span><span class="o">.</span><span class="na">getId</span><span class="o">())</span> <span class="o">{</span>
+                <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">forward</span><span class="o">:</span>
+                <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">backward</span><span class="o">:</span>
+                <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">left</span><span class="o">:</span>
+                <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">right</span><span class="o">:</span>
+                    <span class="n">reset</span><span class="o">();</span>
+                    <span class="k">break</span><span class="o">;</span>
+                <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">left_fwd</span><span class="o">:</span>
+                    <span class="n">setBit</span><span class="o">(</span><span class="n">LT_MOTOR_FWD</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+                    <span class="k">break</span><span class="o">;</span>
+                <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">left_bck</span><span class="o">:</span>
+                    <span class="n">setBit</span><span class="o">(</span><span class="n">LT_MOTOR_BCK</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+                    <span class="k">break</span><span class="o">;</span>
+                <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">right_fwd</span><span class="o">:</span>
+                    <span class="n">setBit</span><span class="o">(</span><span class="n">RT_MOTOR_FWD</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+                    <span class="k">break</span><span class="o">;</span>
+                <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">right_bck</span><span class="o">:</span>
+                    <span class="n">setBit</span><span class="o">(</span><span class="n">RT_MOTOR_BCK</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+                    <span class="k">break</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="k">break</span><span class="o">;</span>
+        <span class="k">default</span><span class="o">:</span>
+            <span class="n">updated</span><span class="o">=</span><span class="kc">false</span><span class="o">;</span>
+            <span class="k">break</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// Check if updated, and then only send</span>
+    <span class="c1">// We don want to unnecessarily send data</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">updated</span><span class="o">)</span> <span class="n">sendMessage</span><span class="o">(</span><span class="n">mMotorState</span><span class="o">);</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+<span class="o">}</span></code></pre></figure>
+
+<p><code class="highlighter-rouge">R.id.&lt;forward|backward|left|right&gt;</code> correspond to the Motion Control buttons. <code class="highlighter-rouge">R.id.&lt;left_fwd|left_bck|right_fwd|right_bck&gt;</code> correspond to the Individual Motor control.</p>
+
+<p>The code responsible for Swag mode:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSensorChanged</span><span class="o">(</span><span class="n">SensorEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="kt">float</span> <span class="n">x</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">values</span><span class="o">[</span><span class="n">SensorManager</span><span class="o">.</span><span class="na">DATA_X</span><span class="o">],</span>
+          <span class="n">y</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">values</span><span class="o">[</span><span class="n">SensorManager</span><span class="o">.</span><span class="na">DATA_Y</span><span class="o">],</span>
+          <span class="n">z</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">values</span><span class="o">[</span><span class="n">SensorManager</span><span class="o">.</span><span class="na">DATA_Z</span><span class="o">];</span>
+
+    <span class="o">((</span><span class="n">TextView</span><span class="o">)</span><span class="n">mContext</span><span class="o">.</span><span class="na">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">swag_x</span><span class="o">)).</span><span class="na">setText</span><span class="o">(</span><span class="s">"x: "</span><span class="o">+</span><span class="n">x</span><span class="o">);</span>
+    <span class="o">((</span><span class="n">TextView</span><span class="o">)</span><span class="n">mContext</span><span class="o">.</span><span class="na">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">swag_y</span><span class="o">)).</span><span class="na">setText</span><span class="o">(</span><span class="s">"y: "</span><span class="o">+</span><span class="n">y</span><span class="o">);</span>
+    <span class="o">((</span><span class="n">TextView</span><span class="o">)</span><span class="n">mContext</span><span class="o">.</span><span class="na">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">swag_z</span><span class="o">)).</span><span class="na">setText</span><span class="o">(</span><span class="s">"z: "</span><span class="o">+</span><span class="n">z</span><span class="o">);</span>
+
+    <span class="kt">int</span> <span class="n">old</span> <span class="o">=</span> <span class="n">mMotorState</span><span class="o">;</span>
+
+    <span class="k">if</span><span class="o">(</span><span class="n">x</span><span class="o">&gt;</span><span class="mi">6</span><span class="o">){</span>
+        <span class="n">setBit</span><span class="o">(</span><span class="n">LT_MOTOR_FWD</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span>
+        <span class="n">setBit</span><span class="o">(</span><span class="n">LT_MOTOR_BCK</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+        <span class="n">setBit</span><span class="o">(</span><span class="n">RT_MOTOR_FWD</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+        <span class="n">setBit</span><span class="o">(</span><span class="n">RT_MOTOR_BCK</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">x</span><span class="o">&lt;-</span><span class="mi">6</span><span class="o">){</span>
+        <span class="n">setBit</span><span class="o">(</span><span class="n">LT_MOTOR_FWD</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+        <span class="n">setBit</span><span class="o">(</span><span class="n">LT_MOTOR_BCK</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span>
+        <span class="n">setBit</span><span class="o">(</span><span class="n">RT_MOTOR_FWD</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span>
+        <span class="n">setBit</span><span class="o">(</span><span class="n">RT_MOTOR_BCK</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">x</span><span class="o">&gt;</span><span class="mi">4</span><span class="o">){</span>
+            <span class="n">setBit</span><span class="o">(</span><span class="n">LT_MOTOR_FWD</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span>
+            <span class="n">setBit</span><span class="o">(</span><span class="n">LT_MOTOR_BCK</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+            <span class="n">setBit</span><span class="o">(</span><span class="n">RT_MOTOR_FWD</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+            <span class="n">setBit</span><span class="o">(</span><span class="n">RT_MOTOR_BCK</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">x</span><span class="o">&lt;-</span><span class="mi">4</span><span class="o">){</span>
+            <span class="n">setBit</span><span class="o">(</span><span class="n">LT_MOTOR_FWD</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+            <span class="n">setBit</span><span class="o">(</span><span class="n">LT_MOTOR_BCK</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+            <span class="n">setBit</span><span class="o">(</span><span class="n">RT_MOTOR_FWD</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span>
+            <span class="n">setBit</span><span class="o">(</span><span class="n">RT_MOTOR_BCK</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">y</span><span class="o">&gt;</span><span class="mi">4</span><span class="o">){</span>
+                <span class="n">setBit</span><span class="o">(</span><span class="n">LT_MOTOR_FWD</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span>
+                <span class="n">setBit</span><span class="o">(</span><span class="n">LT_MOTOR_BCK</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+                <span class="n">setBit</span><span class="o">(</span><span class="n">RT_MOTOR_FWD</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span>
+                <span class="n">setBit</span><span class="o">(</span><span class="n">RT_MOTOR_BCK</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">y</span><span class="o">&lt;-</span><span class="mi">4</span><span class="o">){</span>
+                <span class="n">setBit</span><span class="o">(</span><span class="n">LT_MOTOR_FWD</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+                <span class="n">setBit</span><span class="o">(</span><span class="n">LT_MOTOR_BCK</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span>
+                <span class="n">setBit</span><span class="o">(</span><span class="n">RT_MOTOR_FWD</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+                <span class="n">setBit</span><span class="o">(</span><span class="n">RT_MOTOR_BCK</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="n">reset</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="o">((</span><span class="n">TextView</span><span class="o">)</span><span class="n">mContext</span><span class="o">.</span><span class="na">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">swag_bits</span><span class="o">)).</span><span class="na">setText</span><span class="o">(</span><span class="s">"bits: "</span><span class="o">+</span><span class="n">Integer</span><span class="o">.</span><span class="na">toBinaryString</span><span class="o">(</span><span class="n">mMotorState</span><span class="o">));</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">old</span><span class="o">!=</span><span class="n">mMotorState</span><span class="o">)</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">mChatService</span><span class="o">.</span><span class="na">getState</span><span class="o">()</span> <span class="o">==</span> <span class="n">BluetoothChatService</span><span class="o">.</span><span class="na">STATE_CONNECTED</span><span class="o">)</span>
+            <span class="n">sendMessage</span><span class="o">(</span><span class="n">mMotorState</span><span class="o">);</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>This code has a little complicated logic. So the first two <code class="highlighter-rouge">if</code>s check if there is a hard-tilt (high angle), then we send hard-left/hard-right control bit sequence. If not we check for soft-tilt and send those corresponding bit sequences if true. These tilts are in the x-axis i.e. the left-right axis. Now we go on to the front-back axis i.e. y-axis which is the last nested <code class="highlighter-rouge">if</code> in the <code class="highlighter-rouge">else</code> condition.</p>
+
+<p>The bluetooth relevant code was taken from the BluetoothChat sample app provided by android. These two functions above are part of the BotControl class which is used in the UI as an <code class="highlighter-rouge">onTouchListener</code> and  <code class="highlighter-rouge">SensorEventListener</code> to capture both touches and tilt changes.</p>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://tech-iitb.org/erc/blog/tutorials/using-opencv-on-raspberry-pi/" class="btn" title="Using OpenCV on Raspberry-Pi">Previous</a>
+      
+      
+        <a href="http://tech-iitb.org/erc/blog/informative/glimpse-of-the-naive-bayes-classifier/" class="btn" title="Glimpse Of The Naive Bayes' Classifier">Next</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2018 Electronics and Robotics Club, IIT Bombay.<!-- Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/so-simple-jekyll-theme/" rel="nofollow">So Simple Theme</a>.--></span>
+<div class="social-icons">
+	
+	<a href="https://facebook.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Facebook" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://github.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  
+	
+  <a href="http://tech-iitb.org/erc/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://tech-iitb.org/erc';
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://tech-iitb.org/erc/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://tech-iitb.org/erc/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

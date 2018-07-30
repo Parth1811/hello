@@ -1,0 +1,259 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Glimpse Of The Naive Bayes' Classifier &#8211; Electronics and Robotics Club, IIT Bombay</title>
+<meta name="description" content="A simple machine learning algorithm explained">
+<meta name="keywords" content="Machine Learning, OpenCV">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Glimpse Of The Naive Bayes' Classifier">
+<meta name="twitter:description" content="A simple machine learning algorithm explained">
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tech-iitb.org/erc/images/sitelogo.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Glimpse Of The Naive Bayes' Classifier">
+<meta property="og:description" content="A simple machine learning algorithm explained">
+<meta property="og:url" content="http://tech-iitb.org/erc/blog/informative/glimpse-of-the-naive-bayes-classifier/">
+<meta property="og:site_name" content="Electronics and Robotics Club, IIT Bombay">
+
+
+
+
+
+<link rel="canonical" href="http://tech-iitb.org/erc/blog/informative/glimpse-of-the-naive-bayes-classifier/">
+<link href="http://tech-iitb.org/erc/feed.xml" type="application/atom+xml" rel="alternate" title="Electronics and Robotics Club, IIT Bombay Feed">
+<link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet"> 
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://tech-iitb.org/erc/assets/css/main.css">
+<link rel="stylesheet" href="http://tech-iitb.org/erc/assets/css/team.css"> 
+<!-- Webfonts -->
+<script src="https://use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://tech-iitb.org/erc/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://tech-iitb.org/erc/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<!-- Modernizr -->
+<script src="http://tech-iitb.org/erc/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://tech-iitb.org/erc/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://tech-iitb.org/erc/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://tech-iitb.org/erc/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://tech-iitb.org/erc/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://tech-iitb.org/erc/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://tech-iitb.org/erc/images/apple-touch-icon-144x144-precomposed.png">
+
+<script src="http://tech-iitb.org/erc/assets/js/scrolltop.js"></script>
+<link rel="stylesheet" href="http://tech-iitb.org/erc/assets/css/scrolltop.css">
+</head>
+
+<body id="post">
+<!-- Return to Top -->
+<div onClick="scrollback()" id="return-to-top"><i class="fa fa-chevron-up"></i></div>
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://tech-iitb.org/erc/" >Home</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/about/" >About</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/event/" >Events</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/blog/" >Blog</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/search/" >Search</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/team/" >The Team</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	<div class="wrap">
+      
+  		<a href="http://tech-iitb.org/erc/" class="site-logo" rel="home" title="Electronics and Robotics Club, IIT Bombay"><img src="http://tech-iitb.org/erc/images/sitelogo.png" width="200" height="200" alt="Electronics and Robotics Club, IIT Bombay logo" class="animated flipInX"></a>
+      
+      <h1 class="site-title animated pulse"><a href="http://tech-iitb.org/erc/">Electronics and Robotics Club, IIT Bombay</a></h1>
+		<h2 class="site-description animated pulse" itemprop="description">A place for tinkerers and the sort!</h2>
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+<div id="main" role="main">
+  <article class="hentry">
+    <div class="header-img-overflow"><img src="http://tech-iitb.org/erc/assets/blog/glimpse-of-the-naive-bayes-classifier/cover.jpg" class="entry-feature-image" alt="Glimpse Of The Naive Bayes' Classifier" ></div>
+    <div class="entry-wrapper zoomIn">
+      <header class="entry-header center">
+        
+          <h1 class="entry-title">Glimpse Of The Naive Bayes' Classifier</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <!--
+        
+        -->
+        <span class="author vcard">By <span class="fn">Riddhish Bhalodia</span></span>
+        <span class="entry-date date published"><time datetime="2016-03-15T00:00:00+05:30"><i class="fa fa-calendar-o"></i> March 15, 2016</time></span>
+        
+        
+        
+	<ul class="entry-tags">
+          Tags: <li><a href="http://tech-iitb.org/erc/tags/#Machine Learning" title="Pages tagged Machine Learning">Machine Learning</a></li><li><a href="http://tech-iitb.org/erc/tags/#OpenCV" title="Pages tagged OpenCV">OpenCV</a></li>
+        </ul>
+      </footer> 
+      <div class="entry-content">
+        <p><img src="http://tech-iitb.org/erc/assets/blog/glimpse-of-the-naive-bayes-classifier/joke.png" alt="joke" /></p>
+
+<p>The are numerous applications of machine learning out in the world and many more are being developed, I particularly like the clustering algorithms. In this post I would like to explore one of the most useful of supervised clustering algorithm, The Naive Bayes’ Classifier.</p>
+
+<p>In the post I will be using an example project that I am working upon as the default example. So what does the algorithm do.<br />
+In simple words it computes the probabilities of the the test case to lie in one of “clusters” with a specific probability. Let me go with the example to describe at what we are trying to achieve.</p>
+
+<p><strong><u>Problem:</u></strong> Given an input paragraph we need to classify it as Argumentative, Narrative, Expository or Descriptive</p>
+
+<p><strong><u>Solution:</u></strong></p>
+
+<ul>
+  <li><u>Training Set</u><br />
+Collected the training data set of different paragraphs already classified already in the given four categories.</li>
+  <li><u>Feature Extraction</u><br />
+We Extract the features from the training database to generate a feature vector <math>v</math><sub>i</sub> = (f<sub>1</sub>,f<sub>2</sub>,….)<sub>i</sub> for each i<sup>th</sup> point in the training dataset, this in our case are language features.</li>
+  <li><u>Supervised Clustering Algorithm(Naive Bayes')</u><br />
+This is what the tutorial is about, we need to make four clusters(one for each para type) in the feature vector space. And this is what we will talk about in the tutorial.</li>
+  <li><u>Input Result</u><br />
+This is the moment of truth we put in few known test cases we get their probabilities of lying in the clusters and see the accuracy of our algorithm, based on these results we decide on the modification that might be required in the training dataset.</li>
+</ul>
+
+<p>So let’s first go through what the Bayesian approach of classification!</p>
+
+<p><img src="http://tech-iitb.org/erc/assets/blog/glimpse-of-the-naive-bayes-classifier/bayes.png" alt="bayes" /></p>
+
+<p>Now, you might be thinking yeah this makes sense we take the classes in our example as the types of paragraphs and the data being the input. But we cannot input an paragraph we input a set of features which makes d a vector. So the next thing we look at is how to deal with the multidimensional input, that is like in our case a number of features.</p>
+
+<p>There are many methods to approach this problem, but one of the most simple being is that <strong>we assume that each feature have an independent distribution (or is Naive).</strong> In our example the features we are likely to choose are something like, “number of certain punctuation per total words”,”number of stress adjectives per total words”,”average sentence length” etc. What we notice is that these all intuitively are more or less not dependent on each other, there will be few dependencies obviously but nothing that we can’t ignore :P. To summarize we have the probabilities expressed as.</p>
+
+<p><img src="http://tech-iitb.org/erc/assets/blog/glimpse-of-the-naive-bayes-classifier/bayes2.jpg" alt="bayes2" /></p>
+
+<p>This settles the defining of our model and this is what the Naive Bayes’ Classifier is. Now we just need to predict the probability distribution of the features, this is usually chosen to be a Gaussian model with some w=varying parameter, we need to tune the parameter using some kind of techniques like maximum likelihood estimation. For more insight on this topic I suggest you have a look at few YouTube videos which are really amazing, one such short explanation is given <a href="https://www.youtube.com/watch?v=8yvBqhm92xA">here</a>.</p>
+
+<p>Lets put this tutorial to test, I have four clusters and many features for classifying the paragraphs, the project is still ongoing and will get finished real soon.</p>
+
+<p>Finally let us discuss the advantages and limitations of this classifier<br />
+<strong>ADVANTAGES</strong></p>
+
+<ul>
+  <li>Fast to train. Fast to classify.</li>
+  <li>Not sensitive to irrelevant features.</li>
+  <li>Handles real as well as discrete data.</li>
+  <li>Handles data streaming well.</li>
+</ul>
+
+<p><strong>LIMITATION</strong></p>
+
+<ul>
+  <li>Assumes independence of features and hence it does not capture the mutual dependence of features which might be present.</li>
+</ul>
+
+<p>This concludes this really brief introduction!<br />
+Thank You!</p>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://tech-iitb.org/erc/blog/projects/remote-controlling-a-bot-with-android/" class="btn" title="Remote Controlling a bot with Android">Previous</a>
+      
+      
+        <a href="http://tech-iitb.org/erc/blog/informative/meanshift-algorithm-for-image-processing/" class="btn" title="Meanshift Algorithm for Image Processing">Next</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2018 Electronics and Robotics Club, IIT Bombay.<!-- Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/so-simple-jekyll-theme/" rel="nofollow">So Simple Theme</a>.--></span>
+<div class="social-icons">
+	
+	<a href="https://facebook.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Facebook" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://github.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  
+	
+  <a href="http://tech-iitb.org/erc/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://tech-iitb.org/erc';
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://tech-iitb.org/erc/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://tech-iitb.org/erc/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

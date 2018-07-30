@@ -1,0 +1,550 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Raspberry Pi &#8211; Electronics and Robotics Club, IIT Bombay</title>
+<meta name="description" content="Raspberry Pi is a cheap credit card sized computer which works on linux OS.This tutorial will help you get started with RPi.">
+<meta name="keywords" content="Raspberry Pi">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Raspberry Pi">
+<meta name="twitter:description" content="Raspberry Pi is a cheap credit card sized computer which works on linux OS.This tutorial will help you get started with RPi.">
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tech-iitb.org/erc/images/sitelogo.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Raspberry Pi">
+<meta property="og:description" content="Raspberry Pi is a cheap credit card sized computer which works on linux OS.This tutorial will help you get started with RPi.">
+<meta property="og:url" content="http://tech-iitb.org/erc/blog/r_pi/">
+<meta property="og:site_name" content="Electronics and Robotics Club, IIT Bombay">
+
+
+
+
+
+<link rel="canonical" href="http://tech-iitb.org/erc/blog/r_pi/">
+<link href="http://tech-iitb.org/erc/feed.xml" type="application/atom+xml" rel="alternate" title="Electronics and Robotics Club, IIT Bombay Feed">
+<link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet"> 
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://tech-iitb.org/erc/assets/css/main.css">
+<link rel="stylesheet" href="http://tech-iitb.org/erc/assets/css/team.css"> 
+<!-- Webfonts -->
+<script src="https://use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://tech-iitb.org/erc/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://tech-iitb.org/erc/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<!-- Modernizr -->
+<script src="http://tech-iitb.org/erc/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://tech-iitb.org/erc/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://tech-iitb.org/erc/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://tech-iitb.org/erc/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://tech-iitb.org/erc/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://tech-iitb.org/erc/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://tech-iitb.org/erc/images/apple-touch-icon-144x144-precomposed.png">
+
+<script src="http://tech-iitb.org/erc/assets/js/scrolltop.js"></script>
+<link rel="stylesheet" href="http://tech-iitb.org/erc/assets/css/scrolltop.css">
+</head>
+
+<body id="post">
+<!-- Return to Top -->
+<div onClick="scrollback()" id="return-to-top"><i class="fa fa-chevron-up"></i></div>
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://tech-iitb.org/erc/" >Home</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/about/" >About</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/event/" >Events</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/blog/" >Blog</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/search/" >Search</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/team/" >The Team</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	<div class="wrap">
+      
+  		<a href="http://tech-iitb.org/erc/" class="site-logo" rel="home" title="Electronics and Robotics Club, IIT Bombay"><img src="http://tech-iitb.org/erc/images/sitelogo.png" width="200" height="200" alt="Electronics and Robotics Club, IIT Bombay logo" class="animated flipInX"></a>
+      
+      <h1 class="site-title animated pulse"><a href="http://tech-iitb.org/erc/">Electronics and Robotics Club, IIT Bombay</a></h1>
+		<h2 class="site-description animated pulse" itemprop="description">A place for tinkerers and the sort!</h2>
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header center">
+        
+          <h1 class="entry-title pulse">Raspberry Pi</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <!--
+        
+        -->
+        <span class="author vcard">By <span class="fn">Arunabh Ghosh, Meet Udeshi, Darshan Tank</span></span>
+        
+	
+        <span class="entry-date date published"><time datetime="2016-07-03T00:00:00+05:30"><i class="fa fa-calendar-o"></i>&nbsp;<strong>Last Updated:</strong> 2016-07-03</time></span>
+        
+        <!--
+        
+        -->
+        
+        
+        
+
+        <!--
+        <ul class="entry-tags">
+          Tags: <li><a href="http://tech-iitb.org/erc/tags/#Raspberry Pi" title="Pages tagged Raspberry Pi">Raspberry Pi</a></li>
+        </ul>
+        -->
+
+      </footer> 
+      <div class="entry-content">
+        <p>The <strong>Raspberry Pi</strong> (read R-pi) is a series of low-cost, credit card-sized single-board computers. It is just like any other computer and features built in <strong><em>Wi-Fi</em></strong>,  <strong><em>Bluetooth</em></strong>. You can connect a keyboard, mouse through USB or Bluetooth and a display monitor through HDMI cable and start using it just like a normal computer.</p>
+
+<p>But the real power of Rpi is realized in <strong>embedded systems</strong>. The Raspberry Pi  has the ability to interact with the outside world, and has been used in a wide array of digital maker projects, from <strong><em>music machines</em></strong> and <strong><em>parent detectors</em></strong> to <strong><em>weather stations</em></strong> and <strong><em>tweeting birdhouses with infra-red cameras</em></strong>.</p>
+
+<h1>TABLE OF CONTENTS</h1>
+
+<ul id="markdown-toc">
+  <li><a href="#first-look" id="markdown-toc-first-look">FIRST LOOK</a></li>
+  <li><a href="#installation" id="markdown-toc-installation">INSTALLATION</a></li>
+  <li><a href="#configuration" id="markdown-toc-configuration">CONFIGURATION</a></li>
+  <li><a href="#gpio-pins" id="markdown-toc-gpio-pins">GPIO PINS</a></li>
+</ul>
+<hr />
+
+<h2 id="first-look">FIRST LOOK</h2>
+
+<h3 id="what-does-raspberry-pi-board-look-like">What does Raspberry Pi board look like?</h3>
+
+<p>The image given below is a top-view of Raspberry Pi 3 model B.
+<img src="http://tech-iitb.org/erc/assets/blog/r_pi/image_0.png" alt="Raspberry Pi 3" /></p>
+
+<ul>
+  <li>
+    <p>The 40 pins shown at the top contain the Ground pins, I2C, SPI, GPIO pins, supply voltage pins.</p>
+  </li>
+  <li>
+    <p>On the right, the top two structures are the USB ports and bottom one is the ethernet port.</p>
+  </li>
+  <li>
+    <p>Comming down, we have the USB charging port on the left and the and the HDMI port next to it.</p>
+  </li>
+  <li>
+    <p>On the left hand side we have a micro SD slot which acts as the hard drive of Raspberry Pi.</p>
+  </li>
+</ul>
+
+<p>Now lets have a closer look at those 40 pins. Here is a pin diagram of those 40 pins.
+<img src="http://tech-iitb.org/erc/assets/blog/r_pi/image_1.png" alt="Raspberry Pi 3 Pin Diagram" />
+We can see that out of the 40 pins</p>
+
+<ul>
+  <li>27 pins are GPIO pins</li>
+  <li>8 pins are Ground</li>
+  <li>2 pins are 5V supply</li>
+  <li>2 pins are 3.3V supply</li>
+  <li>The other 2 pins are ID_SD and ID_SC used in I2C communication</li>
+</ul>
+
+<p>The GPIO pins are used to connect to electronic devices and can be used as input or output. GPIO 2 and 3 can be used for I2C communication as they are the SDA and SCL pins respectively.</p>
+
+<p>The 5V pins can be used to give 5V supply to any of the electronic devices. Same goes for 3.3V pins.</p>
+<hr />
+
+<h2 id="installation">INSTALLATION</h2>
+
+<p>Depending on whether your laptop/pc has Linux or Windows, follow this steps to set
+your Raspberry Pi.</p>
+
+<h3 id="for-linuxa-namelinuxa">For Linux<a name="linux"></a></h3>
+
+<ol>
+  <li>First download the image file of the operating system you want to install on
+your R-pi.</li>
+  <li>Open a linux terminal of your choice.</li>
+  <li>Connect your R-pi to laptop using the connector and insert the memory card in
+its slot.</li>
+  <li>
+    <p>Now unmount the memory card using command:</p>
+
+    <p><code class="highlighter-rouge">sudo umount /dev/PORT_NAME</code></p>
+
+    <p>To see which port your sdcard belongs to, type:</p>
+
+    <p><code class="highlighter-rouge">lsblk</code></p>
+  </li>
+  <li>
+    <p>To copy the contents of img file to sdcard, type:</p>
+
+    <p><code class="highlighter-rouge">sudo dd if=PATH_TO_IMG_FILE of=PATH_TO_SD_CARD_MOUNT_POINT</code></p>
+  </li>
+  <li>It may take some time to copy the contents. Once done, you are ready to configure your r-pi.</li>
+</ol>
+
+<h3 id="for-windowsa-namewindowsa">For Windows<a name="windows"></a></h3>
+
+<ol>
+  <li>First download the image file of the operating system you want to install on your R-pi.</li>
+  <li><a href="https://launchpad.net/win32-image-writer/+download"><em>Download Win32DiskImager</em></a> and unzip the application (.exe file) inside.</li>
+  <li>Insert your SD card into your Windows PC using a card reader.</li>
+  <li>Open Win32DiskImager.exe with Administrator privileges ( That is, right click on it and choose “Run as Administrator” ).</li>
+  <li>If your SD card isn’t automatically detected by the application, click on the drop-down menu at the top right (labeled “De</li>
+  <li>Click the Write button and wait for Win32DiskImager to do its thing. When it finishes, you can safely eject your SD card and insert it into your Raspberry Pi.</li>
+</ol>
+
+<h3 id="for-osxa-nameosxa">For OSX<a name="osx"></a></h3>
+
+<ol>
+  <li>First download the image file of the operating system you want to install on your R-pi.</li>
+  <li><a href="https://alltheware.wordpress.com/2012/12/11/easiest-way-sd-card-setup/"><em>Download RPi-sd card builder</em></a> (be sure to pick the appropriate version for your installed version of OS X) and unzip the application.</li>
+  <li>Insert your SD card into your Mac using a card reader.</li>
+  <li>Open RPi-sd card builder. You’ll immediately be asked to choose a Raspbian image. Choose the .img file you downloaded earlier.</li>
+  <li>You’ll be asked if your SD card is connected. Since we inserted it earlier, it is, so go ahead and click Continue. You’ll be presented with SD card options. If you only have one inserted, you won’t see anything else in the list and it’ll be checked. If not, just check only the card you want to use and click OK.</li>
+  <li>Enter your administrator password and click OK.
+You’ll be asked if the SD card was ejected. This is supposed to happen, as the application needs to unmount it so it can perform a direct copy. Double-check that your SD card is no longer available in the Finder. DO NOT remove it from your USB port. When you’re sure, click Continue.</li>
+  <li>RPi-sd card builder finishes prepping your SD card, safely eject it and insert it into your Raspberry Pi unit.</li>
+</ol>
+
+<hr />
+
+<p>Time to configure your R-pi!</p>
+<hr />
+
+<h2 id="configuration">CONFIGURATION</h2>
+
+<p>We use SSH to control R-pi through our laptop
+for SSH, we need r-pi to be connected to some network.</p>
+
+<p>We can configure R-pi’s SSH, without ever requiring to boot R-pi.</p>
+
+<p>Once the OS image has been burned on the SD-Card, remount the
+SD-card. You will see a lot of folders required by the OS to boot.
+We will change some configuration files before we insert the SD-card into
+R-Pi so that our R-Pi can directly connect to WiFi networks and you can
+SSH into it.</p>
+
+<h3 id="wifi-password-setting">WiFi password setting</h3>
+
+<p>Open <code class="highlighter-rouge">/etc/wpa_supplicant/wpa_supplicant.conf</code> in the SD-card
+and write following piece of code in it at the end:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">network</span><span class="o">=</span><span class="p">{</span>
+    <span class="n">ssid</span><span class="o">=</span><span class="s">"WIFI_NAME"</span>
+    <span class="n">psk</span><span class="o">=</span><span class="s">"WIFI_PASSWORD"</span>
+    <span class="n">key_mgmt</span><span class="o">=</span><span class="n">WPA</span><span class="o">-</span><span class="n">PSK</span>
+<span class="p">}</span></code></pre></figure>
+
+<h3 id="enable-ssh">Enable SSH</h3>
+
+<p>Edit file <code class="highlighter-rouge">/etc/rc.local</code> and add the following line at the end</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="err">/etc/init.d/ssh start</span></code></pre></figure>
+
+<p>Now remove the SD-card, put it in the R-Pi and power it up. You should
+see a red power light and a green light flashing up, if the OS boots correctly.</p>
+
+<p>After some time, connect to the R-Pi using SSH. On linux, you can run the
+command <code class="highlighter-rouge">ssh pi@raspberrypi.local</code>, or use PuTTY on Windows/OSX.</p>
+
+<p><em>Note: <code class="highlighter-rouge">raspberrypi.local</code> is an identifier for R-Pi’s connected to your local network,
+hence you don’t need to specify the exact IP address. Though, if you know the IP
+address, you can specify that too instead.</em></p>
+
+<p>Enter the default password <code class="highlighter-rouge">raspberry</code>, and the RPi terminal will be accessible
+looking something like this</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="w">udiboy:~$ </span><span class="nc">ssh</span><span class="kv"> pi@raspberrypi.local
+</span>pi@raspberrypi.local's password:
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Mon May  1 13:19:06 2017 from 192.168.0.120
+<span class="err">pi@raspberrypi:~ $</span></code></pre></figure>
+
+<p>Change the password of the RPi by running <code class="highlighter-rouge">passwd</code>.</p>
+
+<p>And that’s it! You are done setting up!</p>
+
+<h4 id="static-ip-configuration">Static IP configuration</h4>
+
+<p><em>Note: Static IP configuration is no longer required because recent
+versions of the RPi OS have a discovery protocol enabled which lets you
+SSH into the RPi without knowing the IP address.</em></p>
+
+<p>This can be done by editing the file on your PC too.</p>
+
+<p>We will assign a static IP to the R-Pi so that every time it connects to
+WiFi, it uses the same IP, hence we know what IP the R-Pi has.</p>
+
+<p>You will need to know the IP address format, netmask and gateway of your network.
+For Tinkerers’ Lab, it is</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console">IP = 192.168.0.*
+Netmask = 255.255.255.0
+<span class="err">Gateway = 192.168.0.1</span></code></pre></figure>
+
+<p>For setting static ip, open <code class="highlighter-rouge">/etc/network/interfaces.d</code> (again by mounting the
+SD-card)</p>
+
+<p>You will see a line reading <code class="highlighter-rouge">iface wlan0 inet manual</code></p>
+
+<p>Change <code class="highlighter-rouge">manual</code> to <code class="highlighter-rouge">static</code>
+and add the following lines</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console">    address 192.168.0.42
+    netask 255.255.255.0
+<span class="err">    gateway 192.168.0.1</span></code></pre></figure>
+
+<p>Once configured, type <code class="highlighter-rouge">ssh pi@&lt;ip-address&gt;</code> in terminal to connect to your R-pi.</p>
+<hr />
+
+<h2 id="gpio-pins">GPIO PINS</h2>
+
+<h3 id="configuring-gpioa-nameconfigure-gpioa">Configuring GPIO<a name="configure-gpio"></a></h3>
+
+<p>For programming the GPIO pins we have to install the python 2 library RPi.GPIO. This module makes it simple to use the GPIO pins.
+To install RPi.GPIO on your Raspberry Pi follow the following instructions.</p>
+
+<p>In the LXTerminal of your R-Pi type the commands</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get update    
+</code></pre>
+</div>
+
+<p>To install RPi.GPIO, you first need to install the Python Development toolkit that RPi.GPIO requires.</p>
+
+<p>To do this enter the following command:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install python-dev
+</code></pre>
+</div>
+
+<p>Then to install Rpi.GPIO itself type:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install python-rpi.gpio
+</code></pre>
+</div>
+
+<p><strong><em>Thats it! Now you are ready to program GPIO pins.</em></strong></p>
+
+<h3 id="basics-of-gpio-programminga-namebasics-gpioa">Basics of GPIO programming<a name="basics-gpio"></a></h3>
+
+<p>To program GPIO pins you have to import RPi.GPIO library in your python program. To do this type the following line at the top of your program:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>import RPi.GPIO as GPIO
+</code></pre>
+</div>
+
+<p>But before we start programming we have to set the numbering system of the pins. There are two types of numbering systems:</p>
+
+<ul>
+  <li>BOARD</li>
+  <li>BCM</li>
+</ul>
+
+<p>The GPIO.BOARD option specifies that you are referring to the pins by the number of the pin the the plug - i.e the numbers printed on the board (e.g. P1) and in the middle of the diagrams below.</p>
+
+<p>The GPIO.BCM option means that you are referring to the pins by the “Broadcom SOC channel” number, these are the numbers after “GPIO” in the green rectangles around the outside of the below diagrams:</p>
+
+<p>In the image below the numbers in the middle correspond to BOARD numbering and those written outside refer to BCM numbering.
+<img src="http://tech-iitb.org/erc/assets/blog/r_pi/image_2.png" alt="Pin Numbering" /></p>
+
+<p>Based on which numbering system is comfortable to you, which RPi shield your are using, what program you are using you can choose the numbering sytem which is most convinient to you.</p>
+
+<p>To specify in your code which number-system is being used, use the <strong>GPIO.setmode()</strong> function. For example…</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>GPIO.setmode(GPIO.BCM)
+</code></pre>
+</div>
+
+<p>or</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>GPIO.setmode(GPIO.BOARD)
+</code></pre>
+</div>
+
+<p>After specifying the numbering system we have to decide whether the pins that we are using will be input or output (just like in Arduino).</p>
+
+<p>To do this we use <strong>GPIO.setup()</strong> function.
+So if you want to setup pin 4 as output you would enter:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>GPIO.setup(4, GPIO.OUT)  
+</code></pre>
+</div>
+
+<p>If you want to set pin 17 as input you would enter:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>GPIO.setup(17, GPIO.IN)
+</code></pre>
+</div>
+
+<p>So if you have set a particular pin as input you would like to read the value of that pin. To do this you would use the <strong>GPIO.input()</strong> function.</p>
+
+<p>For example if you would like to read the value of pin 17 you would enter:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>GPIO.input(17)
+</code></pre>
+</div>
+
+<p>If you have setup a pin as output you would like to write a value to it. You would use the function <strong>GPIO.output()</strong> for it.</p>
+
+<p>For example if you would like to set the value of pin 4 as HIGH you would enter:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>GPIO.output(4, GPIO.HIGH)
+</code></pre>
+</div>
+
+<p>If you want to set it as low:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>GPIO.output(4, GPIO.LOW)
+</code></pre>
+</div>
+
+<p>Now that you know how to set input and output of pins you are set to use any electronic devices along with the entire convinience of python.</p>
+
+<p>One important thing to note that after the program is terminated either on its own or by a Keyboard Interrupt some of the pins which were high remain high after execution of the program. So in order to set everything to low we use the <strong>GPIO.cleanup()</strong> function.</p>
+
+<p>Here is an example of simple LED blink program in which the usage of each and every function will become clear</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python">    <span class="kn">import</span> <span class="nn">RPi.GPIO</span> <span class="kn">as</span> <span class="nn">GPIO</span>
+    <span class="kn">import</span> <span class="nn">time</span>
+    <span class="n">GPIO</span><span class="o">.</span><span class="n">setmode</span><span class="p">(</span><span class="n">GPIO</span><span class="o">.</span><span class="n">BCM</span><span class="p">)</span>
+    <span class="n">GPIO</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="n">GPIO</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">HIGH</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">GPIO</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">LOW</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">except</span> <span class="nb">KeyboardInterrupt</span><span class="p">:</span>
+        <span class="n">GPIO</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span></code></pre></figure>
+
+<p>When we execute this program with a led at pin 4 we would see the LED blinking at a rate of 1 second. This program would go on for ever unless we terminate it by CTRL-C which is a KeyBoardInterrupt which then initiates the GPIO.cleanup function.</p>
+
+<p>With this much knowledge you should be able to interface any electronic equipment with R-Pi with one last precation :P.</p>
+
+<p>All the GPIO pins on R-pi are 3.3 volt logic level. So it is not safe to connect any device that gives or takes more than 3.3v as it might damage the GPIO pins. If you have to use any device that has a 5V supply such as HCSR04 ultrasonic sensors you should use a potential divider.</p>
+
+<hr />
+
+<p><strong><em>Time to try some good projects with your R-pi. Happy tinkering!</em></strong></p>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://tech-iitb.org/erc/blog/XLR8" class="btn" title="XLR8">Previous</a>
+      
+      
+        <a href="http://tech-iitb.org/erc/blog/LF" class="btn" title="Line Follower Bot">Next</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2018 Electronics and Robotics Club, IIT Bombay.<!-- Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/so-simple-jekyll-theme/" rel="nofollow">So Simple Theme</a>.--></span>
+<div class="social-icons">
+	
+	<a href="https://facebook.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Facebook" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://github.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  
+	
+  <a href="http://tech-iitb.org/erc/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://tech-iitb.org/erc';
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://tech-iitb.org/erc/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://tech-iitb.org/erc/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

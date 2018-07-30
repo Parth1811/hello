@@ -1,0 +1,42 @@
+---
+layout: page
+title: Home
+excerpt: "A place for tinkerers and the sort!"
+search_omit: true
+---
+<div style="font-size: 24px;">
+Hello there! Greetings from Electronics & Robotics Club IIT Bombay! We cater to every individual who ever wanted to design their own circuit and control their own bot.
+</div>
+<hr>
+<center>
+<div class="o-grid" style="font-weight: 500;">
+	<div class="md-4" style="text-align: center;border-right-width: 10px;border-right-color:$base-color">
+		<div class="animated slideInLeft">
+		<span><i class="fa fa-book" style="font-size: 96px;"></i></span>
+		<h1>Learn</h1>
+		</div>
+	</div>
+	<div class="md-4" style="text-align: center;">
+		<div class="animated slideInUp">
+		<span><i class="fa fa-cog" style="font-size: 96px;"></i></span>
+		<h1>Tinker</h1>
+		</div>
+	</div>
+	<div class="md-4" style="text-align: center;">
+		<div class="animated slideInRight">
+		<span><i class="fa fa-bolt" style="font-size: 96px;"></i></span>
+		<h1>Create</h1>
+		</div>
+	</div>		 				
+</div>
+</center>
+<!--
+<div class="entry-wrapper">
+<h1>Latest Posts</h1>
+<ul class="post-list">
+	{% for post in site.posts limit:3 %}
+	<li><article><a href="{{ site.url }}{{ post.url }}">{{ post.title }} <span class="entry-date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time></span>{% if post.excerpt %} <span class="excerpt">{{ post.excerpt | remove: '\[ ... \]' | remove: '\( ... \)' | markdownify | strip_html | strip_newlines | escape_once }}</span>{% endif %}</a></article></li>
+	{% endfor %}
+</ul>
+</div>
+-->

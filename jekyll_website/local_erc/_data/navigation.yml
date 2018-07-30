@@ -1,0 +1,23 @@
+# Site navigation links
+
+- title: Home
+  url: /
+
+- title: About
+  url: /about/
+
+- title: Events
+  url: /event/
+
+- title: Blog
+  url: /blog/
+
+- title: Search
+  url: /search/
+
+- title: The Team
+  url: /team/
+
+#
+#- title:
+#  url: //

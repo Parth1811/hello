@@ -1,0 +1,367 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Chassis &#8211; Electronics and Robotics Club, IIT Bombay</title>
+<meta name="description" content="A chassis is the physical frame or structure of an automobile, an airplane, a desktop computer, or other multi-component device. Here, you will learn about the chassis of dynamic bot.">
+<meta name="keywords" content="SLAM, Robotics, localisation, mapping">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Chassis">
+<meta name="twitter:description" content="A chassis is the physical frame or structure of an automobile, an airplane, a desktop computer, or other multi-component device. Here, you will learn about the chassis of dynamic bot.">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://tech-iitb.org/erc/images/robo_rises.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chassis">
+<meta property="og:description" content="A chassis is the physical frame or structure of an automobile, an airplane, a desktop computer, or other multi-component device. Here, you will learn about the chassis of dynamic bot.">
+<meta property="og:url" content="http://tech-iitb.org/erc/blog/Chassis">
+<meta property="og:site_name" content="Electronics and Robotics Club, IIT Bombay">
+
+
+
+
+
+<link rel="canonical" href="http://tech-iitb.org/erc/blog/Chassis">
+<link href="http://tech-iitb.org/erc/feed.xml" type="application/atom+xml" rel="alternate" title="Electronics and Robotics Club, IIT Bombay Feed">
+<link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet"> 
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://tech-iitb.org/erc/assets/css/main.css">
+<link rel="stylesheet" href="http://tech-iitb.org/erc/assets/css/team.css"> 
+<!-- Webfonts -->
+<script src="https://use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://tech-iitb.org/erc/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://tech-iitb.org/erc/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<!-- Modernizr -->
+<script src="http://tech-iitb.org/erc/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://tech-iitb.org/erc/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://tech-iitb.org/erc/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://tech-iitb.org/erc/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://tech-iitb.org/erc/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://tech-iitb.org/erc/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://tech-iitb.org/erc/images/apple-touch-icon-144x144-precomposed.png">
+
+<script src="http://tech-iitb.org/erc/assets/js/scrolltop.js"></script>
+<link rel="stylesheet" href="http://tech-iitb.org/erc/assets/css/scrolltop.css">
+</head>
+
+<body id="post">
+<!-- Return to Top -->
+<div onClick="scrollback()" id="return-to-top"><i class="fa fa-chevron-up"></i></div>
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://tech-iitb.org/erc/" >Home</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/about/" >About</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/event/" >Events</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/blog/" >Blog</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/search/" >Search</a></li>
+		  
+		    
+		    <li><a href="http://tech-iitb.org/erc/team/" >The Team</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://tech-iitb.org/erc/" class="site-logo" rel="home" title="Electronics and Robotics Club, IIT Bombay"><img src="http://tech-iitb.org/erc/images/sitelogo.png" width="200" height="200" alt="Electronics and Robotics Club, IIT Bombay logo" class="animated slideInUp"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header center">
+        
+          <h1 class="entry-title pulse">Chassis</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <!--
+        
+        -->
+        <span class="author vcard">By <span class="fn">Anshik Gupta</span></span>
+        
+	
+        <!--
+        
+        -->
+        
+        
+        
+
+        <!--
+        <ul class="entry-tags">
+          Tags: <li><a href="http://tech-iitb.org/erc/tags/#SLAM" title="Pages tagged SLAM">SLAM</a></li><li><a href="http://tech-iitb.org/erc/tags/#Robotics" title="Pages tagged Robotics">Robotics</a></li><li><a href="http://tech-iitb.org/erc/tags/#localisation" title="Pages tagged localisation">localisation</a></li><li><a href="http://tech-iitb.org/erc/tags/#mapping" title="Pages tagged mapping">mapping</a></li>
+        </ul>
+        -->
+
+      </footer> 
+      <div class="entry-content">
+        <p>A chassis is the physical frame or structure of an automobile, an airplane, a desktop computer, or other multi-component device. An example of a chassis is the underpart of a motor vehicle, consisting of the frame (on which the body is mounted). If the running gear such as wheels and transmission, and sometimes even the driver’s seat, are included, then the assembly is described as a rolling chassis.</p>
+
+<p>The Chassis provides a rigid, safe and sufficiently strong support and protection to the driver, engine and all components of the car. It can also be described as a means of linking together appropriately all the mounting points of the car.</p>
+
+<p><img src="http://tech-iitb.org/erc/assets/blog/Chassis/Chassis1.png" alt="Orca" /></p>
+
+<h1>TABLE OF CONTENTS</h1>
+<ul id="markdown-toc">
+  <li><a href="#frame" id="markdown-toc-frame">FRAME</a>    <ul>
+      <li><a href="#acrylic" id="markdown-toc-acrylic">Acrylic</a></li>
+      <li><a href="#aluminium" id="markdown-toc-aluminium">Aluminium</a></li>
+      <li><a href="#wood" id="markdown-toc-wood">Wood</a></li>
+    </ul>
+  </li>
+  <li><a href="#motor-mounting" id="markdown-toc-motor-mounting">MOTOR MOUNTING</a></li>
+  <li><a href="#servo-mounting" id="markdown-toc-servo-mounting">SERVO MOUNTING</a></li>
+  <li><a href="#mounting-robot-batteries" id="markdown-toc-mounting-robot-batteries">MOUNTING ROBOT BATTERIES</a></li>
+  <li><a href="#mounting-sensors" id="markdown-toc-mounting-sensors">MOUNTING SENSORS</a></li>
+  <li><a href="#wheels" id="markdown-toc-wheels">WHEELS</a>    <ul>
+      <li><a href="#wheel-diameter" id="markdown-toc-wheel-diameter">Wheel Diameter</a></li>
+      <li><a href="#wheel-texture" id="markdown-toc-wheel-texture">Wheel Texture</a></li>
+      <li><a href="#wheel-width" id="markdown-toc-wheel-width">Wheel Width</a></li>
+      <li><a href="#wheel-hole-centre-diameter" id="markdown-toc-wheel-hole-centre-diameter">Wheel hole centre diameter</a></li>
+    </ul>
+  </li>
+  <li><a href="#mounting-your-robot-wheel-techniques" id="markdown-toc-mounting-your-robot-wheel-techniques">MOUNTING YOUR ROBOT WHEEL TECHNIQUES</a>    <ul>
+      <li><a href="#jamming" id="markdown-toc-jamming">Jamming</a></li>
+      <li><a href="#servo-wheel-mounting" id="markdown-toc-servo-wheel-mounting">Servo Wheel Mounting</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="frame">FRAME</h1>
+
+<p>The material that can be used for the chassis is</p>
+<ol>
+  <li>Acrylic</li>
+  <li>Aluminium</li>
+  <li>Wood</li>
+</ol>
+
+<h2 id="acrylic">Acrylic</h2>
+
+<p>Advantages:</p>
+
+<ul>
+  <li>Light Weight</li>
+  <li>Easy to work with (cut and drill)</li>
+  <li>Transparent sheets availablewhich can be used in robots where internal mechanism is to be displayed</li>
+</ul>
+
+<p>Disadvantages:</p>
+
+<ul>
+  <li>On application of load it bends</li>
+  <li>Brittle and fragile</li>
+  <li>Unable to sustain shocks and powerful jerks during impacts or jumps</li>
+  <li>Not reliable for long term usage of machine</li>
+</ul>
+
+<h2 id="aluminium">Aluminium</h2>
+
+<p>Advantages:</p>
+<ul>
+  <li>Lightweight</li>
+  <li>Easy milling (compared to other metals)</li>
+  <li>Readymade sections, bars, boxes, etc. are easily available in the market which can be directly used</li>
+  <li>Higher strength to weight ratio.</li>
+</ul>
+
+<p>Disadvantages:</p>
+<ul>
+  <li>Sheet of same dimension is very heavy as compared to other two materials</li>
+</ul>
+
+<h2 id="wood">Wood</h2>
+
+<p>Advantages:</p>
+<ul>
+  <li>Lightest among the three</li>
+  <li>Relatively cheaper than acrylic.</li>
+  <li>Easy to work with.</li>
+</ul>
+
+<p>Disadvantages:</p>
+<ul>
+  <li>Weaker than aluminum.</li>
+  <li>Not Waterproof.</li>
+</ul>
+<hr />
+
+<h1 id="motor-mounting">MOTOR MOUNTING</h1>
+<p><img src="http://tech-iitb.org/erc/assets/blog/Chassis/Chassis2.png" alt="motor" /></p>
+
+<p>To mount any type of motor to your chassis you will need to use an <strong>L shaped bracket</strong>. For a DC motor, all you need to do is take a sheet of aluminum, drill two holes in two of the corners, drill two more holes on the other half to match the motor screw holes, then bend the entire piece in a 90 degree angle.</p>
+<hr />
+
+<h1 id="servo-mounting">SERVO MOUNTING</h1>
+<p><img src="http://tech-iitb.org/erc/assets/blog/Chassis/Chassis3.png" alt="servo" /></p>
+
+<p>To mount your servo to your chassis, once again you will use the little baggie of goodies that came with the servo. You should have two <strong>black cube</strong> looking things with holes in it. There will be three holes in front and a single hole on the bottom. Your servo should also have four mounting holes, two on each side. Using screws, attach the front of the black things to each side of the servo. As shown in the image below, then attach your robot base with two more screws to the bottom hole of the black thingies. This particular robot used a thin reinforced sheet of aluminum as the base with two drilled holes for the mounting screws. and the completed mounted servo and wheel configuration . . .
+<img src="http://tech-iitb.org/erc/assets/blog/Chassis/Chassis4.png" alt="servo2" /></p>
+<hr />
+
+<h1 id="mounting-robot-batteries">MOUNTING ROBOT BATTERIES</h1>
+<p><img src="http://tech-iitb.org/erc/assets/blog/Chassis/Chassis5.png" alt="batteries" /></p>
+
+<p>Mounting your batteries is very simple. As long as you are using an <strong>RC battery pack</strong> (such as <strong>NiCad</strong> or <strong>NiMH</strong>, you can simply mount your batteries to your robot using strips of velcro. This is the velcro that has a sticky tape side and a velcro side. The advantage to this mounting method is that you can easily swap out your batteries for freshly charged ones - great if you are in a robot competition. You can also group multiple batteries together using zip ties.</p>
+<hr />
+
+<h1 id="mounting-sensors">MOUNTING SENSORS</h1>
+
+<p><img src="http://tech-iitb.org/erc/assets/blog/Chassis/Chassis6.png" alt="Sensors" /></p>
+
+<p>Mounting sensors is very much a case-by-case basis. What makes mounting sensors difficult is that you are very limited on where you can place them onto your robot. They must be away from noisy motors, and probably at the front/sides of your robot. You must also keep them protected so that collisions and dirt wont damage your sensors too. If your robot is a line follower, you have to keep your sensors at an exact distance from the ground or risk bad data - even when the ground is uneven! If you are lucky, your sensor has screw holes in just the right place at just the right angle. But in my experience this is very unlikely. So you must get creative, build a mount, use a little glue . . . you get the picture.</p>
+
+<p>Here you see a homemade aluminum mount for a sonar transducer and another mount on a servo for two <strong>Sharp IR Rangefinders</strong>. The sonar mount is aluminum bent at 90 degrees with a few screw holes drilled into it, and plastic spacers to prevent any shorting of the circuit board with the aluminum. The IR Rangefinder mount is aluminum with <strong>double sided sticky tape</strong> holding the sensors onto the aluminum plate.</p>
+<hr />
+
+<h1 id="wheels">WHEELS</h1>
+
+<h2 id="wheel-diameter">Wheel Diameter</h2>
+
+<p><img src="http://tech-iitb.org/erc/assets/blog/Chassis/Chassis7.png" alt="wheels" /></p>
+
+<p>When buying (or making) your wheels you want to put your motor into consideration. For a start, there is <strong>torque</strong> and <strong>velocity</strong>. Large diameter wheels give your robot low torque but high velocity. So if you already have a very strong motor, then you can use wheels with larger diameters. Servo’s already have good torque, so you should use larger diameter wheels. But if your motor is weak (such as if it does not have any gearing), you want to use a much smaller diameter wheel. This will make your robot slower, but at least it has enough torque to go up a hill! Another dumb mistake someone can make is buying a wheel that has a diameter close to or less than the motor diameter. For example, if you have a 1” diameter motor, and a 1.5” diameter wheel, you have a .25” <strong>ground clearance</strong> ( (1.5”-1”)/2=.25” ). How high is the tallest object you want to go over?</p>
+
+<h2 id="wheel-texture">Wheel Texture</h2>
+
+<p>The texture of your wheel is very terrain dependent. A common mistake for beginners is to ignore the texture of the wheel. If your wheel is too smooth then it will not have much friction. This is a serious issue with omni-wheels. An all plastic omni-wheel works poorly compared to an omni-wheel that uses rubber for the side wheels. Overly smooth robot wheels would likely skid while accelerating and braking. However a wheel that is really rough, such as a foam wheel, has higher friction with the ground leading to innefficiency. You also need to consider <strong>wear and tear</strong> on the wheel.</p>
+
+<h2 id="wheel-width">Wheel Width</h2>
+
+<p>You do not want it too wide as it causes increased resistance to rotating the wheel on a surface.</p>
+
+<h2 id="wheel-hole-centre-diameter">Wheel hole centre diameter</h2>
+
+<p><img src="http://tech-iitb.org/erc/assets/blog/Chassis/Chassis8.png" alt="wheel centre" /></p>
+
+<p>This is where you would actually mount the <strong>output motor shaft</strong> to your motor. So you must know the length and diameter of your motor output shaft so that you may put this shaft into the hole of your motor.</p>
+
+<p><img src="http://tech-iitb.org/erc/assets/blog/Chassis/Chassis9.png" alt="wheel centre" /></p>
+<hr />
+
+<h1 id="mounting-your-robot-wheel-techniques">MOUNTING YOUR ROBOT WHEEL TECHNIQUES</h1>
+
+<h2 id="jamming">Jamming</h2>
+
+<p>Lets start with a basic wheel attached to a basic motor. If the wheel does not have a center hole, just drill one out slightly smaller than the diameter of the shaft of your motor. Make sure the hole is perfectly centered!!!! Press fit (jam, if you will) the motor shaft into the wheel.</p>
+
+<h2 id="servo-wheel-mounting">Servo Wheel Mounting</h2>
+
+<p>Mounting a wheel onto a servo is fairly easy, and only requires a little drilling. When you purchase a servo, you also get a bunch of other little goodies with it. One of the items is called a <strong>servo horn</strong>. This is usually a black/red circular, X shaped, or I shaped plastic piece that attaches to the output shaft of the servo. So what you do is attach the wheel to this servo horn, then just screw the servo horn as designed into the servo. In the images below, I drilled two holes into my wheel, 2 holes into the servo horn (the red X thing), and screwed 2 screws into it to hold them together. Then I just attached the servo horn to my servo output shaft with a 3rd screw.</p>
+
+<p>This servo wheel mounting method, with slight modification, can work for other motors too. Just make your own custom ‘servo horn’ with a custom hole designed to fit your motor output shaft.</p>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://tech-iitb.org/erc/blog/Gears" class="btn" title="Gears">Previous</a>
+      
+      
+        <a href="http://tech-iitb.org/erc/blog/Batteries" class="btn" title="Batteries">Next</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2018 Electronics and Robotics Club, IIT Bombay.<!-- Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/so-simple-jekyll-theme/" rel="nofollow">So Simple Theme</a>.--></span>
+<div class="social-icons">
+	
+	<a href="https://facebook.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Facebook" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://github.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  
+	
+  <a href="http://tech-iitb.org/erc/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://tech-iitb.org/erc';
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://tech-iitb.org/erc/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://tech-iitb.org/erc/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>
