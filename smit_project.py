@@ -9,7 +9,12 @@ NODE_SPACING = 0.05         #this is the physical spacing between any two nodes 
 TEMP_MATRIX = np.zeros(TOTAL_X_NODES * TOTAL_Y_NODES, dtype="float64").reshape(TOTAL_X_NODES, TOTAL_Y_NODES)
 
 # Setting the boundary conditions
-TEMP_MATRIX[...][0] = 100       #surface y=0, other are 0 by default
+TEMP_MATRIX[...][0] = 100                   #surface y=0, other are 0 by default
+TEMP_MATRIX[...,0] = 0                      #surface x=0
+TEMP_MATRIX[...][TOTAL_Y_NODES] = 100       #surface y=2,
+TEMP_MATRIX[...,TOTAL_X_NODES] = 0          #surface x=z
+
+
 
 # initializing error to 1 (which is random value grater than TOLERANCE)
 error = 1
@@ -28,4 +33,4 @@ while error > TOLERANCE:
     #setting the TEMP_MATRIX to the newly iterated matrix
     TEMP_MATRIX = TEMP_MATRIX_NEXT
 
-print TEMP_MATRIX
+np.savetxt("temp_matrix.csv", TEMP_MATRIX, delimiter=",")
