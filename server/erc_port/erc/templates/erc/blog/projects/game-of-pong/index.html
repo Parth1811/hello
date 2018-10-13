@@ -1,0 +1,314 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Game Of Pong &#8211; Electronics and Robotics Club, IIT Bombay</title>
+<meta name="description" content="Making the classic 'Pong' Game using concept of Shift Registers">
+<meta name="keywords" content="Arduino, Shift Registers">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Game Of Pong">
+<meta name="twitter:description" content="Making the classic 'Pong' Game using concept of Shift Registers">
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://localhost:4000/images/sitelogo.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Game Of Pong">
+<meta property="og:description" content="Making the classic 'Pong' Game using concept of Shift Registers">
+<meta property="og:url" content="http://localhost:4000/blog/projects/game-of-pong/">
+<meta property="og:site_name" content="Electronics and Robotics Club, IIT Bombay">
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/blog/projects/game-of-pong/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Electronics and Robotics Club, IIT Bombay Feed">
+<link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet"> 
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+<link rel="stylesheet" href="http://localhost:4000/assets/css/team.css"> 
+<!-- Webfonts -->
+<script src="https://use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<!-- Modernizr -->
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
+
+<script src="http://localhost:4000/assets/js/scrolltop.js"></script>
+<link rel="stylesheet" href="http://localhost:4000/assets/css/scrolltop.css">
+</head>
+
+<body id="post">
+<!-- Return to Top -->
+<div onClick="scrollback()" id="return-to-top"><i class="fa fa-chevron-up"></i></div>
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:4000/" >Home</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/about/" >About</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/event/" >Events</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/blog/" >Blog</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/search/" >Search</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/team/" >The Team</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	<div class="wrap">
+      
+  		<a href="http://localhost:4000/" class="site-logo" rel="home" title="Electronics and Robotics Club, IIT Bombay"><img src="http://localhost:4000/images/sitelogo.png" width="200" height="200" alt="Electronics and Robotics Club, IIT Bombay logo" class="animated flipInX"></a>
+      
+      <h1 class="site-title animated pulse"><a href="http://localhost:4000/">Electronics and Robotics Club, IIT Bombay</a></h1>
+		<h2 class="site-description animated pulse" itemprop="description">A place for tinkerers and the sort!</h2>
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+<div id="main" role="main">
+  <article class="hentry">
+    <div class="header-img-overflow"><img src="http://localhost:4000/assets/blog/game-of-pong/cover.jpg" class="entry-feature-image" alt="Game Of Pong" ></div>
+    <div class="entry-wrapper zoomIn">
+      <header class="entry-header center">
+        
+          <h1 class="entry-title">Game Of Pong</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <!--
+        
+        -->
+        <span class="author vcard">By <span class="fn">Krishna Subramani</span></span>
+        <span class="entry-date date published"><time datetime="2016-05-08T00:00:00+05:30"><i class="fa fa-calendar-o"></i> May 08, 2016</time></span>
+        
+        
+        
+	<ul class="entry-tags">
+          Tags: <li><a href="http://localhost:4000/tags/#Arduino" title="Pages tagged Arduino">Arduino</a></li><li><a href="http://localhost:4000/tags/#Shift Registers" title="Pages tagged Shift Registers">Shift Registers</a></li>
+        </ul>
+      </footer> 
+      <div class="entry-content">
+        <p>What is the best time for lukha? After the mid-sem or end-sem
+examinations. I and my friends, Dhrumil and Manas wanted to have some
+fun with the arduino, so we decided to make some game using it. After a
+long discussion, we chose to make the classic arcade game ‘ PONG ‘.</p>
+
+<p>The first thing we had to do was build a screen to play the game. So, we
+chose to make a 7*5 LED array(matrix) for our screen.</p>
+
+<p>The Circuit Diagram for the Screen :</p>
+
+<p><img src="http://localhost:4000/assets/blog/game-of-pong/image08.gif" alt="LED Array" /></p>
+
+<p>To check whether the LED matrix was working properly, we tried to make a
+scrolling LED display(Like the one in a Railway Station).</p>
+
+<p>It was after we did this that we realized a major flaw in the circuit
+design of the above LED matrix.</p>
+
+<p>Suppose we want to on the LED ROW 3 and COL 3, and LED ROW 4 COL 4, we
+will ground COL 3 and COL 4 and give HIGH to ROW 3 and ROW 4. But in
+this process, the LED’s in ROW 3 COL 4 and COL 3 ROW 4 will also light
+up as they have received the power supply as well.</p>
+
+<p>In fact, if we try to light up all the diagonal LED’s in a square
+matrix, the whole matrix will light up because we are effectively
+powering up the whole matrix.</p>
+
+<p>So, because of this glitch, we were forced to temporarily give up on
+this idea.</p>
+
+<p>Another thing we could have done was power up each LED individually,
+that is control each LED individually. But, this would need 35 pins on
+the arduino, and the arduino does not have that many pins. So, we had to
+either use an Arduino Mega board with more pins, or we would have to
+come up with some other idea. So while coming up with alternatives, we
+came across an IC called a ‘Shift Register’. What it basically does is
+allow us to control as many LED’s as we want using only 3 pins of the
+arduino board. So, we modified our circuit and connected each LED
+individually using the shift registers. This way, we were able to
+control each LED individually.</p>
+
+<p>Overall, it was an excellent learning experience for all of us, as we
+learnt a lot, mainly how to debug such circuits, and, we also learned
+how to use shift registers in circuits.</p>
+
+<h3 id="how-shift-registers-work">How Shift Registers Work</h3>
+
+<p>Learning such an amazing and useful device such as a shift register has
+been a wonderful experience in itself. Controlling how many ever outputs
+you want using only 3 pins of the arduino is something very useful for
+folks who are short of pins(like us).</p>
+
+<p>A Shift Register is basically a cascade of flip-flops in which the
+output of one flip-flop is connected to the input of the next one.</p>
+
+<h4 id="pin-layout-and-function-table--ic-is-74hc595">Pin Layout and Function Table : (IC is 74HC595)</h4>
+
+<p><img src="http://localhost:4000/assets/blog/game-of-pong/image04.png" alt="IC Connections 1" />
+<img src="http://localhost:4000/assets/blog/game-of-pong/image09.png" alt="IC Connections 2" /></p>
+
+<h4 id="circuit-diagram-">Circuit Diagram :</h4>
+
+<p><img src="http://localhost:4000/assets/blog/game-of-pong/image02.png" alt="Update Circuit" /></p>
+
+<h4 id="arduino-connection-diagram-">Arduino Connection Diagram :</h4>
+
+<p><img src="http://localhost:4000/assets/blog/game-of-pong/image06.png" alt="Arduino Connections" /></p>
+
+<h4 id="this-is-how-the-ic-works-">This is how the IC works :</h4>
+
+<ol>
+  <li>
+    <p>We have three main pins, STCP(Latch), DS(Data), SHCP(Clock). We
+transfer the data to the first pin of the shift register. The
+value of the bit transferred is the same as the input given to
+the data(DS) pin , if the DS pin is high, a high(1) bit is
+transferred to the first pin, whereas if the DS pin is LOW,
+a low(0) bit is transferred.</p>
+  </li>
+  <li>
+    <p>Now, the next thing we have to do is shift this bit to the
+next register. This is achieved by pulsing the clock(SHCP) pin (
+Giving it a low to high voltage transition ). Thus, the bit which
+is stored in one register is shifted to the next one.</p>
+  </li>
+  <li>
+    <p>Then, we continue pulsing the Clock Pin, until we have set the
+required output on all the shift registers.</p>
+  </li>
+  <li>
+    <p>After all the data has been stored in the registers, it is time to
+put them on their respective output pins. This is achieved by
+pulsing the latch(STCP) pin( Giving it a low to high voltage
+transition ).</p>
+  </li>
+</ol>
+
+<p>Using one Shift Register, 8 outputs can be controlled. If we want more
+outputs, we have to attach more than one shift registers by connecting
+the Serial Out pin of one shift register to the DATA pin of the next
+register. Thus, using 5 shift registers, we were able to control 35
+LED’s for our game.</p>
+
+<h3 id="references">References:</h3>
+
+<p>You can refer to the following video to get a clearer understanding of
+the working principle of shift registers.</p>
+
+<p><a href="https://www.youtube.com/watch?v=6fVbJbNPrEU">https://www.youtube.com/watch?v=6fVbJbNPrEU</a></p>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:4000/blog/informative/working-of-a-dlp-projector/" class="btn" title="Working of a Digital Light Processing Projector">Previous</a>
+      
+      
+        <a href="http://localhost:4000/blog/projects/burglar-alarm/" class="btn" title="The Making of Burglar Alarm">Next</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2018 Electronics and Robotics Club, IIT Bombay.<!-- Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/so-simple-jekyll-theme/" rel="nofollow">So Simple Theme</a>.--></span>
+<div class="social-icons">
+	
+	<a href="https://facebook.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Facebook" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://github.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  
+	
+  <a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:4000';
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

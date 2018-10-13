@@ -1,0 +1,323 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>The Tech Behind Games &#8211; Electronics and Robotics Club, IIT Bombay</title>
+<meta name="description" content="How today's mobile games use the various sensors to provide the ultimate gaming experience!">
+<meta name="keywords" content="Sensors, Augmented Reality">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="The Tech Behind Games">
+<meta name="twitter:description" content="How today's mobile games use the various sensors to provide the ultimate gaming experience!">
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://localhost:4000/images/sitelogo.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Tech Behind Games">
+<meta property="og:description" content="How today's mobile games use the various sensors to provide the ultimate gaming experience!">
+<meta property="og:url" content="http://localhost:4000/blog/informative/the-tech-behind-games/">
+<meta property="og:site_name" content="Electronics and Robotics Club, IIT Bombay">
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/blog/informative/the-tech-behind-games/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Electronics and Robotics Club, IIT Bombay Feed">
+<link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet"> 
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+<link rel="stylesheet" href="http://localhost:4000/assets/css/team.css"> 
+<!-- Webfonts -->
+<script src="https://use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<!-- Modernizr -->
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
+
+<script src="http://localhost:4000/assets/js/scrolltop.js"></script>
+<link rel="stylesheet" href="http://localhost:4000/assets/css/scrolltop.css">
+</head>
+
+<body id="post">
+<!-- Return to Top -->
+<div onClick="scrollback()" id="return-to-top"><i class="fa fa-chevron-up"></i></div>
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:4000/" >Home</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/about/" >About</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/event/" >Events</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/blog/" >Blog</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/search/" >Search</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/team/" >The Team</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	<div class="wrap">
+      
+  		<a href="http://localhost:4000/" class="site-logo" rel="home" title="Electronics and Robotics Club, IIT Bombay"><img src="http://localhost:4000/images/sitelogo.png" width="200" height="200" alt="Electronics and Robotics Club, IIT Bombay logo" class="animated flipInX"></a>
+      
+      <h1 class="site-title animated pulse"><a href="http://localhost:4000/">Electronics and Robotics Club, IIT Bombay</a></h1>
+		<h2 class="site-description animated pulse" itemprop="description">A place for tinkerers and the sort!</h2>
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+<div id="main" role="main">
+  <article class="hentry">
+    <div class="header-img-overflow"><img src="http://localhost:4000/assets/blog/the-tech-behind-games/cover.jpg" class="entry-feature-image" alt="The Tech Behind Games" ></div>
+    <div class="entry-wrapper zoomIn">
+      <header class="entry-header center">
+        
+          <h1 class="entry-title">The Tech Behind Games</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <!--
+        
+        -->
+        <span class="author vcard">By <span class="fn">Shrvan Amlekar</span></span>
+        <span class="entry-date date published"><time datetime="2016-08-31T00:00:00+05:30"><i class="fa fa-calendar-o"></i> August 31, 2016</time></span>
+        
+        
+        
+	<ul class="entry-tags">
+          Tags: <li><a href="http://localhost:4000/tags/#Sensors" title="Pages tagged Sensors">Sensors</a></li><li><a href="http://localhost:4000/tags/#Augmented Reality" title="Pages tagged Augmented Reality">Augmented Reality</a></li>
+        </ul>
+      </footer> 
+      <div class="entry-content">
+        <p>Gaming is one of the most popular form of entertainment (and probably will hold this position forever).
+Also, mobile gaming is on a boom now a days. Almost every good game needs its controls to be intuitive and flexible. 
+There has been a lot of research and upgradations in the field of motion sensing.
+Some of the major breakthroughs are Gyroscope, Accelerometer, Magnetometer, etc. Let’s know about these in detail.</p>
+
+<h3 id="motion-sensing">Motion Sensing</h3>
+
+<p>One key element of interaction is local motion of the phone, such as linear acceleration, rotational velocity, etc.</p>
+
+<p><img src="http://localhost:4000/assets/blog/the-tech-behind-games/accel_gyro.jpg" alt="accel_gyro" /></p>
+
+<ul>
+  <li>
+    <p><strong>Accelerometer</strong></p>
+
+    <p>Have you ever wondered how your phone manages to know what direction you are holding it?
+It uses a device called accelerometer. An accelerometer is a device that measures linear acceleration.
+As it has to measure acceleration, force should come in picture somewhere.
+It measures force using a loaded capacitor with one plate attached to a spring.
+A simplistic model is where one plate is fixed, and the other has the mass of the load attached to a spring.
+This spring will change its amount of compression (and hence distance between plates) based on the force
+applied to the capacitor. This change in distance leads to a change in capacitance
+, which is measured and used to determine the acceleration of the device. Interesting isn’t it!
+One capacitor is used for each axis X, Y, Z and hence we can get the acceleration
+vector in 3D.</p>
+  </li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/blog/the-tech-behind-games/capacitor_diagram.jpg" alt="capacitor" /></p>
+
+<ul>
+  <li>
+    <p><strong>Gyroscope</strong></p>
+
+    <p>It is a device used to measure the angular velocity.
+It basically consists a wheel or disc mounted so that it can spin rapidly
+about an axis which itself is free to alter in any direction.
+Also it is connected to different capacitors at its edges such that when the
+device rotates and the disc moves there is a subtle change in the capacitance
+(similar model like the accelerometer) which helps us to determine the
+magnitude of the angular acceleration of the device.
+Also, more than one capacitors are used so that we get an idea of the
+direction in which the device is rotated.
+One important observation here is that setup based on torsion strain cannot
+be used as we have to measure angular velocity and not the angular acceleration.</p>
+  </li>
+  <li>
+    <p><strong>Magnetometer</strong></p>
+
+    <p>In the very basic sense a magnetormeter is a compass. 
+It provides mobile phones with a orientation in relation to the Earth’s magnetic field.
+There are two types of magnetometers, which use Hall-effect and others which
+use Magneto-resistive effects, the former are used on a large scale.
+In these kinds of magnetometers, a conductive plate is connected to a
+complete circuit so that electrons flow through it is continuous.
+When the device comes in the influence of a magnetic field, there is a deflection
+in the path of the electrons due to which a potential difference is created
+across the edges of the plate perpendicular to the flow of current.
+By measuring this potential difference the magnetic field vector around is determined.</p>
+  </li>
+</ul>
+
+<h3 id="gps-global-positioning-system">GPS (Global Positioning System)</h3>
+
+<p>The United States began the GPS project in 1973 to overcome the limitations of
+previous navigation systems. Later they thought that everyone should use this technology.
+The purpose was providing geographical position in all weather conditions anywhere on or near Earth.</p>
+
+<h4 id="working">Working</h4>
+
+<p>This comprises of a network of 27 satellites (of which 3 are for backup)
+which have a transmitter attached (they do not have a receiver).
+They basically transmit data in the form of electromagnetic waves.
+The transmitted data consists of three chunks:</p>
+
+<ul>
+  <li>A pre-determined random string</li>
+  <li>The satellite’s current orbital position and time of transmission</li>
+  <li>health data for monitoring</li>
+</ul>
+
+<p>The receiver also records when it recieved this transmission.
+Thus we know the time of transmitting and using this info we can calculate the
+distance between us and the satellite as we also know the time we received the wave,
+and hence time it took to travel the distance. The speed of the wave is equal
+to the speed of light because it is an electromagnetic wave.</p>
+
+<p><img src="http://localhost:4000/assets/blog/the-tech-behind-games/gps.jpg" alt="gps" /></p>
+
+<p>Using this distance measurement from 3 different satellites and their orbital position
+we get three spheres as loci of our position. The earth is the fourth sphere. Using coordinate geometry
+we can find the intersection of these spheres to give one single point in 3D space
+which will be our location.</p>
+
+<p>So 3 satellites are enough to pinpoint our location, but to increase the accuracy 4-5 satellites are generally used.</p>
+
+<h3 id="augmented-reality">Augmented Reality</h3>
+
+<p>As the name suggests it basically enhances the real world by adding the digital
+graphics to real world. This is done by displaying the real world and additional
+“augmented” data together on one screen.</p>
+
+<p><img src="http://localhost:4000/assets/blog/the-tech-behind-games/ar.jpg" alt="AR" /></p>
+
+<p>This has varied applications like visual art, greeting cards, video games
+(any fans of Pokemon Go or Ingress here!)</p>
+
+<p>In this, we basically take an image, detect a pattern and attach an object to it.
+Let me explain by giving an example, while playing pokemon go suppose a wild magikarp appears,
+the camera will take input of the image in front of it and detect any water body
+(the shades of colour which represent water are detected) present.
+It will then deploy the water type pokemon over that water body.
+There other components like angle, height, width, etc. are also considered to give 3D effects.</p>
+
+<p>Any game like Pokemon Go or Ingress will interface these sensors and use this
+data to enhance your experience of interactivity with the game. They use AR
+to give an immersive feel to the game, much like you are in the game’s world
+and playing it in real life!</p>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:4000/blog/tutorials/l293d/" class="btn" title="Functioning of L293D motor driver">Previous</a>
+      
+      
+        <a href="http://localhost:4000/blog/projects/get-electrified-2/" class="btn" title="Get Electrified 2">Next</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2018 Electronics and Robotics Club, IIT Bombay.<!-- Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/so-simple-jekyll-theme/" rel="nofollow">So Simple Theme</a>.--></span>
+<div class="social-icons">
+	
+	<a href="https://facebook.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Facebook" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://github.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  
+	
+  <a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:4000';
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

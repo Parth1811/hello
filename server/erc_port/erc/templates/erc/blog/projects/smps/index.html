@@ -1,0 +1,242 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Switched Mode Power Supply Technology &#8211; Electronics and Robotics Club, IIT Bombay</title>
+<meta name="description" content="Learn about the technology present in chargers!">
+<meta name="keywords" content="Rectifier, Power Electronics">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Switched Mode Power Supply Technology">
+<meta name="twitter:description" content="Learn about the technology present in chargers!">
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://localhost:4000/images/sitelogo.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Switched Mode Power Supply Technology">
+<meta property="og:description" content="Learn about the technology present in chargers!">
+<meta property="og:url" content="http://localhost:4000/blog/projects/smps/">
+<meta property="og:site_name" content="Electronics and Robotics Club, IIT Bombay">
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/blog/projects/smps/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Electronics and Robotics Club, IIT Bombay Feed">
+<link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet"> 
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+<link rel="stylesheet" href="http://localhost:4000/assets/css/team.css"> 
+<!-- Webfonts -->
+<script src="https://use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<!-- Modernizr -->
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
+
+<script src="http://localhost:4000/assets/js/scrolltop.js"></script>
+<link rel="stylesheet" href="http://localhost:4000/assets/css/scrolltop.css">
+</head>
+
+<body id="post">
+<!-- Return to Top -->
+<div onClick="scrollback()" id="return-to-top"><i class="fa fa-chevron-up"></i></div>
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:4000/" >Home</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/about/" >About</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/event/" >Events</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/blog/" >Blog</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/search/" >Search</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/team/" >The Team</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	<div class="wrap">
+      
+  		<a href="http://localhost:4000/" class="site-logo" rel="home" title="Electronics and Robotics Club, IIT Bombay"><img src="http://localhost:4000/images/sitelogo.png" width="200" height="200" alt="Electronics and Robotics Club, IIT Bombay logo" class="animated flipInX"></a>
+      
+      <h1 class="site-title animated pulse"><a href="http://localhost:4000/">Electronics and Robotics Club, IIT Bombay</a></h1>
+		<h2 class="site-description animated pulse" itemprop="description">A place for tinkerers and the sort!</h2>
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+<div id="main" role="main">
+  <article class="hentry">
+    <div class="header-img-overflow"><img src="http://localhost:4000/assets/blog/smps/cover.jpg" class="entry-feature-image" alt="Switched Mode Power Supply Technology" ></div>
+    <div class="entry-wrapper zoomIn">
+      <header class="entry-header center">
+        
+          <h1 class="entry-title">Switched Mode Power Supply Technology</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <!--
+        
+        -->
+        <span class="author vcard">By <span class="fn">Dhrumil Shah</span></span>
+        <span class="entry-date date published"><time datetime="2016-07-31T00:00:00+05:30"><i class="fa fa-calendar-o"></i> July 31, 2016</time></span>
+        
+        
+        
+	<ul class="entry-tags">
+          Tags: <li><a href="http://localhost:4000/tags/#Rectifier" title="Pages tagged Rectifier">Rectifier</a></li><li><a href="http://localhost:4000/tags/#Power Electronics" title="Pages tagged Power Electronics">Power Electronics</a></li>
+        </ul>
+      </footer> 
+      <div class="entry-content">
+        <p>Switched Mode Power Supply or SMPS is an electronic power supply that incorporates a switching regulator to convert electrical power efficiently. Like other power supplies, an SMPS transfers power from a source, like mains power, to a load, such as a PC, while converting voltage and current characteristics. A typical SMPS is seen down here :</p>
+
+<p><img src="http://localhost:4000/assets/blog/smps/image1.png" alt="image" /></p>
+
+<h2 id="circuit-diagram">Circuit Diagram</h2>
+
+<p><img src="http://localhost:4000/assets/blog/smps/image_2.png" alt="image" /></p>
+
+<p><em>The components F1 and F2 are referred to as Fuse.</em></p>
+
+<h2 id="the-components-of-smps">The components of SMPS</h2>
+
+<p><strong>EMI Filter :</strong> The low-pass EMI filter is designed to reduce to an acceptable level high frequency currents getting back into the AC line. This is necessary to prevent interference on the other devices connected to the same electrical wiring. This is to comply some of the safety regulations.</p>
+
+<p><strong>Rectifier Bridge :</strong> It converts bipolar waveforms into unipolar pulsating ones. It has four diodes in a bridge arrangement to provide the same polarity of the output for both polarities of the input.</p>
+
+<p><strong>PFC Regulator :</strong> The Power Factor (PF) of rectified input voltage is increased in this part of the circuit. The ratio of the actual electrical power dissipated by an AC circuit to the product of the r.m.s. values of current and voltage is called Power Factor.. The difference between the two is caused by reactance in the circuit and represents power that does no useful work.</p>
+
+<p><strong>DC-DC Converter :</strong> It is used to generate DC outputs from the PFC outputs.</p>
+
+<h3 id="specifications-to-know-before-choosing-smps">Specifications to know before choosing SMPS</h3>
+
+<p>Different SMPSs have different power ratings, different voltage outputs and thus different current ratings. It is thus important to decide upon these factors before choosing the SMPS of your choices.</p>
+
+<h2 id="real-life-applications">Real life applications</h2>
+
+<p><strong>Some of the places where SMPS can be found are as follows:</strong></p>
+
+<p>When we use an adapter-looking thing to power Arduino, it converts 220V supply to a 12V supply required to power the Arduino. This is achieved by the SMPS present inside the black part of the adapter.</p>
+
+<p><img src="http://localhost:4000/assets/blog/smps/image_3.png" alt="image" /></p>
+
+<p>The black box looking thing attached to a laptop charger is actually an SMPS to convert the input to an output DC Voltage to charge the battery.</p>
+
+<h3 id="how-to-use-it-with-arduino">How to use it with Arduino</h3>
+
+<p>Suppose we need to power a device which works at a higher voltage and power supply than an arduino can provide, we can use an SMPS to power the circuit. But if we want to control the turning on and off of the device using arduino we might face a problem in this case. In this case a relay will work the best as relay can be used to control a higher rated circuit using Arduino’s lower rated circuit.</p>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:4000/blog/Automated_gripper_sankhe/" class="btn" title="Automated Gripper Bot">Previous</a>
+      
+      
+        <a href="http://localhost:4000/blog/projects/sudoku-solver/" class="btn" title="Sudoku Solver">Next</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2018 Electronics and Robotics Club, IIT Bombay.<!-- Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/so-simple-jekyll-theme/" rel="nofollow">So Simple Theme</a>.--></span>
+<div class="social-icons">
+	
+	<a href="https://facebook.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Facebook" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://github.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  
+	
+  <a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:4000';
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

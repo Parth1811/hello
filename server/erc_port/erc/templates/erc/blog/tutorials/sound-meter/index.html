@@ -1,0 +1,333 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Making a Sound Meter in Python &#8211; Electronics and Robotics Club, IIT Bombay</title>
+<meta name="description" content="A basic usage of audio handling libraries for creating a fun sound-meter!">
+<meta name="keywords" content="python, audio">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Making a Sound Meter in Python">
+<meta name="twitter:description" content="A basic usage of audio handling libraries for creating a fun sound-meter!">
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://localhost:4000/images/sitelogo.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Making a Sound Meter in Python">
+<meta property="og:description" content="A basic usage of audio handling libraries for creating a fun sound-meter!">
+<meta property="og:url" content="http://localhost:4000/blog/tutorials/sound-meter/">
+<meta property="og:site_name" content="Electronics and Robotics Club, IIT Bombay">
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/blog/tutorials/sound-meter/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Electronics and Robotics Club, IIT Bombay Feed">
+<link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet"> 
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+<link rel="stylesheet" href="http://localhost:4000/assets/css/team.css"> 
+<!-- Webfonts -->
+<script src="https://use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<!-- Modernizr -->
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
+
+<script src="http://localhost:4000/assets/js/scrolltop.js"></script>
+<link rel="stylesheet" href="http://localhost:4000/assets/css/scrolltop.css">
+</head>
+
+<body id="post">
+<!-- Return to Top -->
+<div onClick="scrollback()" id="return-to-top"><i class="fa fa-chevron-up"></i></div>
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:4000/" >Home</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/about/" >About</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/event/" >Events</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/blog/" >Blog</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/search/" >Search</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/team/" >The Team</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	<div class="wrap">
+      
+  		<a href="http://localhost:4000/" class="site-logo" rel="home" title="Electronics and Robotics Club, IIT Bombay"><img src="http://localhost:4000/images/sitelogo.png" width="200" height="200" alt="Electronics and Robotics Club, IIT Bombay logo" class="animated flipInX"></a>
+      
+      <h1 class="site-title animated pulse"><a href="http://localhost:4000/">Electronics and Robotics Club, IIT Bombay</a></h1>
+		<h2 class="site-description animated pulse" itemprop="description">A place for tinkerers and the sort!</h2>
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+<div id="main" role="main">
+  <article class="hentry">
+    <div class="header-img-overflow"><img src="http://localhost:4000/assets/blog/sound-meter/cover.png" class="entry-feature-image" alt="Making a Sound Meter in Python" ></div>
+    <div class="entry-wrapper zoomIn">
+      <header class="entry-header center">
+        
+          <h1 class="entry-title">Making a Sound Meter in Python</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <!--
+        
+        -->
+        <span class="author vcard">By <span class="fn">Krish Mehta</span></span>
+        <span class="entry-date date published"><time datetime="2016-08-04T00:00:00+05:30"><i class="fa fa-calendar-o"></i> August 04, 2016</time></span>
+        
+        
+        
+	<ul class="entry-tags">
+          Tags: <li><a href="http://localhost:4000/tags/#python" title="Pages tagged python">python</a></li><li><a href="http://localhost:4000/tags/#audio" title="Pages tagged audio">audio</a></li>
+        </ul>
+      </footer> 
+      <div class="entry-content">
+        <p>Those who have seen the 3 blocks of audience in PCSA compete during the STAB Orientation for the loudest cheer, know what this Sound Meter is.</p>
+
+<h2 id="target">Target</h2>
+
+<p>To analyse any incoming sound(be it mic or laptop microphone) and find its maximum volume. Actually, using other detailed operations you can estimate the frequency etc. Basically, once we read the audio input stream we can use the desired computations on it.</p>
+
+<h2 id="plan-of-action">Plan of action</h2>
+
+<p>This is roughly what we need to do:</p>
+
+<ol>
+  <li>Read the input from the laptop microphone or the mic(in our case, that requires setting it to default recording device)</li>
+  <li>Find the maximum value of the sound channels over a chunk of inputs.</li>
+  <li>Display it!</li>
+</ol>
+
+<h2 id="libraries-used">Libraries used:</h2>
+
+<p><strong>pyaudio</strong> for audio stream input.
+<strong>audioop</strong> for max value analysis.
+<strong>pygame</strong> for display.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">audioop</span>
+<span class="kn">import</span> <span class="nn">pygame</span>
+<span class="kn">import</span> <span class="nn">pyaudio</span>
+<span class="kn">import</span> <span class="nn">wave</span>
+
+<span class="c">#Initialisation for PyAudio</span>
+<span class="n">CHUNK</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">FORMAT</span> <span class="o">=</span> <span class="n">pyaudio</span><span class="o">.</span><span class="n">paInt16</span>
+<span class="n">CHANNELS</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">RATE</span> <span class="o">=</span> <span class="mi">44100</span>
+<span class="n">RECORD_SECONDS</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="c">#Object</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">pyaudio</span><span class="o">.</span><span class="n">PyAudio</span><span class="p">()</span>
+<span class="n">stream</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="nb">open</span><span class="p">(</span><span class="n">format</span><span class="o">=</span><span class="n">FORMAT</span><span class="p">,</span> <span class="n">channels</span><span class="o">=</span><span class="n">CHANNELS</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="n">RATE</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">frames_per_buffer</span><span class="o">=</span><span class="n">CHUNK</span><span class="p">)</span>
+
+<span class="c">#PyGame initialisations and basic objects</span>
+<span class="n">pygame</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<span class="n">screensize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">900</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span>
+<span class="n">screen</span><span class="o">=</span><span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="n">screensize</span><span class="p">)</span>
+<span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_caption</span><span class="p">(</span><span class="s">"Shout harder.. :D"</span><span class="p">)</span>
+
+<span class="c">#Defining colors</span>
+<span class="n">WHITE</span><span class="o">=</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">)</span>
+<span class="n">RED</span><span class="o">=</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">)</span>
+<span class="n">YELLOW</span><span class="o">=</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">128</span><span class="p">)</span>
+<span class="n">BLUE</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">)</span>
+
+<span class="c">#Loop till close button clicked</span>
+<span class="n">done</span><span class="o">=</span><span class="bp">False</span>
+<span class="n">clock</span><span class="o">=</span><span class="n">pygame</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">Clock</span><span class="p">()</span>
+
+<span class="c">#variables</span>
+<span class="n">score</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">width</span><span class="o">=</span><span class="mf">0.8</span>
+
+<span class="n">margin</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">samples_per_section</span> <span class="o">=</span> <span class="n">screensize</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">margin</span>
+
+<span class="n">sound_tracks</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">samples_per_section</span><span class="p">]</span><span class="o">*</span><span class="mi">3</span>
+<span class="n">max_value</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">3</span>
+
+<span class="n">current_section</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="ow">not</span> <span class="n">done</span><span class="p">:</span>
+
+	<span class="c">#Limits CPU usage to max 10 times per second</span>
+	<span class="c">#Not required here because already the for loop takes averages over some time</span>
+	<span class="c">#clock.tick(10)</span>
+
+	<span class="n">total</span><span class="o">=</span><span class="mi">0</span>
+	<span class="c">#Now we read data from device for around one second</span>
+	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span>
+            <span class="c">#l,data = inp.read()</span>
+			<span class="n">data</span><span class="o">=</span><span class="n">stream</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">CHUNK</span><span class="p">)</span>
+			<span class="c">#oreo_sound.append(data)</span>
+			<span class="k">if</span> <span class="bp">True</span><span class="p">:</span>
+				<span class="n">reading</span><span class="o">=</span><span class="n">audioop</span><span class="o">.</span><span class="nb">max</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+				<span class="n">total</span><span class="o">=</span><span class="n">total</span><span class="o">+</span><span class="n">reading</span>
+			<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="o">.</span><span class="mo">0001</span><span class="p">)</span>
+
+	<span class="c">#any scaling factor</span>
+	<span class="n">total</span><span class="o">=</span><span class="n">total</span><span class="o">/</span><span class="mi">100</span>
+
+	<span class="n">sound_tracks</span><span class="p">[</span><span class="n">current_section</span><span class="p">]</span> <span class="o">=</span> <span class="n">sound_tracks</span><span class="p">[</span><span class="n">current_section</span><span class="p">][</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="p">[</span><span class="n">total</span><span class="p">]</span>
+	<span class="n">max_value</span><span class="p">[</span><span class="n">current_section</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">max_value</span><span class="p">[</span><span class="n">current_section</span><span class="p">],</span> <span class="n">total</span><span class="p">)</span>
+
+	<span class="n">screen</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">WHITE</span><span class="p">)</span>
+
+    <span class="c"># draw highlighted section</span>
+	<span class="n">pygame</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="n">screen</span><span class="p">,</span><span class="n">YELLOW</span><span class="p">,(</span><span class="n">screensize</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">3</span><span class="o">*</span><span class="n">current_section</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span><span class="n">screensize</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="n">screensize</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+		<span class="n">sectionx</span> <span class="o">=</span> <span class="n">i</span><span class="o">*</span><span class="n">screensize</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">3</span> <span class="o">+</span> <span class="n">margin</span>
+            <span class="c">#add meet wala last year ka feature</span>
+		<span class="n">pygame</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="n">screen</span><span class="p">,</span><span class="n">RED</span><span class="p">,(</span><span class="n">sectionx</span><span class="p">,</span> <span class="n">screensize</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">max_value</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">screensize</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">margin</span><span class="p">,</span> <span class="n">max_value</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+		<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">screensize</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">margin</span><span class="p">):</span>
+			<span class="n">x</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="n">sectionx</span>
+			<span class="n">y</span> <span class="o">=</span> <span class="n">screensize</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">sound_tracks</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+			<span class="n">pygame</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="n">screen</span><span class="p">,</span><span class="n">BLUE</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sound_tracks</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]))</span>
+
+	<span class="c">#frame flip must happen after all drawing commands</span>
+	<span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">flip</span><span class="p">()</span>
+
+	<span class="c">#Set close button event</span>
+	<span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">pygame</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="nb">type</span><span class="o">==</span><span class="n">pygame</span><span class="o">.</span><span class="n">QUIT</span><span class="p">:</span>
+                <span class="n">done</span><span class="o">=</span><span class="bp">True</span>
+            <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="nb">type</span><span class="o">==</span><span class="n">pygame</span><span class="o">.</span><span class="n">MOUSEBUTTONUP</span> <span class="p">:</span>
+                <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">button</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+                    <span class="c"># right button pressed, clear all arrays</span>
+                    <span class="n">sound_tracks</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">samples_per_section</span><span class="p">]</span><span class="o">*</span><span class="mi">3</span>
+                    <span class="n">max_value</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">3</span>
+                    <span class="n">current_section</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">pos</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">get_pos</span><span class="p">()</span>
+                    <span class="n">current_section</span> <span class="o">=</span> <span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="n">screensize</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="k">print</span> <span class="n">pos</span><span class="p">,</span> <span class="n">current_section</span>
+	
+<span class="c">#clearing the resources</span>
+<span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+<span class="n">stream</span><span class="o">.</span><span class="n">stop_stream</span><span class="p">()</span>
+<span class="n">stream</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
+<span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span></code></pre></figure>
+
+<p>Have fun!</p>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:4000/blog/projects/sudoku-solver/" class="btn" title="Sudoku Solver">Previous</a>
+      
+      
+        <a href="http://localhost:4000/blog/machinel/" class="btn" title="Machine Learning">Next</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2018 Electronics and Robotics Club, IIT Bombay.<!-- Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/so-simple-jekyll-theme/" rel="nofollow">So Simple Theme</a>.--></span>
+<div class="social-icons">
+	
+	<a href="https://facebook.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Facebook" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://github.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  
+	
+  <a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:4000';
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

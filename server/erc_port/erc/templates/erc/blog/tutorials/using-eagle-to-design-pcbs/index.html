@@ -1,0 +1,335 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Using Eagle to design PCBs &#8211; Electronics and Robotics Club, IIT Bombay</title>
+<meta name="description" content="Summary of the PCB design bootcamp taken by Ajinkya Gorad">
+<meta name="keywords" content="PCB, Eagle">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Using Eagle to design PCBs">
+<meta name="twitter:description" content="Summary of the PCB design bootcamp taken by Ajinkya Gorad">
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://localhost:4000/images/sitelogo.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Using Eagle to design PCBs">
+<meta property="og:description" content="Summary of the PCB design bootcamp taken by Ajinkya Gorad">
+<meta property="og:url" content="http://localhost:4000/blog/tutorials/using-eagle-to-design-pcbs/">
+<meta property="og:site_name" content="Electronics and Robotics Club, IIT Bombay">
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/blog/tutorials/using-eagle-to-design-pcbs/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Electronics and Robotics Club, IIT Bombay Feed">
+<link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet"> 
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+<link rel="stylesheet" href="http://localhost:4000/assets/css/team.css"> 
+<!-- Webfonts -->
+<script src="https://use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<!-- Modernizr -->
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
+
+<script src="http://localhost:4000/assets/js/scrolltop.js"></script>
+<link rel="stylesheet" href="http://localhost:4000/assets/css/scrolltop.css">
+</head>
+
+<body id="post">
+<!-- Return to Top -->
+<div onClick="scrollback()" id="return-to-top"><i class="fa fa-chevron-up"></i></div>
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:4000/" >Home</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/about/" >About</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/event/" >Events</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/blog/" >Blog</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/search/" >Search</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/team/" >The Team</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	<div class="wrap">
+      
+  		<a href="http://localhost:4000/" class="site-logo" rel="home" title="Electronics and Robotics Club, IIT Bombay"><img src="http://localhost:4000/images/sitelogo.png" width="200" height="200" alt="Electronics and Robotics Club, IIT Bombay logo" class="animated flipInX"></a>
+      
+      <h1 class="site-title animated pulse"><a href="http://localhost:4000/">Electronics and Robotics Club, IIT Bombay</a></h1>
+		<h2 class="site-description animated pulse" itemprop="description">A place for tinkerers and the sort!</h2>
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+<div id="main" role="main">
+  <article class="hentry">
+    <div class="header-img-overflow"><img src="http://localhost:4000/assets/blog/using-eagle-to-design-pcbs/cover.jpg" class="entry-feature-image" alt="Using Eagle to design PCBs" ></div>
+    <div class="entry-wrapper zoomIn">
+      <header class="entry-header center">
+        
+          <h1 class="entry-title">Using Eagle to design PCBs</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <!--
+        
+        -->
+        <span class="author vcard">By <span class="fn">Krish Mehta</span></span>
+        <span class="entry-date date published"><time datetime="2016-06-06T00:00:00+05:30"><i class="fa fa-calendar-o"></i> June 06, 2016</time></span>
+        
+        
+        
+	<ul class="entry-tags">
+          Tags: <li><a href="http://localhost:4000/tags/#PCB" title="Pages tagged PCB">PCB</a></li><li><a href="http://localhost:4000/tags/#Eagle" title="Pages tagged Eagle">Eagle</a></li>
+        </ul>
+      </footer> 
+      <div class="entry-content">
+        <p><strong>Why PCB Designing?</strong></p>
+
+<p>We often come across two scenarios where we need PCB designing.
+Sometimes we need to fix a medium/large sized circuit with various
+components into a smaller and more compact form. And sometimes we need
+to use a specific circuit more number of times. In such cases, making a
+Printed Circuit Board of the required circuit is very useful.</p>
+
+<p>Have a look:</p>
+
+<p><img src="http://localhost:4000/assets/blog/using-eagle-to-design-pcbs/image03.jpg" alt="image" /></p>
+
+<p><strong>What is Eagle?</strong></p>
+
+<p>Eagle is a PCB Designing Software where you can use custom libraries for
+using a variety of elements, from common Resistors, Capacitors etc to
+specific ICs, Microcontrollers. It lets you add the elements you want,
+design the circuit and the choose the physical connections the way you
+want on your PCB.</p>
+
+<p><strong>Details Of Commands and usages in making the SCHEMATIC</strong></p>
+
+<p>There are basically two parts of our development in Eagle. First, the
+Schematic, that shows all the connections(but not the way you physically
+want on the PCB). Secondly, forming final connections and arranging them
+in the final physical way we want.</p>
+
+<p>So, in the session, we decided to make a IC 555 circuit.</p>
+
+<p><img src="http://localhost:4000/assets/blog/using-eagle-to-design-pcbs/image01.png" alt="image" /></p>
+
+<h3 id="we-will-go-through-the-following-procedure">We will go through the following procedure:</h3>
+
+<ol>
+  <li>
+    <p>Making the Schematic</p>
+  </li>
+  <li>
+    <p>Designing the physical connections</p>
+  </li>
+</ol>
+
+<p>Let us move on to using the software and its commands.</p>
+
+<h3 id="making-the-schematic">1. Making the Schematic</h3>
+
+<ul>
+  <li><strong>add:</strong> Used to add any component. Type in the command bar on top</li>
+  <li>After performing add, lots of components will appear.
+Type keywords to search components. Eg. <strong>RCL</strong> in search box to find
+Resistor, Capacitor, Inductor.(Take US Package for resistor.) (uF ==
+Polarised, nF == ceramic)</li>
+  <li><strong>For NE555N</strong> type:<strong>add</strong> on terminal&gt; search <strong>timer</strong> &gt;
+Find 555. Double click&gt;Paste.</li>
+  <li>Note:- Whenever <strong>IC</strong> not found, Google the <strong>.lbr</strong> file for that
+IC and copy paste in Eagle list.</li>
+  <li>Use Escape to go back to menu.</li>
+  <li>For our 555 circuit, we will take a <strong>5mm LED</strong> for Output</li>
+  <li>Type <strong>Supply</strong> in search bar to get 5V and Ground</li>
+  <li><strong>move:</strong> to move a component</li>
+  <li><strong>net:</strong> make connections. Net adds connection and side by side
+makes a file(which denotes that there must be a physical
+connection made for this pair in the second part of our designing)
+too.</li>
+  <li>Make end to end connections and use <strong>name command</strong> to name the
+wires/components differently so as to differentiate
+between connections.</li>
+  <li>Giving values<strong>:</strong> Use <strong>value</strong> command and then click on component
+to enter value.</li>
+  <li><strong>Smash command:</strong> to move around names.(Disassemble components to
+move individually)</li>
+  <li>Search <strong>Pin Head</strong> for Berg Pins!</li>
+  <li><strong>Right click</strong> a component to rotate</li>
+  <li><strong>Delete</strong> command and select the “plus” sign (appearing at centre
+of component on zooming) denoting the component to delete it.</li>
+  <li><strong>Label</strong> command to show the labels.</li>
+</ul>
+
+<p>You are expected to be done with the schematic using these commands.</p>
+
+<p>Now Type <strong>Board</strong> command and click Yes option to go to the next part.</p>
+
+<h3 id="making-the-physical-connections">2. Making the Physical Connections</h3>
+
+<ul>
+  <li><strong>Air Line</strong>: denotes a connection that must be made(shows that
+these two points ought to be physically connected).</li>
+  <li><strong>Tools&gt;Ratnest:</strong>Simplifies air wire connections(because the
+connections change with the physical positions of components and
+so, they can also overlap)</li>
+  <li><strong>Change package</strong>: helps to change the <strong>type</strong> of component.</li>
+  <li>Note: - If you made wrong connections and want to change a
+component, do it in the schematic file (part 1) and not here.</li>
+  <li>Menu&gt;Autorouter is used to find the possible physical routing by
+eagle’s own algorithm. It will return certain best possibilities,
+based on certain criteria.(Note:- Menu&gt;Autorouter&gt;Uncheck
+Continuous Option while auto routing again). In case of <strong>Single
+Layer PCBs</strong>(we mostly have only single layered ones):Top is
+Not Applicable.</li>
+  <li>We can do manual routing by <strong>Route Command.</strong></li>
+  <li><strong>Width</strong> of the connection is given in Inches, around 0.024 inches
+is a preferred width(it shouldn’t be very small because not many
+printing facilities may have that accuracy).</li>
+  <li>Change <strong>track shape</strong> by <strong>Right click</strong>(Avoid using right angles
+because of some</li>
+  <li><strong>Ripoff</strong> command changes a physical connection back to just an
+air wire.</li>
+  <li>It might be useful to create a common ground/power line around the
+PCB, it sometimes simplifies the complexity of connections.</li>
+  <li>Make sure to Save the file in the same folder as the project.</li>
+</ul>
+
+<h3 id="to-make-final-output-files-for-gerbv">To make final output files for Gerbv:</h3>
+
+<ul>
+  <li>File &gt; Cam Processor.</li>
+  <li>File &gt; Open &gt; Job == gerb274x.cam</li>
+  <li>Process Job In bottom</li>
+</ul>
+
+<h3 id="to-see-the-final-files-in-gerbv">To see the final files in Gerbv:</h3>
+
+<ul>
+  <li>Open the files with following extensions <code class="highlighter-rouge">.brd, .cmp, .plc, .sol, .stc, .sts</code>.</li>
+  <li>Using the <strong>text</strong> command, you can write text anywhere. Use it for
+specifying stuff to make circuit connection and component
+placement easier. Add these names for reference by choosing layer
+<strong>tNames</strong> and adding text.</li>
+  <li>Change board size using <strong>move command</strong> and moving the boundaries.</li>
+</ul>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:4000/blog/MPU6050/" class="btn" title="Motion Processing Unit">Previous</a>
+      
+      
+        <a href="http://localhost:4000/blog/3DPrinting/" class="btn" title="3D Printers">Next</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2018 Electronics and Robotics Club, IIT Bombay.<!-- Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/so-simple-jekyll-theme/" rel="nofollow">So Simple Theme</a>.--></span>
+<div class="social-icons">
+	
+	<a href="https://facebook.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Facebook" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://github.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  
+	
+  <a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:4000';
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

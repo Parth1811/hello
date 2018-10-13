@@ -1,0 +1,368 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Deep Learning Based Image Classification &#8211; Electronics and Robotics Club, IIT Bombay</title>
+<meta name="description" content="How deep neural networks can be taught to classify images using deep learning">
+<meta name="keywords" content="Neural Networks, Deep Learning">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Deep Learning Based Image Classification">
+<meta name="twitter:description" content="How deep neural networks can be taught to classify images using deep learning">
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://localhost:4000/images/sitelogo.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deep Learning Based Image Classification">
+<meta property="og:description" content="How deep neural networks can be taught to classify images using deep learning">
+<meta property="og:url" content="http://localhost:4000/blog/informative/deep-learning-based-image-classification/">
+<meta property="og:site_name" content="Electronics and Robotics Club, IIT Bombay">
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/blog/informative/deep-learning-based-image-classification/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Electronics and Robotics Club, IIT Bombay Feed">
+<link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet"> 
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+<link rel="stylesheet" href="http://localhost:4000/assets/css/team.css"> 
+<!-- Webfonts -->
+<script src="https://use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<!-- Modernizr -->
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
+
+<script src="http://localhost:4000/assets/js/scrolltop.js"></script>
+<link rel="stylesheet" href="http://localhost:4000/assets/css/scrolltop.css">
+</head>
+
+<body id="post">
+<!-- Return to Top -->
+<div onClick="scrollback()" id="return-to-top"><i class="fa fa-chevron-up"></i></div>
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:4000/" >Home</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/about/" >About</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/event/" >Events</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/blog/" >Blog</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/search/" >Search</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/team/" >The Team</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	<div class="wrap">
+      
+  		<a href="http://localhost:4000/" class="site-logo" rel="home" title="Electronics and Robotics Club, IIT Bombay"><img src="http://localhost:4000/images/sitelogo.png" width="200" height="200" alt="Electronics and Robotics Club, IIT Bombay logo" class="animated flipInX"></a>
+      
+      <h1 class="site-title animated pulse"><a href="http://localhost:4000/">Electronics and Robotics Club, IIT Bombay</a></h1>
+		<h2 class="site-description animated pulse" itemprop="description">A place for tinkerers and the sort!</h2>
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+<div id="main" role="main">
+  <article class="hentry">
+    <div class="header-img-overflow"><img src="http://localhost:4000/assets/blog/deep-learning-based-image-classification/cover.jpg" class="entry-feature-image" alt="Deep Learning Based Image Classification" ></div>
+    <div class="entry-wrapper zoomIn">
+      <header class="entry-header center">
+        
+          <h1 class="entry-title">Deep Learning Based Image Classification</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <!--
+        
+        -->
+        <span class="author vcard">By <span class="fn">Yash Bhalgat</span></span>
+        <span class="entry-date date published"><time datetime="2016-05-20T00:00:00+05:30"><i class="fa fa-calendar-o"></i> May 20, 2016</time></span>
+        
+        
+        
+	<ul class="entry-tags">
+          Tags: <li><a href="http://localhost:4000/tags/#Neural Networks" title="Pages tagged Neural Networks">Neural Networks</a></li><li><a href="http://localhost:4000/tags/#Deep Learning" title="Pages tagged Deep Learning">Deep Learning</a></li>
+        </ul>
+      </footer> 
+      <div class="entry-content">
+        <h4 id="pre-requisites">Pre-requisites</h4>
+
+<p>Idea about Artificial Neural Networks, good if you
+have familiarity with the ideas of supervised learning, logistic
+regression, gradient descent, SVM-based classification, k-means
+clustering, kernel tricks like KPCA, etc.</p>
+
+<h4 id="motivation">Motivation</h4>
+
+<p>Deep neural networks (DNNs) trained via backpropagation
+were recently shown to perform well on image classification tasks with
+lakhs of training images and lot of categories. The feature
+representation learned by these networks achieves state-of-the-art
+performance not only on the classification task for which the network
+was trained, but also on various other visual recognition tasks, for
+example: classification on various dataset; scene recognition, etc. This
+capability to generalize to new datasets makes supervised CNN
+(Convolutional Neural Networks) training an attractive approach for
+generic visual feature learning.</p>
+
+<h3 id="what-is-deep-learning--what-makes-it-deepsup1suphttpwwwnvidiacomcontenteventsgeoint2015lbrowndlimageclassificationgeointpdf">What is Deep Learning / What makes it “deep”<a href="http://www.nvidia.com/content/events/geoInt2015/LBrown_DL_Image_ClassificationGEOINT.pdf"><sup>1</sup></a>?</h3>
+
+<p><img src="http://localhost:4000/assets/blog/deep-learning-based-image-classification/image02.png" alt="image" /></p>
+
+<ul>
+  <li>
+    <p>1 million parameters</p>
+  </li>
+  <li>
+    <p>10 mil images</p>
+  </li>
+  <li>
+    <p>10 layers!!</p>
+  </li>
+</ul>
+
+<p>That’s what makes it “deep”!</p>
+
+<p>Deep learning methods aim at learning feature hierarchies with features
+from higher levels of the hierarchy formed by the composition of lower
+level features. For image classification tasks, the most effective deep
+networks used nowadays are the Convolutional Neural Networks (others
+include corrNets, restricted Boltzmann machines, Recurrent Neural
+Networks, etc.).</p>
+
+<h3 id="image-classification-with-cnns">Image Classification with CNNs</h3>
+
+<p>Each CNN has its own architecture - convolution layers, pooling layers
+(max pooling, weighted mean pooling, etc), fully connected layers et al.</p>
+
+<p>Three methods of training using a Conv Net:</p>
+
+<ol>
+  <li>
+    <p>Supervised</p>
+  </li>
+  <li>
+    <p>Unsupervised</p>
+  </li>
+  <li>
+    <p>Reinforcement</p>
+  </li>
+</ol>
+
+<p><img src="http://localhost:4000/assets/blog/deep-learning-based-image-classification/image05.png" alt="image" /></p>
+
+<p>The most common method is to learn the network using a huge set of
+training images. This approach is called the supervised learning of the
+network. To learn the network implied learning the filters in the
+convolution layer (filters are also called weights)</p>
+
+<p>It involves 2 phases - <em>Training</em> run and a accuracy <em>testing</em> run</p>
+
+<p>1) <strong>Training run:</strong> Pick a CNN architecture -&gt; Input a million
+training images spanning all categories -&gt; One or days of GPU
+computation</p>
+
+<p>2) <strong>Accuracy testing:</strong> If the accuracy is bad, fix the training set,
+tweak the training parameters -&gt; do it again</p>
+
+<p>CNN learnt with supervised learning give a high accuracy for
+classification tasks and the same network can be used for other tasks
+too, like scene detection.</p>
+
+<h3 id="introduction-of-discriminative-unsupervised-learning-in-neural-networks">Introduction of discriminative Unsupervised learning in Neural Networks</h3>
+
+<p>The downside of supervised training is the need for expensive labeling,
+as the amount of required labeled samples grows quickly the larger the
+model gets. For this reason, unsupervised learning remains an appealing
+paradigm, since it can make use of raw unlabeled images and videos.
+Furthermore, on vision tasks outside classification it is not even
+certain whether training based on object class labels is advantageous.
+For example, recent results show that it outperforms supervised feature
+learning also on descriptor matching.</p>
+
+<p>In Unsupervised learning, the filter (or weights) are not learnt
+directly from the training images. Sometimes, a predefined set of
+filters is chosen - best example being the Gabor filters - or the
+filters are extracted from the images ‘patches’ with some processing
+done on them.</p>
+
+<p><img src="http://localhost:4000/assets/blog/deep-learning-based-image-classification/image04.png" alt="image" /></p>
+
+<p><strong>fig: MNIST dataset classification using k-means clustering</strong></p>
+
+<p>A common framework used in unsupervised feature learning is <a href="http://ai.stanford.edu/~ang/papers/aistats11-AnalysisSingleLayerUnsupervisedFeatureLearning.pdf"><sup>2</sup></a> :</p>
+
+<ol>
+  <li>
+    <p>Extract random patches from unlabeled training images.</p>
+  </li>
+  <li>
+    <p>Apply a pre-processing stage to the patches.</p>
+  </li>
+  <li>
+    <p>Learn a feature-mapping using an unsupervised learning algorithm.</p>
+  </li>
+</ol>
+
+<p>Given the learned feature mapping and a set of labeled training images
+we can then perform feature extraction and classification:</p>
+
+<ol>
+  <li>
+    <p>Extract features from equally spaced sub-patches covering the
+input image.</p>
+  </li>
+  <li>
+    <p>Pool features together over regions of the input image to reduce the
+number of feature values.</p>
+  </li>
+  <li>
+    <p>Train a classifier to predict the labels given the feature vectors.</p>
+  </li>
+</ol>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>Image classification results can be hugely increased using some
+preprocessing (can be anything depending on the application). It is
+common practice to perform several simple normalization steps before
+attempting to generate features from data. In Unsupervised feature
+extraction, there are also some tricks like the <em>‘kernel trick’</em> which
+can improve the classification results.</p>
+
+<p>The feature vector length can always be reduced using some fully
+connected layers in the network. This can help speed-up the
+classification, but must be used carefully as to not compromise the
+accuracy. Much future work is going on in the direction of using
+unsupervised or semi-supervised neural networks, since as of now they
+are not very scalable.</p>
+
+<p>Deep learning, CNNs, corrNets, etc are THE most active fields in data
+analytics. And I believe can be learnt only through experimentation! So
+feel free to explore this ocean of deep learning! Enjoy!</p>
+
+<p>Regards,</p>
+
+<p>Yash Bhalgat.</p>
+
+<p>[1]: <a href="http://www.nvidia.com/content/events/geoInt2015/LBrown_DL_Image_ClassificationGEOINT.pdf">deep learning for image classification - Nvidia. 2015. 15 May.</a></p>
+
+<p>[2]: <a href="http://ai.stanford.edu/~ang/papers/aistats11-AnalysisSingleLayerUnsupervisedFeatureLearning.pdf">Coates, A. “An Analysis of Single-Layer Networks in Unsupervised Feature Learning.” 2011.</a></p>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:4000/blog/irc/" class="btn" title="Building a Maze Solving Bot">Previous</a>
+      
+      
+        <a href="http://localhost:4000/blog/informative/fundamentals-of-a-slam-algorithm/" class="btn" title="Fundamentals of a SLAM Algorithm">Next</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2018 Electronics and Robotics Club, IIT Bombay.<!-- Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/so-simple-jekyll-theme/" rel="nofollow">So Simple Theme</a>.--></span>
+<div class="social-icons">
+	
+	<a href="https://facebook.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Facebook" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://github.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  
+	
+  <a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:4000';
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Working of a Digital Light Processing Projector &#8211; Electronics and Robotics Club, IIT Bombay</title>
+<meta name="description" content="Describing the internals and working mechanism, as found in the How Things Work session">
+<meta name="keywords" content="Light Processing">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Working of a Digital Light Processing Projector">
+<meta name="twitter:description" content="Describing the internals and working mechanism, as found in the How Things Work session">
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://localhost:4000/images/sitelogo.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Working of a Digital Light Processing Projector">
+<meta property="og:description" content="Describing the internals and working mechanism, as found in the How Things Work session">
+<meta property="og:url" content="http://localhost:4000/blog/informative/working-of-a-dlp-projector/">
+<meta property="og:site_name" content="Electronics and Robotics Club, IIT Bombay">
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/blog/informative/working-of-a-dlp-projector/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Electronics and Robotics Club, IIT Bombay Feed">
+<link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet"> 
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+<link rel="stylesheet" href="http://localhost:4000/assets/css/team.css"> 
+<!-- Webfonts -->
+<script src="https://use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<!-- Modernizr -->
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
+
+<script src="http://localhost:4000/assets/js/scrolltop.js"></script>
+<link rel="stylesheet" href="http://localhost:4000/assets/css/scrolltop.css">
+</head>
+
+<body id="post">
+<!-- Return to Top -->
+<div onClick="scrollback()" id="return-to-top"><i class="fa fa-chevron-up"></i></div>
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:4000/" >Home</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/about/" >About</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/event/" >Events</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/blog/" >Blog</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/search/" >Search</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/team/" >The Team</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	<div class="wrap">
+      
+  		<a href="http://localhost:4000/" class="site-logo" rel="home" title="Electronics and Robotics Club, IIT Bombay"><img src="http://localhost:4000/images/sitelogo.png" width="200" height="200" alt="Electronics and Robotics Club, IIT Bombay logo" class="animated flipInX"></a>
+      
+      <h1 class="site-title animated pulse"><a href="http://localhost:4000/">Electronics and Robotics Club, IIT Bombay</a></h1>
+		<h2 class="site-description animated pulse" itemprop="description">A place for tinkerers and the sort!</h2>
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+<div id="main" role="main">
+  <article class="hentry">
+    <div class="header-img-overflow"><img src="http://localhost:4000/assets/blog/working-of-a-dlp-projector/cover.jpg" class="entry-feature-image" alt="Working of a Digital Light Processing Projector" ></div>
+    <div class="entry-wrapper zoomIn">
+      <header class="entry-header center">
+        
+          <h1 class="entry-title">Working of a Digital Light Processing Projector</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <!--
+        
+        -->
+        <span class="author vcard">By <span class="fn">Pranav Sankhe</span></span>
+        <span class="entry-date date published"><time datetime="2016-05-03T00:00:00+05:30"><i class="fa fa-calendar-o"></i> May 03, 2016</time></span>
+        
+        
+        
+	<ul class="entry-tags">
+          Tags: <li><a href="http://localhost:4000/tags/#Light Processing" title="Pages tagged Light Processing">Light Processing</a></li>
+        </ul>
+      </footer> 
+      <div class="entry-content">
+        <p>The Robotics Club in association of The Electronics Club of IIT Bombay conducts regular sessions named “How Things Work?” where we open up a device used in everyday life and try to understand how it works.</p>
+
+<p>On a particular session we opened up a DLP projector.</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Digital light processing is a display device based on optical micro-electro-mechanical technology. In simple words, it is the device which is used inside the projectors used for showing films in theatres. It was originally developed in 1987 by Dr.Larry Hornbeck of Texas Instruments. While the DLP imaging device was invented by Texas Instruments, the first DLP-based projector was introduced by Digital Projection Ltd in 1997</p>
+
+<p><br />
+<img src="http://localhost:4000/assets/blog/working-of-a-dlp-projector/image_0.jpg" alt="Components" /></p>
+
+<p><br /></p>
+
+<h2 id="components">Components</h2>
+
+<p><img src="http://localhost:4000/assets/blog/working-of-a-dlp-projector/image_1.jpg" alt="diagram" /></p>
+
+<ul>
+  <li><strong>Lamp</strong></li>
+  <li><strong>Condensing lens</strong></li>
+  <li><strong>Colour Filter</strong></li>
+  <li><strong>Shaping Lens</strong></li>
+  <li><strong>DMD (digital micromirror device)</strong></li>
+</ul>
+
+<h2 id="working-of-the-projector">Working of the Projector</h2>
+
+<h4 id="lamp-">Lamp :</h4>
+<p>The lamp is generally a Xenon arch lamp which is ignited by a 5000 - 20,000 volt pulse from a current-regulating ballast to initiate an arc between two electrodes in the quartz tube.</p>
+
+<h4 id="condensing-lens-">Condensing Lens :</h4>
+<p>The light passes through the condensing lens which converges light on the colour wheel.</p>
+
+<h4 id="colour-wheel-">Colour Wheel :</h4>
+<p>Now let’s understand what this colour wheel is. You can see in the diagram given above that there is a chip (DMD) which sends light to the screen. All that the chip can do is either send or not send light – making it black-and-white only. To create colour images, projector manufacturers include a colour wheel which rotates in synchronization over the DLP chip. As it rotates between red, blue and green, the DLP chip sends the correct pattern of light. Because the images go on and off the screen so quickly, the brain puts them together into one full-colour image. It gives us a sense of a continuous motion picture going on, a phenomenon known as <a href="https://en.wikipedia.org/wiki/Persistence_of_vision">Persistence</a>.</p>
+
+<h4 id="dmd-chip-">DMD Chip :</h4>
+<p>After passing through colour wheel light falls on the DMD chip. A DMD chip has on its surface several hundred thousand microscopic mirrors arranged in a rectangular array which correspond to the pixels in the image to be displayed. The mirrors can be individually rotated ±10-12°, to an on or off state. In the on state, light from the projector bulb is reflected into the lens making the pixel appear bright on the screen. In the off state, the light is directed elsewhere (usually onto a heatsink), making the pixel appear dark.</p>
+
+<h2 id="working-of-the-dmd-chip">Working of the DMD chip</h2>
+
+<p>The working mechanisms of a DMD chip is a very interesting combination of application of mechanical, electrical and optical engineering.</p>
+
+<p><br />
+<img src="http://localhost:4000/assets/blog/working-of-a-dlp-projector/image_2.jpg" alt="DMD chip" /></p>
+
+<p><br />
+The DMD chip has millions of small mirrors. Before any of the mirrors in the DMD chip switch to their on or off positions, the chip will rapidly decode a bit-streamed image code that enters through the semiconductor. It then converts the data from interlaced to progressive, allowing the picture to fade in. Next, the chip sizes the picture to fit the screen and makes any necessary adjustments to the picture, including brightness, sharpness and colour quality. Finally, it relays all the information to the mirrors, completing the whole process in just 16 microseconds.</p>
+
+<p>The mirrors are mounted on tiny mechanical hinges that enable them to tilt either toward the light source (ON) or away from it (OFF) up to +/- 12°, and as often as 5,000 times per second. When a mirror is switched on more than off, it creates a light gray pixel. Conversely, if a mirror is off more than on, the pixel will be a dark gray. Now combining this with the colour wheel, we can get all the colours we want. In simple words, the proportion of time the mirror is ON decides the intensity of the color which is sent to it by the color wheel.</p>
+
+<h4 id="lens">Lens</h4>
+<p>Finally all the data (pixels) obtained from the DMD chip is projected on screen after passing the light through a diverging lens and thus we get the desired visual output on the screen.</p>
+
+<p><strong>NOTE</strong>: The lens arrangement is made such that light from the lamp is passed through the condenser which focuses the beam on colour wheel and then the same beam has to be de-focussed in order to project it on the screen.</p>
+
+<p>For getting a better understanding of how a DLP works, you can watch this <a href="https://youtu.be/CI0cwk25CAs">YouTube video</a></p>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:4000/blog/tutorials/getting-started-with-beaglebone-black/" class="btn" title="Getting Started with Beaglebone Black">Previous</a>
+      
+      
+        <a href="http://localhost:4000/blog/projects/game-of-pong/" class="btn" title="Game Of Pong">Next</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2018 Electronics and Robotics Club, IIT Bombay.<!-- Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/so-simple-jekyll-theme/" rel="nofollow">So Simple Theme</a>.--></span>
+<div class="social-icons">
+	
+	<a href="https://facebook.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Facebook" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://github.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  
+	
+  <a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:4000';
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

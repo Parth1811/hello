@@ -1,0 +1,379 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Eagle Tutorial for absolute beginners. &#8211; Electronics and Robotics Club, IIT Bombay</title>
+<meta name="description" content="Eagle is a computer-aided circuit-designing,PCB designing and a circuit simulation software developed by Autodesk.">
+<meta name="keywords" content="Eagle, beginners, Tutorial">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Eagle Tutorial for absolute beginners.">
+<meta name="twitter:description" content="Eagle is a computer-aided circuit-designing,PCB designing and a circuit simulation software developed by Autodesk.">
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://localhost:4000/images/sitelogo.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Eagle Tutorial for absolute beginners.">
+<meta property="og:description" content="Eagle is a computer-aided circuit-designing,PCB designing and a circuit simulation software developed by Autodesk.">
+<meta property="og:url" content="http://localhost:4000/blog/eagle_beginner/">
+<meta property="og:site_name" content="Electronics and Robotics Club, IIT Bombay">
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/blog/eagle_beginner/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Electronics and Robotics Club, IIT Bombay Feed">
+<link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet"> 
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+<link rel="stylesheet" href="http://localhost:4000/assets/css/team.css"> 
+<!-- Webfonts -->
+<script src="https://use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<!-- Modernizr -->
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
+
+<script src="http://localhost:4000/assets/js/scrolltop.js"></script>
+<link rel="stylesheet" href="http://localhost:4000/assets/css/scrolltop.css">
+</head>
+
+<body id="post">
+<!-- Return to Top -->
+<div onClick="scrollback()" id="return-to-top"><i class="fa fa-chevron-up"></i></div>
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:4000/" >Home</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/about/" >About</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/event/" >Events</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/blog/" >Blog</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/search/" >Search</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/team/" >The Team</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	<div class="wrap">
+      
+  		<a href="http://localhost:4000/" class="site-logo" rel="home" title="Electronics and Robotics Club, IIT Bombay"><img src="http://localhost:4000/images/sitelogo.png" width="200" height="200" alt="Electronics and Robotics Club, IIT Bombay logo" class="animated flipInX"></a>
+      
+      <h1 class="site-title animated pulse"><a href="http://localhost:4000/">Electronics and Robotics Club, IIT Bombay</a></h1>
+		<h2 class="site-description animated pulse" itemprop="description">A place for tinkerers and the sort!</h2>
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header center">
+        
+          <h1 class="entry-title pulse">Eagle Tutorial for absolute beginners.</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <!--
+        
+        -->
+        <span class="author vcard">By <span class="fn">Sakshee Pimpale</span></span>
+        
+	
+        <span class="entry-date date published"><time datetime="2018-07-27T00:00:00+05:30"><i class="fa fa-calendar-o"></i>&nbsp;<strong>Last Updated:</strong> 2018-07-27</time></span>
+        
+        <!--
+        
+        -->
+        
+        
+        
+
+        <!--
+        <ul class="entry-tags">
+          Tags: <li><a href="http://localhost:4000/tags/#Eagle" title="Pages tagged Eagle">Eagle</a></li><li><a href="http://localhost:4000/tags/#beginners" title="Pages tagged beginners">beginners</a></li><li><a href="http://localhost:4000/tags/#Tutorial" title="Pages tagged Tutorial">Tutorial</a></li>
+        </ul>
+        -->
+
+      </footer> 
+      <div class="entry-content">
+        <p><strong>Eagle</strong> is a computer-aided circuit-designing,PCB designing and a circuit simulation software developed by <strong>Autodesk</strong>.I hope you will enjoy working with this light,easy-to-use and download yet useful application.</p>
+
+<h1>TABLE OF CONTENTS</h1>
+
+<ul id="markdown-toc">
+  <li><a href="#how-to-download-eagle" id="markdown-toc-how-to-download-eagle">HOW TO DOWNLOAD EAGLE?</a></li>
+  <li><a href="#making-a-new-project" id="markdown-toc-making-a-new-project">MAKING A NEW PROJECT</a></li>
+  <li><a href="#important-commands-neededdeletemoverotategroup" id="markdown-toc-important-commands-neededdeletemoverotategroup">IMPORTANT COMMANDS NEEDED:DELETE,MOVE,ROTATE,GROUP</a></li>
+  <li><a href="#special-commands-for-schematics" id="markdown-toc-special-commands-for-schematics">SPECIAL COMMANDS FOR SCHEMATICS</a></li>
+  <li><a href="#exporting-the-file" id="markdown-toc-exporting-the-file">EXPORTING THE FILE</a></li>
+</ul>
+<hr />
+
+<h2 id="how-to-download-eagle">HOW TO DOWNLOAD EAGLE?</h2>
+
+<p>You can download the software from <u><a href="https://www.autodesk.com/products/eagle/free-download">here.</a></u>
+The latest version is just 115Mb and installer gets downloaded in minutes.
+Run the installer and it gets downloaded quite easily.</p>
+
+<h2 id="making-a-new-project">MAKING A NEW PROJECT</h2>
+
+<p>Open Eagle.
+Then in control panel(which opens)-&gt;File-&gt;New-&gt;Project.Name the project
+Open up a new schematic using File-&gt;New-&gt;Schematic and then save it in the project directory using File-&gt;save as in schematic window with .sch extension.</p>
+
+<h3 id="working-with-the-schematic">Working with the schematic:</h3>
+
+<h4 id="step-1">Step 1:</h4>
+<ul>
+  <li>
+    <p><big>Adding components </big>:</p>
+
+    <p>There are inbuilt libraries in eagle from which components can directly be copied.Edit-&gt;ADD or directly click on ADD symbol in the toolbar to the left.To search for any keyword in the standard libraries :search  enter <em>keyword</em>.The * acts as a wildcard entry,it is absolutely necessary if we don’t have the exact name. Eg. if we want IC 555 timer we may search <em>555</em> and then get the required LM555 ic.</p>
+  </li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/blog/eagle_beginner/1.jpg" alt="Adding a component" />
+<small>
+– Click “ok”
+– Then right click to rotate.
+– Position by moving the mouse.
+– Left click to place.
+</small></p>
+
+<ul>
+  <li>
+    <p><big>Adding more libraries to the ADD feature:
+Visit <u><a href="https://www.diymodules.org/eagle-libraries ">this website</a></u> for libraries for libraries</big></p>
+
+    <p><small>Follow the  instructions from the given <u><a href="http://www.instructables.com/id/Adding-a-Library-to-Eagle-CAD/">link</a></u> to USE it:
+This will make the library elements appear as we use the ADD option.
+</small></p>
+  </li>
+</ul>
+
+<h4 id="step-2">Step 2:</h4>
+
+<ul>
+  <li>Make the connections using Draw-&gt;Net</li>
+  <li>Use a net instead of wire for electrical connections.
+(Nets will automatically form junctions when terminated on pins or other nets. Wire don’t make termination dots and wont auto-terminate the connection.)</li>
+</ul>
+
+<h2 id="important-commands-neededdeletemoverotategroup">IMPORTANT COMMANDS NEEDED:DELETE,MOVE,ROTATE,GROUP</h2>
+
+<p>In the toolbox to the left you will find all important commands.</p>
+
+<ul>
+  <li><b><big>DELETE:</big></b>
+    <ol>
+      <li>Click on delete tool in the toolbox to the left.</li>
+      <li>For every object in eagle(except for nets and buses) you will find a plus sign(crosshair).</li>
+      <li>Hover to the crosshair,left click and the object gets deleted.</li>
+    </ol>
+  </li>
+  <li><b><big>MOVE:</big></b>
+    <ol>
+      <li>Click on move tool in the toolbox to the left.</li>
+      <li>For every object in eagle(except for nets and buses) you will find a plus sign(crosshair).</li>
+      <li>Hover to the crosshair,left click ,move to desired location,left click again to place.</li>
+    </ol>
+  </li>
+  <li><b><big>ROTATE:</big></b>
+    <ol>
+      <li>Hovering over the crosswire with rotate tool selected and left clicking rotates the object.</li>
+    </ol>
+  </li>
+  <li><b><big>GROUP:</big></b>
+    <ol>
+      <li>Use the group tool.</li>
+      <li>Draw polygon covering group elements.Right click to complete it.</li>
+      <li>Use the command delete or move or rotate  +ctrl+right click to perform the action on the group.</li>
+    </ol>
+  </li>
+  <li><b><big>ERC (Electrical Rule Check)</big></b>
+    <ol>
+      <li>This command in toolbox, helps to check electrical errors.</li>
+    </ol>
+  </li>
+</ul>
+
+<center>There are many more useful tools in the toolbox.</center>
+<p><img src="http://localhost:4000/assets/blog/eagle_beginner/2.jpg" alt="Commands under Edit option" /></p>
+
+<h2 id="special-commands-for-schematics">SPECIAL COMMANDS FOR SCHEMATICS</h2>
+
+<table>
+  <tbody>
+    <tr>
+      <td>TEXT</td>
+      <td>Insert Text</td>
+    </tr>
+    <tr>
+      <td>Junction</td>
+      <td>Place connection point</td>
+    </tr>
+    <tr>
+      <td>INVOKE</td>
+      <td>Add certain ‘gate’ from a placed device</td>
+    </tr>
+    <tr>
+      <td>LABEL</td>
+      <td>Provide label to bus or net</td>
+    </tr>
+    <tr>
+      <td>GATESWAP</td>
+      <td>Swap equivalent ‘gates’</td>
+    </tr>
+    <tr>
+      <td>PINSWAP</td>
+      <td>Swap equivalent pins</td>
+    </tr>
+    <tr>
+      <td>BOARD</td>
+      <td>Create a board from a schematic</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Click on them. <br />
+Directions to use each are provided in eagle at the bottom.
+<img src="http://localhost:4000/assets/blog/eagle_beginner/3.jpg" alt="Commands under draw option" /></p>
+
+<h2 id="exporting-the-file">EXPORTING THE FILE</h2>
+
+<ul>
+  <li><big><b>As pdf</b></big>
+( in schematic window)
+    <ol>
+      <li>Chose Print to file(PDF) in Printer.</li>
+      <li>Chose the location of output PDF file in Output file option.</li>
+      <li>Click OK and we’re done.
+<img src="http://localhost:4000/assets/blog/eagle_beginner/4.jpg" alt="export as pdf" /></li>
+    </ol>
+  </li>
+  <li><big><b>As Image</b></big>
+    <ol>
+      <li>File-&gt;Export-&gt;Image</li>
+      <li>In the dialog box that appears,</li>
+      <li>Chose the location and name of the imagederised and click Ok.
+<img src="http://localhost:4000/assets/blog/eagle_beginner/5.jpg" alt="export as image" /></li>
+    </ol>
+  </li>
+</ul>
+
+<p><strong><em>Time to make some good circuit design using eagle. Happy tinkering!</em></strong></p>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:4000/events/blah" class="btn" title="BLAH">Previous</a>
+      
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2018 Electronics and Robotics Club, IIT Bombay.<!-- Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/so-simple-jekyll-theme/" rel="nofollow">So Simple Theme</a>.--></span>
+<div class="social-icons">
+	
+	<a href="https://facebook.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Facebook" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://github.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  
+	
+  <a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:4000';
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

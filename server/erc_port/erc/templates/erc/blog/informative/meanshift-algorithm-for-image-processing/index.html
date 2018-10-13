@@ -1,0 +1,281 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Meanshift Algorithm for Image Processing &#8211; Electronics and Robotics Club, IIT Bombay</title>
+<meta name="description" content="A very basic, yet essential, algorithm for removing noise and forming Clusters in an image.">
+<meta name="keywords" content="Algorithms, Mean Shift Algorithm">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Meanshift Algorithm for Image Processing">
+<meta name="twitter:description" content="A very basic, yet essential, algorithm for removing noise and forming Clusters in an image.">
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://localhost:4000/images/sitelogo.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Meanshift Algorithm for Image Processing">
+<meta property="og:description" content="A very basic, yet essential, algorithm for removing noise and forming Clusters in an image.">
+<meta property="og:url" content="http://localhost:4000/blog/informative/meanshift-algorithm-for-image-processing/">
+<meta property="og:site_name" content="Electronics and Robotics Club, IIT Bombay">
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/blog/informative/meanshift-algorithm-for-image-processing/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Electronics and Robotics Club, IIT Bombay Feed">
+<link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet"> 
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+<link rel="stylesheet" href="http://localhost:4000/assets/css/team.css"> 
+<!-- Webfonts -->
+<script src="https://use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<!-- Modernizr -->
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
+
+<script src="http://localhost:4000/assets/js/scrolltop.js"></script>
+<link rel="stylesheet" href="http://localhost:4000/assets/css/scrolltop.css">
+</head>
+
+<body id="post">
+<!-- Return to Top -->
+<div onClick="scrollback()" id="return-to-top"><i class="fa fa-chevron-up"></i></div>
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:4000/" >Home</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/about/" >About</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/event/" >Events</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/blog/" >Blog</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/search/" >Search</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/team/" >The Team</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	<div class="wrap">
+      
+  		<a href="http://localhost:4000/" class="site-logo" rel="home" title="Electronics and Robotics Club, IIT Bombay"><img src="http://localhost:4000/images/sitelogo.png" width="200" height="200" alt="Electronics and Robotics Club, IIT Bombay logo" class="animated flipInX"></a>
+      
+      <h1 class="site-title animated pulse"><a href="http://localhost:4000/">Electronics and Robotics Club, IIT Bombay</a></h1>
+		<h2 class="site-description animated pulse" itemprop="description">A place for tinkerers and the sort!</h2>
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+<div id="main" role="main">
+  <article class="hentry">
+    <div class="header-img-overflow"><img src="http://localhost:4000/assets/blog/meanshift-algorithm-for-image-processing/cover.png" class="entry-feature-image" alt="Meanshift Algorithm for Image Processing" ></div>
+    <div class="entry-wrapper zoomIn">
+      <header class="entry-header center">
+        
+          <h1 class="entry-title">Meanshift Algorithm for Image Processing</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <!--
+        
+        -->
+        <span class="author vcard">By <span class="fn">Dhruv Ilesh Shah</span></span>
+        <span class="entry-date date published"><time datetime="2016-03-24T00:00:00+05:30"><i class="fa fa-calendar-o"></i> March 24, 2016</time></span>
+        
+        
+        
+	<ul class="entry-tags">
+          Tags: <li><a href="http://localhost:4000/tags/#Algorithms" title="Pages tagged Algorithms">Algorithms</a></li><li><a href="http://localhost:4000/tags/#Mean Shift Algorithm" title="Pages tagged Mean Shift Algorithm">Mean Shift Algorithm</a></li>
+        </ul>
+      </footer> 
+      <div class="entry-content">
+        <p><strong><u>Pre-requisites</u></strong> - Basic idea of matrices(wrt pixels), a <a href="https://en.wikipedia.org/wiki/Kernel_(image_processing)">kernel or convolution matrix</a>, local binary patterns, high-school statistics principles and <em>enthu</em>!</p>
+
+<p><img src="http://localhost:4000/assets/blog/meanshift-algorithm-for-image-processing/demo_org.png" alt="Original Image" /> <img src="http://localhost:4000/assets/blog/meanshift-algorithm-for-image-processing/demo_4.png" alt="Image after using the algorithm" /> <br />
+One of the most common and important applications of Image Processing remains <em>Edge-Detection</em>. The ‘algorithm’ followed for <a href="https://en.wikipedia.org/wiki/Canny_edge_detector">Canny-edge Detection</a> is as follows:</p>
+
+<ul>
+  <li>Apply a suitable filter to smooth the image in order to remove the noise</li>
+  <li>Find the intensity gradients of the image</li>
+  <li>Apply non-maximum suppression to get rid of spurious response to edge detection</li>
+  <li>Apply double threshold to determine potential edges</li>
+  <li>Track edge by hysteresis: Finalize the detection of edges by suppressing all the other edges that are weak and not connected to strong edges</li>
+</ul>
+
+<p>As you can see, the most very first step involves filtering and removal of the noise. <br />
+<strong>WHAT IS THIS <em>NOISE</em>?</strong>
+In the sense used here, <em>noise</em> refers to subtle variations in pixel definitions, that may be recognised as an edge, but is most certainly not one. In the same sense as signals, it is unwanted in this purpose and needs to reduced.</p>
+
+<h2 id="the-statistics">The Statistics</h2>
+<p>The algorithm, in simple words, involves replacing each pixel definition with one obtained by applying the kernel on it - in general, forming a sort of mean application - which is similar to averaging out and minimising the noise.</p>
+
+<p><img src="http://localhost:4000/assets/blog/meanshift-algorithm-for-image-processing/meanshift_fx.png" alt="Meanshift Principle" /></p>
+
+<p>Here, <em>g</em> refers to the Kernel operation applied on each element Xi, where X is an assumed mean and <em>h</em> is a parameter called <u>resolution</u>. The obtained expression m(x) is referred to as the Mean Shift, on following this procedure for a large number of times, this m(x) converges to zero. We wish to minimise this m(x), without losing much information, so that further techniques of gradient can be applied for edge-detection. This is similar to <a href="http://mathworld.wolfram.com/JacobiMethod.html">Jacobi’s Method</a> of iteration.</p>
+
+<h2 id="the-algorithm">The Algorithm</h2>
+<p>Now, coming to the real application part of the algorithm, this method involves applying a suitable convulation matrix to the image matrix to smoothen out the edges. This matrix can be of various types, and optimised for better results. Some simple types include:</p>
+
+<ol>
+  <li>Flat Kernel (linear)</li>
+  <li>Gaussian Kernel (exponential)</li>
+  <li>Epanechikov Kernel (quadratic)</li>
+</ol>
+
+<p>The simplest of these is the Flat Kernel, in which the pixel’s value is changed to the averaged value of it’s surroundings, with equal weight to each pixel. <img src="http://localhost:4000/assets/blog/meanshift-algorithm-for-image-processing/flat_kernel.png" alt="Flat Kernel" /></p>
+
+<p>A sample code for this algorithm, implemented in ‘MATLAB’,  is as follows:</p>
+
+<figure class="highlight"><pre><code class="language-matlab" data-lang="matlab">	<span class="n">it</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">;</span> <span class="c1">%set the number of iterations of the algorithm</span>
+	<span class="k">for</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">it</span>
+    	<span class="k">for</span> <span class="nb">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">:</span><span class="n">nx</span><span class="o">-</span><span class="mi">2</span>
+        	<span class="k">for</span> <span class="nb">j</span> <span class="o">=</span> <span class="mi">2</span><span class="p">:</span><span class="n">ny</span><span class="o">-</span><span class="mi">2</span>
+            	<span class="n">Vt</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">j</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">V</span><span class="p">(</span><span class="nb">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="nb">j</span><span class="p">)</span> <span class="o">+</span> <span class="n">V</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">V</span><span class="p">(</span><span class="nb">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="nb">j</span><span class="p">)</span> <span class="o">+</span> <span class="n">V</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">j</span><span class="o">-</span><span class="mi">1</span><span class="p">))/</span><span class="mi">4</span><span class="p">;</span> <span class="c1">% Kernel Definition</span>
+        	<span class="k">end</span>        
+    	<span class="k">end</span>
+    	<span class="n">V</span><span class="o">=</span><span class="n">Vt</span><span class="p">;</span>
+	<span class="k">end</span></code></pre></figure>
+
+<p>Here, V is the image matrix of ‘nx X ny’ and Vt is a dummy matrix of same size, used during the loop. The filter can be changed by altering the line marked as <em>Kernel Definition</em>.
+Basically, the algorithm can be used to merge modes and generate clusters.</p>
+
+<ul>
+  <li><em>Modes</em>- Modes refer to the peaks in color intensities in the pixel map. When plotted, these are the peaks in ‘3D-plot’.</li>
+  <li><em>Clusters</em>- Clusters refer to the groups of similarly defined pixels, ie, groups with similar color or compositon.</li>
+</ul>
+
+<p>As you can see in the images below, as the number of iterations increase, modes get merged and a cluser is formed.</p>
+
+<p><strong>THE PARAMETERS:</strong> The alterable parameters include:
+*‘it’ or the number of iterations. Increasing ‘it’ would increase the merge rate, but also increase the computational cost as number of iterations would increase. Hence, there is an optimised upper bound for this value.
+<img src="http://localhost:4000/assets/blog/meanshift-algorithm-for-image-processing/Meanshift0.jpg" alt="Original Image - 2 modes" /> <img src="http://localhost:4000/assets/blog/meanshift-algorithm-for-image-processing/Meanshift100.jpg" alt="100 Iterations" /> <img src="http://localhost:4000/assets/blog/meanshift-algorithm-for-image-processing/Meanshift500.jpg" alt="500 Iterations" /></p>
+
+<p>*‘h’ or resolution is a parameter used in the statistical definition. Since it is in the denominator, it can play a huge role in the smoothening effect as shown. In general, a large ‘h’ would mean faster convergence, larger clusters and more loss of information. This value can be tweaked as desired, for optimal results.</p>
+
+<p><img src="http://localhost:4000/assets/blog/meanshift-algorithm-for-image-processing/meanshift_H_org.png" alt="Original Image" /></p>
+
+<p><img src="http://localhost:4000/assets/blog/meanshift-algorithm-for-image-processing/meanshift_H_6.png" alt="h = 6" /> <img src="http://localhost:4000/assets/blog/meanshift-algorithm-for-image-processing/meanshift_H_16.png" alt="h = 16" /></p>
+
+<p>For more such example, you can refer to <a href="https://www.inf.tu-dresden.de/content/institutes/ki/is/VORTRAG/Vortrag_Huong_Nguyen.pdf">this PDF</a>.</p>
+
+<p><strong>ADVANTAGES</strong>
+Comparing with other clustering algo K-means, it does not ASSUME any cluster etc. and the algo ensures that clusters are sorted automatically. Also, it is robust and works for any no. of (non-predefined) modes.</p>
+
+<p><strong>DRAWBACKS</strong>
+The iterative technique is highly redundant and computationally expensive; also, the method doesnt work well in free space (3D), as there may exist many local maximas that converge to optimas and mode isolation cannot be done.</p>
+
+<p>This concludes the summary of an essential algorithm in the art of Image Processing. Hope you enjoyed it!</p>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:4000/blog/informative/glimpse-of-the-naive-bayes-classifier/" class="btn" title="Glimpse Of The Naive Bayes' Classifier">Previous</a>
+      
+      
+        <a href="http://localhost:4000/blog/tutorials/getting-started-with-beaglebone-black/" class="btn" title="Getting Started with Beaglebone Black">Next</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2018 Electronics and Robotics Club, IIT Bombay.<!-- Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/so-simple-jekyll-theme/" rel="nofollow">So Simple Theme</a>.--></span>
+<div class="social-icons">
+	
+	<a href="https://facebook.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Facebook" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://github.com/erciitb" title="Electronics and Robotics Club, IIT Bombay on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  
+	
+  <a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:4000';
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>
