@@ -19,8 +19,16 @@ def login_user(request):
         if user is not None:
             login(request, user)
         return HttpResponseRedirect('/')
-
-
+    else:
+        print ("=-------IN HERE------------")
+        # username = request.POST['username']
+        # password = request.POST['password']
+        print (request.__dict__.keys())
+        print (request.resolver_match)
+        # user = authenticate(username=username,password=password)
+        # if user is not None:
+        #     login(request, user)
+        return HttpResponseRedirect('/')
 
 def student_signup(request):
     if request.method == "GET":
