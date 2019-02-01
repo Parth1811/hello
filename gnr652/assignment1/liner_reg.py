@@ -3,49 +3,61 @@ import numpy as np
 
 
 data_filepath = 'data/data.csv'
-num_of_iter = 500000
+num_of_iter = 50000
 num_of_batch = 10
 alpha = 0.005
 lamba = 0.1
+train_partition = 108
 
 batch_results = []
 
 # data = open(data_filepath, 'w').readlines()
-data = np.genfromtxt(data_filepath, delimiter=',')
-data = np.array(data[1:])
-data_array = np.ones((data.shape[0], data.shape[1]+1))
-data_array[:,1:] = data
-data = data_array
+def get_data():
+    data = np.genfromtxt(data_filepath, delimiter=',')
+    data = np.array(data[1:])
+    data_array = np.ones((data.shape[0], data.shape[1]+1))
+    data_array[:,1:] = data
+    return data_array
 
-for j in range(num_of_batch):
-    x_train = data[:108,:-1]
-    y_train = data[:108,-1]
-    x_test = data[108:,:-1]
-    y_test = data[108:,-1]
+def partition_test_train_data(data):
+    x_train = data[:train_partition,:-1]
+    y_train = data[:train_partition,-1]
+    x_test = data[train_partition:,:-1]
+    y_test = data[train_partition:,-1]
 
+    return x_train, y_train, x_test, y_test
 
-    weights = np.random.rand(18)
+def Loss(X, Y, W):
+    diff = X.dot(W) - Y
+    func_J = 0.5* ((diff**2).sum() + lamba* W.transpose().dot(W))
+    avg_J = func_J / X.shape[0]
+    return avg_J
 
+def gradient(X, Y, W):
+    grad = X.transpose().dot(X.dot(W) - Y) + (lamba * W)
+    grad /= X.shape[0]
+    return grad
+
+def train_gradient(x_train, y_train, weights):
     for i in range (num_of_iter):
-        diff = x_train.dot(weights) - y_train
-        func_J = 0.5* (((diff)**2).sum() + lamba* weights.transpose().dot(weights))
-        avg_J = func_J / x_train.shape[0]
-        gradient = (x_train.transpose().dot((diff)) + lamba * weights) / x_train.shape[0]
-        weights = weights - alpha * gradient
-        # weights = np.random.rand(18)
+        loss = Loss(x_train, y_train, weights)
+        grad = gradient(x_train, y_train, weights)
+        weights -= alpha * gradient(x_train, y_train, weights)
 
-        #prediction
-        if(i == 0 or i==num_of_iter-1):
-            test_diff = x_test.dot(weights) - y_test
-            test_avg_J = 0.5 * (((diff)**2).sum() + lamba* weights.transpose().dot(weights)) / x_test.shape[0]
-            print avg_J
-            print test_avg_J
-            print '--------------'
+        # if(i == 0 or i==num_of_iter-1):
+        #     test_loss = Loss(x_test, y_test, weights)
+        #     print loss
+        #     print test_loss
+        #     print '--------------'
 
-    batch_results.append((avg_J, test_avg_J))
-    np.random.shuffle(data)
+    return weights
 
-batch_avg_J = 0
-for result in batch_results:
-    batch_avg_J += result[1]
-print ("-----------"+str(batch_avg_J/num_of_batch)+"--------------")
+if __name__ == '__main__':
+    data = get_data()
+    x_train, y_train, x_test, y_test = partition_test_train_data(data)
+    weights = np.random.rand(18)
+    for batch_id in range(num_of_batch):
+        weights = train_gradient(x_train, y_train, weights)
+        test_loss = Loss(x_test, y_test, weights)
+        print test_loss
+        print "--------------"
