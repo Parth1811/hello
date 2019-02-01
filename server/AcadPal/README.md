@@ -1,2 +1,0 @@
-# Development
-Product Development AcadPal 
