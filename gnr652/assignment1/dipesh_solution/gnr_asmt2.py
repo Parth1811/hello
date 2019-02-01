@@ -6,7 +6,7 @@ filepath ="./data/data.csv"
 myFile = np.genfromtxt(filepath, delimiter=',')
 myFile=myFile[1:]
 myFile1=np.ones((135,19))
-myFile1[:,1:] = myFile
+myFile1 = myFile
 myFile = myFile1
 
 ######### Initializing W and other variables  ###########
