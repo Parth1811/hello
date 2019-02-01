@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Matsya</title>
+    <meta charset="utf-8" />
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'home_page/css/bootstrap.css' %}"
+    type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'home_page/css/circle.css' %}">
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+    {% include "home_page/style.html" %}
+</head>
+
+<body class="body" style="background-color:#B2EBF2">
+    <div class="container-fluid" style="min-height:95%; ">
+        <div class="row">
+          <div class="col-sm-2">
+          <br><center>
+          <img src="{% static 'home_page/img/profile.jepg' %}"
+              class="responsive-img" style='max-width:150px;' alt="face">
+          </center>
+          </div>
+          <div class="col-sm-10">
+          <br><center>
+          <h3>Matsya Testing Interface</h3>
+          </center>
+        </div>
+    </div>
+
+    {% include "home_page/navbar.html"%}
+
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer>
+        <div style='margin-left:15px'>
+            <p><a href="#" target="blank">Contact</a> | <a href="#"
+            target="blank">LinkedIn</a> | <a href="#"
+            target="blank">Twitter</a> | <a href="#"
+            target="blank">Google+</a></p>
+        </div>
+    </footer>
+
+    {% include "home_page/script.html"%}
+
+</body>
+</html>

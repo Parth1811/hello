@@ -25,7 +25,11 @@ SECRET_KEY = '^g(tnuojt2uxm@yg%cqs#0=3s@x_c7_#_1-11#(o-9@m)&485%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+<<<<<<< HEAD:server/bug_test/bug_test/settings.py
 ALLOWED_HOSTS = []
+=======
+ALLOWED_HOSTS = ["10.101.202.69","127.0.0.1","192.168.0.103"]
+>>>>>>> jekyll_project:server/testing_webserver/testing_webserver/settings.py
 
 
 # Application definition

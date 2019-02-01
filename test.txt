@@ -1,0 +1,51 @@
+header: 
+  seq: 7
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+velocity: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+position: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+height: 0.0
+dt: 0.0
+---
+header: 
+  seq: 8
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+velocity: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+position: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+height: 0.0
+dt: 0.0
+---
+header: 
+  seq: 9
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+velocity: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+position: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+height: 0.0
+dt: 0.0
+---

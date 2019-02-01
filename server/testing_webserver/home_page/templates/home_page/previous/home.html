@@ -1,0 +1,68 @@
+{% extends "home_page/header.html" %}
+{% block content %}
+<p><h3>MASTYA COMING ONLINE!!!!!!................</h3></p>
+
+<!--
+<a class="btn btn-primary" href="1234/" role="button">TEST1</a>
+<a class="btn btn-danger" href="test_all/" role="button">TEST2</a>
+--!>
+
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert {{message.level_tag}}">
+    <span class="closebtn">&times;</span>
+    {{message}}
+    </div>
+    {% endfor %}
+{% endif %}
+
+<div class = "col-sm-10" align= "centre">
+{% if battery_status %}
+<div class="c100 p{{battery_status}} medium">
+    <span>Battery <p>{{battery_status}}</p></span>
+    <div class="slice">
+        <div class="bar"></div>
+        <div class="fill"></div>
+    </div>
+</div>
+{%endif%}
+
+{% if battery_status == False %}
+<div class="c100 p100 medium">
+    <span><small>Unavailable</small></span>
+    <div class="slice">
+        <div class="bar"></div>
+        <div class="fill"></div>
+    </div>
+</div>
+{%endif%}
+</div>
+
+
+<div class = "row">
+    <div  align="center"  class="col-sm-6">
+    <div class="row-sm-60" align="centre">
+        <P><a href= "/topics/test_all/" target="_blank"><button class = "button button2">TEST ALL
+        </button></a></P>
+        </div>
+        {%for button in topic_list%}
+            <a href= "/topics/{{button.id}}/" ><button class="button button1">
+            {{button.title}}</button></a>
+        {%endfor%}
+    </div>
+
+    <div class="col-sm-6">
+        {%for button in function_list%}
+            <a href="/functions/{{button.id}}/" ><button class="button button3">
+            {{button.title}}</button></a>
+        {%endfor%}
+    </div>
+</div>
+</p>
+
+<div class = "row">
+<iframe style="width:100%;height:250px" src="1234/"></iframe>
+</div>
+
+
+{% endblock %}
