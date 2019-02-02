@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 #GLOBAL VARIABLES
 NUM_OF_ITER = 500000
 LOG_DATA = 1000
-NUM_OF_BATCHES = 10
+NUM_OF_BATCHES = 1
 ALPHA = 0.005
 LAMBDA = 0.1
 TRAIN_DATA_SIZE = 108
@@ -138,7 +138,7 @@ if __name__ == '__main__':
 
 
 
-    plt.plot(test_loss_history['grad_dec'])
-    plt.plot(test_loss_history['closed_reg'])
-    plt.show()
+    plt.plot(train_loss_history['grad_dec'])
+    #plt.plot(test_loss_history['closed_reg'])
+    plt.savefig("loss_grad.png")
     # print 'Average Loss on Test data : %f ' % (np.array(batch_results).sum()/NUM_OF_BATCHES)
