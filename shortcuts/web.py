@@ -9,6 +9,8 @@ LARGE_FONT_SIZE = 35
 BLACK = (0,0,0)
 WHITE = (255,255,255)
 GREEN = (0,255,0)
+ORANGE = (255,143,00)
+BLUE = (0,77,64)
 
 WEBSITE_LIST = [
     ('EE720', 'https://www.ee.iitb.ac.in/~sarva/courses/EE720/Spring2019.html'),
@@ -22,12 +24,15 @@ WEBSITE_LIST = [
 os.environ['SDL_VIDEO_CENTERED'] = '1'
 pygame.init()
 
-def text(screen, label, x_location, y_location, size = NORMAL_FONT_SIZE, color = BLACK):
+def text(screen, label, x_location, y_location, size = NORMAL_FONT_SIZE, color = WHITE, background_color = (0,0,0,0)):
     basicfont = pygame.font.SysFont(None, size)
+    text_surface2 = basicfont.render(label, True, color)
+    text_surface2.set_alpha(128)
     text_surface = basicfont.render(label, True, color)
+    text_surface.fill(background_color)
+    text_surface.blit(text_surface2, (0,0))
     text_rect = text_surface.get_rect()
     text_rect.center = (x_location , y_location) #self.screen.get_rect().centerx
-    text_surface.set_alpha(128)
     screen.blit(text_surface, text_rect)
 
 def apply_settings(WEBSITE_INDEX):
@@ -35,6 +40,11 @@ def apply_settings(WEBSITE_INDEX):
 
 screen = pygame.display.set_mode((BASE_APP_WIDTH , BASE_APP_HEIGHT))
 pygame.display.set_caption("select Website to be launced")
+image = pygame.image.load('/home/parth/shortcuts/firefox.png')
+image = pygame.transform.scale(image, screen.get_size())
+# pygame.transform.scale(image, screen.get_size())
+
+
 
 WEBSITE_INDEX = -1
 WEBSITE_NAME = ''
@@ -55,11 +65,12 @@ while True:
                 exit()
 
 
-    screen.fill(WHITE)
+    # screen.fill(WHITE)
+    screen.blit(image, (0,0))
     text(screen, "Please select the Website to be launched", BASE_APP_WIDTH/2, BASE_APP_HEIGHT/20, LARGE_FONT_SIZE)
 
     for i, website in enumerate(WEBSITE_LIST):
-        text(screen, str(i+1)+") "+ website[0], BASE_APP_WIDTH/2, (i+5)*BASE_APP_HEIGHT/23)
+        text(screen, str(i+1)+") "+ website[0], BASE_APP_WIDTH/2, (i+5)*BASE_APP_HEIGHT/15, size=LARGE_FONT_SIZE, background_color = ORANGE)
 
-    text(screen, "Selected Website:- "+ WEBSITE_NAME, BASE_APP_WIDTH/2, BASE_APP_HEIGHT- (BASE_APP_HEIGHT/20), LARGE_FONT_SIZE, GREEN)
+    text(screen, "Selected Website:- "+ WEBSITE_NAME, BASE_APP_WIDTH/2, BASE_APP_HEIGHT- (BASE_APP_HEIGHT/20), LARGE_FONT_SIZE, BLUE)
     pygame.display.update()
