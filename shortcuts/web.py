@@ -13,12 +13,31 @@ ORANGE = (255,143,00)
 BLUE = (0,77,64)
 
 WEBSITE_LIST = [
-    ('EE720', 'https://www.ee.iitb.ac.in/~sarva/courses/EE720/Spring2019.html'),
-    ('EE230', 'http://wel.ee.iitb.ac.in/teaching_labs/WEL%20Site/ee230/Labsheets-2019/labsheets_2019.html'),
-    ('Django Github', 'https://github.com/django/django'),
+    ["Academic",
+        ('EE720', 'https://www.ee.iitb.ac.in/~sarva/courses/EE720/Spring2019.html'),
+        ('EE230', 'http://wel.ee.iitb.ac.in/teaching_labs/WEL%20Site/ee230/Labsheets-2019/labsheets_2019.html'),
+        ('EE214', 'https://moodle.iitb.ac.in/course/view.php?id=8950'),
+        ('EE222', 'https://moodle.iitb.ac.in/mod/forum/view.php?id=69752'),
+        ('EE234', 'https://moodle.iitb.ac.in/course/view.php?id=8954'),
+        ('GNR652', 'https://moodle.iitb.ac.in/mod/forum/view.php?id=69912'),
+    ],
+
+    ["Github",
+        ('Django Github', 'https://github.com/django/django'),
+        ('Django PR Github', 'https://github.com/django/django/pulls'),
+        ('Robosub Github', 'https://github.com/auv-iitb/robosub'),
+        ('Hello Github', 'https://github.com/Parth1811/hello'),
+    ],
+
+
     ('OverLeaf', 'https://www.overleaf.com/project'),
     ('JioSaavn', 'https://www.jiosaavn.com/'),
-    ('WakaTime', 'https://wakatime.com/dashboard')
+    ('WakaTime', 'https://wakatime.com/dashboard'),
+
+    ["Gmail",
+        ('Gmail-parth4iitb', 'https://mail.google.com/mail/u/1/#inbox'),
+        ('Gmail-django.parth', 'https://mail.google.com/mail/u/3/#inbox'),
+    ]
 ]
 
 os.environ['SDL_VIDEO_CENTERED'] = '1'
@@ -36,6 +55,8 @@ def text(screen, label, x_location, y_location, size = NORMAL_FONT_SIZE, color =
     screen.blit(text_surface, text_rect)
 
 def apply_settings(WEBSITE_INDEX):
+    if WEBSITE_INDEX == -1:
+        return
     os.system('nohup firefox ' + WEBSITE_LIST[WEBSITE_INDEX][1] + ' >/dev/null 2>&1 &')
 
 screen = pygame.display.set_mode((BASE_APP_WIDTH , BASE_APP_HEIGHT))
@@ -56,8 +77,12 @@ while True:
         if event.type == pygame.KEYDOWN:
             for i, website in enumerate(WEBSITE_LIST):
                 if event.key == pygame.K_1 + i:
-                    WEBSITE_INDEX = i
-                    WEBSITE_NAME = website[0]
+                    if type(website) == type([]):
+                        website.pop(0)
+                        WEBSITE_LIST = website
+                    else:
+                        WEBSITE_INDEX = i
+                        WEBSITE_NAME = website[0]
             if event.key == pygame.K_RETURN:
                 apply_settings(WEBSITE_INDEX)
                 exit()
