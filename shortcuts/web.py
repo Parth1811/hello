@@ -1,5 +1,6 @@
-import pygame
+from copy import deepcopy
 import os
+import pygame
 
 BASE_APP_HEIGHT = 400
 BASE_APP_WIDTH = 600
@@ -12,7 +13,7 @@ GREEN = (0,255,0)
 ORANGE = (255,143,00)
 BLUE = (0,77,64)
 
-WEBSITE_LIST = [
+GLOBAL_WEBSITE_LIST = [
     ["Academic",
         ('EE720', 'https://www.ee.iitb.ac.in/~sarva/courses/EE720/Spring2019.html'),
         ('EE230', 'http://wel.ee.iitb.ac.in/teaching_labs/WEL%20Site/ee230/Labsheets-2019/labsheets_2019.html'),
@@ -40,6 +41,11 @@ WEBSITE_LIST = [
     ]
 ]
 
+WEBSITE_LIST = deepcopy(GLOBAL_WEBSITE_LIST)
+PREV_WEBSITE_LIST = None
+NEXT_WEBSITE_LIST = None
+NESTED_WEBSITE_NAME = ''
+
 os.environ['SDL_VIDEO_CENTERED'] = '1'
 pygame.init()
 
@@ -65,8 +71,6 @@ image = pygame.image.load('/home/parth/shortcuts/firefox.png')
 image = pygame.transform.scale(image, screen.get_size())
 # pygame.transform.scale(image, screen.get_size())
 
-
-
 WEBSITE_INDEX = -1
 WEBSITE_NAME = ''
 
@@ -78,21 +82,44 @@ while True:
             for i, website in enumerate(WEBSITE_LIST):
                 if event.key == pygame.K_1 + i:
                     if type(website) == type([]):
+                        NESTED_WEBSITE_NAME = website[0]
                         website.pop(0)
+                        PREV_WEBSITE_LIST = WEBSITE_LIST
                         WEBSITE_LIST = website
+                        NEXT_WEBSITE_LIST = None
                     else:
                         WEBSITE_INDEX = i
                         WEBSITE_NAME = website[0]
             if event.key == pygame.K_RETURN:
                 apply_settings(WEBSITE_INDEX)
                 exit()
+            if event.key == pygame.K_LEFT:
+                if PREV_WEBSITE_LIST == None:
+                    continue
+                if NESTED_WEBSITE_NAME != '':
+                    WEBSITE_LIST.insert(0,NESTED_WEBSITE_NAME)
+                NEXT_WEBSITE_LIST = WEBSITE_LIST
+                WEBSITE_LIST = PREV_WEBSITE_LIST
+                PREV_WEBSITE_LIST, NESTED_WEBSITE_NAME = None, ''
+                WEBSITE_INDEX = -1
+                WEBSITE_NAME = ''
+            if event.key == pygame.K_RIGHT:
+                if NEXT_WEBSITE_LIST == None:
+                    continue
+                NESTED_WEBSITE_NAME = NEXT_WEBSITE_LIST[0]
+                NEXT_WEBSITE_LIST.pop(0)
+                PREV_WEBSITE_LIST = WEBSITE_LIST
+                WEBSITE_LIST = NEXT_WEBSITE_LIST
+                NEXT_WEBSITE_LIST = None
+                WEBSITE_INDEX = -1
+                WEBSITE_NAME = ''
             if event.key == pygame.K_DOWN or event.key == pygame.K_q:
                 exit()
 
 
     # screen.fill(WHITE)
     screen.blit(image, (0,0))
-    text(screen, "Please select the Website to be launched", BASE_APP_WIDTH/2, BASE_APP_HEIGHT/20, LARGE_FONT_SIZE)
+    text(screen, "Please select the " + NESTED_WEBSITE_NAME + " Website to be launched", BASE_APP_WIDTH/2, BASE_APP_HEIGHT/20, LARGE_FONT_SIZE)
 
     for i, website in enumerate(WEBSITE_LIST):
         text(screen, str(i+1)+") "+ website[0], BASE_APP_WIDTH/2, (i+5)*BASE_APP_HEIGHT/15, size=LARGE_FONT_SIZE, background_color = ORANGE)
