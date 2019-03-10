@@ -33,17 +33,22 @@ def lazy_name(task, P_or_T, folder_path):
         folder_list.pop(-1)
     short_folder_path = folder_list[-2]
 
+    pt_found = True
     if P_or_T == 'P':
         P_or_T = 'pool'
     elif P_or_T == 'T':
         P_or_T = 'transdeck'
     else:
         short_folder_path = P_or_T
+        pt_found = False
 
     if task_found:
         task_name = task + P_or_T
     else:
-        task_name = task
+        if pt_found:
+            task_name = task + P_or_T
+        else:
+            task_name = task
 
     return task_name, short_folder_path
 
@@ -54,30 +59,44 @@ def trim_in_folder(folder_path):
         home = expanduser("~")
         print(ls)
         for wrds in ls:
-            l = wrds.strip('\n').split(" ")
-            if l[0].find('.avi') == -1:
-                if file_name.find('.avi') == -1:
-                    raise AttributeError
-                l = [file_name] + l
-            file_name = join(folder_path, l[0])
-            task_name, short_folder_path = lazy_name(l[3], l[4], folder_path)
             try:
-                txtF = os.listdir(home + '/AUV_DataBase/' + task_name)
-            except OSError:
-                os.system('mkdir -p ' + home + '/AUV_DataBase/' + task_name)
-                txtF = os.listdir(home + '/AUV_DataBase/' + task_name)
-            num = txtF
-            t1 = l[1].split(':')
-            t2 = l[2].split(':')
-            try:
-                int(t1[2])
-            except IndexError:
-                t1 = [0] + t1
-                t2 = [0] + t2
-            tdf = (int(t2[0]) - int(t1[0])) * 3600 + (int(t2[1]) - int(t1[1])) *60 + (int(t2[2]) - int(t1[2]))
-            t3 = time.strftime('%H:%M:%S', time.gmtime(tdf))
-            os.system("ffmpeg -ss "+l[1]+" -i "+ file_name +" -t "+t3+" -c copy " + home+'/AUV_DataBase/'+task_name+"/"+str(len(num))+'_'+short_folder_path+'.avi')
+                l = wrds.strip('\n').split(" ")
+                if l[0].find('.avi') == -1:
+                    if file_name.find('.avi') == -1:
+                        raise AttributeError
+                    l = [file_name] + l
+                file_name = join(folder_path, l[0])
+                task_name, short_folder_path = lazy_name(l[3], l[4], folder_path)
+                try:
+                    txtF = os.listdir(home + '/AUV_DataBase/' + task_name)
+                except OSError:
+                    os.system('mkdir -p ' + home + '/AUV_DataBase/' + task_name)
+                    txtF = os.listdir(home + '/AUV_DataBase/' + task_name)
+                num = txtF
+                t1 = l[1].split(':')
+                t2 = l[2].split(':')
+                try:
+                    int(t1[2])
+                except IndexError:
+                    t1 = [0] + t1
+                    t2 = [0] + t2
+                tdf = (int(t2[0]) - int(t1[0])) * 3600 + (int(t2[1]) - int(t1[1])) *60 + (int(t2[2]) - int(t1[2]))
+                t3 = time.strftime('%H:%M:%S', time.gmtime(tdf))
+                os.system("ffmpeg -ss "+l[1]+" -i "+ file_name +" -t "+t3+" -c copy " + home+'/AUV_DataBase/'+task_name+"/"+str(len(num))+'_'+short_folder_path+'.avi')
+            except Exception as e:
+                print (e)
+
+def trim_recursive_folder(folder_path):
+    for root, subdirs, files in os.walk(folder_path):
+        for file in files:
+            if file == 'trim.txt':
+                print("------------------------------------------------------")
+                print('Starting trim in folder ' + root)
+                trim_in_folder(root)
 
 if __name__ == '__main__':
-    print ('starting......')
-    trim_in_folder(expanduser('~/Videos2/front_camera_store_20170722_000002/0'))
+    try:
+        root_folder_path = sys.argv[1]
+    except IndexError:
+        root_folder_path = '.'
+    trim_recursive_folder(expanduser(root_folder_path))
