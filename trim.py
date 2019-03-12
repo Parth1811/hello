@@ -5,7 +5,7 @@ from os.path import expanduser, join
 
 file_name = ''
 
-def lazy_name(task, P_or_T, folder_path):
+def lazy_name(task, variables, folder_path):
     '''
     task is the acronym for task should be less than 3 letters
         ## DONT FORGET TO ADD UNDERSORCE AT THE END OF TASK NAME ##
@@ -19,6 +19,12 @@ def lazy_name(task, P_or_T, folder_path):
         ('by' , 'buoy_yellow_'),
         ('bir' , 'bin_red_'),
         ('big' , 'bin_green_'),
+        ('e' , 'empty_'),
+        ('g' , 'gate_'),
+        ('m' , 'multi_'),
+        ('p' , 'parking_'),
+        ('mr' , 'maker_'),
+        ('t' , 'torpedo'),
     ]
 
     task_found = False
@@ -33,22 +39,28 @@ def lazy_name(task, P_or_T, folder_path):
         folder_list.pop(-1)
     short_folder_path = folder_list[-2]
 
-    pt_found = True
-    if P_or_T == 'P':
+    if 'P' in variables:
         P_or_T = 'pool'
-    elif P_or_T == 'T':
+    elif 'T' in variables:
         P_or_T = 'transdeck'
     else:
-        short_folder_path = P_or_T
-        pt_found = False
+        P_or_T = ''
 
-    if task_found:
-        task_name = task + P_or_T
+    if 'L' in variables:
+        L_or_D = 'light_'
+    elif 'D' in variables:
+        L_or_D = 'dark_'
     else:
-        if pt_found:
-            task_name = task + P_or_T
-        else:
-            task_name = task
+        L_or_D = ''
+
+    if 'F' in variables:
+        F_or_N = 'far_'
+    elif 'N' in variables:
+        F_or_N = 'near_'
+    else:
+        F_or_N = ''
+
+    task_name = task + L_or_D + F_or_N + P_or_T
 
     return task_name, short_folder_path
 
