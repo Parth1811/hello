@@ -102,9 +102,27 @@ def trim_recursive_folder(folder_path):
     for root, subdirs, files in os.walk(folder_path):
         for file in files:
             if file == 'trim.txt':
-                print("------------------------------------------------------")
+                print("--------------------------------------------------------------")
+                print("--------------------------------------------------------------")
+                print("--------------------------------------------------------------")
+                print("--------------------------------------------------------------")
                 print('Starting trim in folder ' + root)
                 trim_in_folder(root)
+
+def total_video_count(folder_path):
+    COUNTER = 0
+    for root, subdirs, files in os.walk(folder_path):
+        for file in files:
+            if file == 'trim.txt':
+                f = open(join(root,'trim.txt'), 'r')
+                l = f.readlines()
+                for line in l:
+                    if line != '\n':
+                        COUNTER += 1
+
+    print COUNTER
+
+
 
 if __name__ == '__main__':
     try:
