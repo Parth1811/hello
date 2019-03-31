@@ -24,10 +24,10 @@ def text(screen, label, x_location, y_location, size = NORMAL_FONT_SIZE, color =
 
 def apply_settings(env_name):
     if env_name != "default":
-        command = 'echo "source ~/environments/' + env_name + '/bin/activate" >> ~/.bashrc'
+        command = 'echo "source ~/.virtualenvs/' + env_name + '/bin/activate" >> ~/.bashrc'
         os.system(command)
     else:
-        default_file = os.popen("sed '/source \~\/environments/d' ~/.bashrc")
+        default_file = os.popen("sed '/source \~\/.virtualenvs/d' ~/.bashrc")
         os.system("rm ~/.bashrc")
         os.system("touch ~/.bashrc")
         output_file = open(os.path.expanduser("~/.bashrc"), "w")
@@ -40,7 +40,7 @@ def apply_settings(env_name):
 screen = pygame.display.set_mode((BASE_APP_WIDTH , BASE_APP_HEIGHT))
 pygame.display.set_caption("select Python environment")
 
-env_list = os.listdir('/home/parth/environments')
+env_list = os.listdir('/home/parth/.virtualenvs')
 
 
 

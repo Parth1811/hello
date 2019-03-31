@@ -7,11 +7,11 @@ BASE_APP_WIDTH = 600
 NORMAL_FONT_SIZE = 25
 LARGE_FONT_SIZE = 35
 
-BLACK = (0,0,0)
-WHITE = (255,255,255)
-GREEN = (0,255,0)
-ORANGE = (255,143,00)
-BLUE = (0,77,64)
+BLACK   = (0,0,0)
+WHITE   = (255,255,255)
+GREEN   = (0,255,0)
+ORANGE  = (255,143,00)
+BLUE    = (30,136,229)  #(0,77,64)
 
 GLOBAL_WEBSITE_LIST = [
     ["Academic",
@@ -30,15 +30,21 @@ GLOBAL_WEBSITE_LIST = [
         ('Hello Github', 'https://github.com/Parth1811/hello'),
     ],
 
+    ["Gmail",
+        ('Gmail-parth4iitb', 'https://mail.google.com/mail/u/1/#inbox'),
+        ('Gmail-django.parth', 'https://mail.google.com/mail/u/3/#inbox'),
+    ],
+
+    ["Google Groups",
+        ('Django Dev', 'https://groups.google.com/forum/#!forum/django-developers'),
+        ('Django Tickets', 'https://code.djangoproject.com/'),
+        ('AUV Software', 'https://groups.google.com/forum/#!forum/software_auv'),
+    ],
 
     ('OverLeaf', 'https://www.overleaf.com/project'),
     ('JioSaavn', 'https://www.jiosaavn.com/'),
     ('WakaTime', 'https://wakatime.com/dashboard'),
 
-    ["Gmail",
-        ('Gmail-parth4iitb', 'https://mail.google.com/mail/u/1/#inbox'),
-        ('Gmail-django.parth', 'https://mail.google.com/mail/u/3/#inbox'),
-    ]
 ]
 
 WEBSITE_LIST = deepcopy(GLOBAL_WEBSITE_LIST)
@@ -67,7 +73,7 @@ def apply_settings(WEBSITE_INDEX):
 
 screen = pygame.display.set_mode((BASE_APP_WIDTH , BASE_APP_HEIGHT))
 pygame.display.set_caption("select Website to be launced")
-image = pygame.image.load('/home/parth/shortcuts/firefox.png')
+image = pygame.image.load('/home/parth/shortcuts/firefox.jpg')
 image = pygame.transform.scale(image, screen.get_size())
 # pygame.transform.scale(image, screen.get_size())
 
