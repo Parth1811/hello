@@ -5,10 +5,11 @@ import scipy.io
 IMAGE_SIZE      = (145, 145)
 NO_OF_CHANNELS  = 200
 NO_OF_CLASSES   = 16
-NUM_OF_ITER = 500
-LOG_DATA = 1
+NUM_OF_ITER = 250
+LOG_DATA = 10
 train_loss_history = []
-alpha = 1
+alpha = 0.5
+lamba = 0.001
 
 #Loading data
 data            = scipy.io.loadmat('data/Indian_pines.mat')['indian_pines']                          #(145,145,220)
@@ -75,17 +76,18 @@ def predict(X_train, Y_train, W):
 
 def entropy(YPRED):
     entropy = -(np.log(YPRED))
+    return entropy
 
 def gradient_decent(X_train, Y_train, YHAT_train):
     grad_mat = np.zeros((YHAT_train.shape[0], NO_OF_CLASSES))
     for i in range(YHAT_train.shape[0]):
         for j in range(16):
             if j == int(Y_train[i] ) - 1:
-                grad_mat[i][j] += YHAT_train[i][j] - 1
+                grad_mat[i][j] -= YHAT_train[i][j] - 1
             else:
-                grad_mat[i][j] += 0#YHAT_train[i][j]
+                grad_mat[i][j] -= YHAT_train[i][j]
     grad = X_train.transpose().dot(grad_mat)
-    return grad / X_train.shape[0] * alpha
+    return 0.5 * (grad / X_train.shape[0] * alpha) + lamba
 
 ##################TRAINING##########################
 W = np.random.random_sample((NO_OF_CHANNELS, NO_OF_CLASSES))
@@ -97,4 +99,16 @@ for i in range(NUM_OF_ITER):
     if (i % LOG_DATA == 0):
         train_loss_history.append(loss)
     W += (grad * W)
+    print loss
     print ("Done iter no --" + str(i) + "--")
+
+YPRED_test, YHAT_test = predict(X_test, Y_test, W)
+accouray = 0
+for i in range(YHAT_train.shape[0]):
+    if YHAT_test[i].argmax() == Y_test[i]:
+        accouray += 1
+print "Acurracy  = " + str(float(accouray) / Y_test.shape[0] * 100)
+# print "Acurracy  = " + str(np.sum(accouray) / Y_test.shape[0] * 100)
+
+plt.plot(train_loss_history)
+plt.savefig('loss1.png')
