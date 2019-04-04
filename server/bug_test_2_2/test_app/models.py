@@ -7,3 +7,10 @@ class TestModel(models.Model):
 
     def __str__(self):
         return str(self.first_name) +' '+ str(self.last_name)
+
+class Language(models.Model):
+    mother_tongue = models.CharField(max_length = 30)
+    person = models.ForeignKey(TestModel, on_delete= models.CASCADE)
+
+    def __str__(self):
+        return str(self.mother_tongue)
