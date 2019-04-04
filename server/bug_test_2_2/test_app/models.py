@@ -14,3 +14,7 @@ class Language(models.Model):
 
     def __str__(self):
         return str(self.mother_tongue)
+
+class Skill(models.Model):
+    name = models.CharField(max_length = 30)
+    people = models.ManyToManyField(TestModel) 
