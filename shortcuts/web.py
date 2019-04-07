@@ -39,11 +39,13 @@ GLOBAL_WEBSITE_LIST = [
         ('Django Dev', 'https://groups.google.com/forum/#!forum/django-developers'),
         ('Django Tickets', 'https://code.djangoproject.com/'),
         ('AUV Software', 'https://groups.google.com/forum/#!forum/software_auv'),
+        ('Django IRC', 'http://webchat.freenode.net?nick=Parth1811&channels=%23django&prompt=1'),
     ],
 
     ('OverLeaf', 'https://www.overleaf.com/project'),
     ('JioSaavn', 'https://www.jiosaavn.com/'),
     ('WakaTime', 'https://wakatime.com/dashboard'),
+    ('Django tickets', 'https://code.djangoproject.com/ticket/')
 
 ]
 
@@ -66,10 +68,40 @@ def text(screen, label, x_location, y_location, size = NORMAL_FONT_SIZE, color =
     text_rect.center = (x_location , y_location) #self.screen.get_rect().centerx
     screen.blit(text_surface, text_rect)
 
+def get_ticket_no(website_list, index):
+    width, height = BASE_APP_WIDTH/5, BASE_APP_HEIGHT/10
+    screen = pygame.display.set_mode((width, height))
+    pygame.display.set_caption("Type ticket to be launced")
+
+    TICKET_NO = ''
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                exit()
+            if event.type == pygame.KEYDOWN:
+                for i in range(10):
+                    if event.key == pygame.K_0 +i:
+                        TICKET_NO += str(i)
+                if event.key == pygame.K_BACKSPACE:
+                    TICKET_NO = TICKET_NO[:-1]
+                if event.key == pygame.K_RETURN:
+                    website_list[index] = (website_list[index][0], website_list[index][1]+TICKET_NO)
+                    return
+                if event.key == pygame.K_DOWN or event.key == pygame.K_q:
+                    exit()
+
+
+        screen.fill(WHITE)
+        text(screen, str(TICKET_NO), width/2, height/2, NORMAL_FONT_SIZE, BLACK)
+        pygame.display.update()
+
+
 def apply_settings(WEBSITE_INDEX):
     if WEBSITE_INDEX == -1:
         return
-    os.system('nohup firefox ' + WEBSITE_LIST[WEBSITE_INDEX][1] + ' >/dev/null 2>&1 &')
+    if WEBSITE_LIST[WEBSITE_INDEX][0] == 'Django tickets':
+        get_ticket_no(WEBSITE_LIST, WEBSITE_INDEX)
+    os.system('nohup chromium-browser ' + WEBSITE_LIST[WEBSITE_INDEX][1] + ' >/dev/null 2>&1 &')
 
 screen = pygame.display.set_mode((BASE_APP_WIDTH , BASE_APP_HEIGHT))
 pygame.display.set_caption("select Website to be launced")
