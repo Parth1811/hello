@@ -15,12 +15,7 @@ BLUE    = (30,136,229)  #(0,77,64)
 
 GLOBAL_WEBSITE_LIST = [
     ["Academic",
-        ('EE720', 'https://www.ee.iitb.ac.in/~sarva/courses/EE720/Spring2019.html'),
-        ('EE230', 'http://wel.ee.iitb.ac.in/teaching_labs/WEL%20Site/ee230/Labsheets-2019/labsheets_2019.html'),
-        ('EE214', 'https://moodle.iitb.ac.in/course/view.php?id=8950'),
-        ('EE222', 'https://moodle.iitb.ac.in/mod/forum/view.php?id=69752'),
-        ('EE234', 'https://moodle.iitb.ac.in/course/view.php?id=8954'),
-        ('GNR652', 'https://moodle.iitb.ac.in/mod/forum/view.php?id=69912'),
+        ('ASC', 'https://asc.iitb.ac.in/'),
     ],
 
     ["Github",
