@@ -2,7 +2,7 @@ import numpy
 import rospy
 from datetime import datetime
 import matplotlib.pyplot as plt
-from pyquaternion import Quaternion as qt
+from pyquaternion import Quaternion
 
 from geometry_msgs.msg import Vector3
 from sensor_msgs.msg import Imu
@@ -54,8 +54,8 @@ def double_intergrate_acc_cb(msg, pub1):
     global current_data
     pub_msg = AuvState()
     time_sq = ((datetime.now() - current_data['previous_data_arrival']).total_seconds())
-    a = qt([0, msg.linear_acceleration.x, msg.linear_acceleration.y, msg.linear_acceleration.z])
-    q = qt(msg.orientation.w, msg.orientation.x, msg.orientation.y, msg.orientation.z)
+    a = Quaternion([0, msg.linear_acceleration.x, msg.linear_acceleration.y, msg.linear_acceleration.z])
+    q = Quaternion(msg.orientation.w, msg.orientation.x, msg.orientation.y, msg.orientation.z)
     out_a = q * a / q
 
     out_a.x = round(out_a.x, 6)
@@ -92,8 +92,8 @@ def kalman_estimate(msg, pub1):
     pub_msg = AuvState()
     dt = ((datetime.now() - current_data['previous_data_arrival']).total_seconds())
 
-    a = qt([0, msg.linear_acceleration.x, msg.linear_acceleration.y, msg.linear_acceleration.z])
-    q = qt(msg.orientation.w, msg.orientation.x, msg.orientation.y, msg.orientation.z)
+    a = Quaternion([0, msg.linear_acceleration.x, msg.linear_acceleration.y, msg.linear_acceleration.z])
+    q = Quaternion(msg.orientation.w, msg.orientation.x, msg.orientation.y, msg.orientation.z)
     out_a = q * a / q
 
     out_a.x = round(out_a.x * 100.0, 4)

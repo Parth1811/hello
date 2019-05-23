@@ -1,0 +1,1 @@
+INFO:root:Starting log for 2019-05-16 17:43:46.744695
