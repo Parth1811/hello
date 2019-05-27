@@ -38,7 +38,8 @@ GLOBAL_WEBSITE_LIST = [
     ],
 
     ('OverLeaf', 'https://www.overleaf.com/project'),
-    ('JioSaavn', 'https://www.jiosaavn.com/'),
+    #('JioSaavn', 'https://www.jiosaavn.com/'),
+    ('VISA', 'https://cgifederal.secure.force.com/ApplicantHome'),
     ('WakaTime', 'https://wakatime.com/dashboard'),
     ('Django tickets', 'https://code.djangoproject.com/ticket/')
 

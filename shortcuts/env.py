@@ -1,5 +1,6 @@
 import pygame
 import os
+import time
 
 BASE_APP_HEIGHT = 400
 BASE_APP_WIDTH = 600
@@ -30,6 +31,7 @@ def apply_settings(env_name):
         default_file = os.popen("sed '/source \~\/.virtualenvs/d' ~/.bashrc")
         os.system("rm ~/.bashrc")
         os.system("touch ~/.bashrc")
+        time.sleep(1)
         output_file = open(os.path.expanduser("~/.bashrc"), "w")
         for line in default_file:
             output_file.write(line)
