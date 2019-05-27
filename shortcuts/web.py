@@ -76,11 +76,11 @@ def get_ticket_no(website_list, index):
                 exit()
             if event.type == pygame.KEYDOWN:
                 for i in range(10):
-                    if event.key == pygame.K_0 +i:
+                    if (event.key == pygame.K_0 + i) or (event.key == pygame.K_KP0 + i):
                         TICKET_NO += str(i)
                 if event.key == pygame.K_BACKSPACE:
                     TICKET_NO = TICKET_NO[:-1]
-                if event.key == pygame.K_RETURN:
+                if event.key == pygame.K_RETURN or event.key == pygame.K_KP_ENTER:
                     website_list[index] = (website_list[index][0], website_list[index][1]+TICKET_NO)
                     return
                 if event.key == pygame.K_DOWN or event.key == pygame.K_q:
@@ -114,7 +114,7 @@ while True:
             exit()
         if event.type == pygame.KEYDOWN:
             for i, website in enumerate(WEBSITE_LIST):
-                if event.key == pygame.K_1 + i:
+                if (event.key == pygame.K_1 + i) or (event.key == pygame.K_KP1 + i):
                     if type(website) == type([]):
                         NESTED_WEBSITE_NAME = website[0]
                         website.pop(0)
@@ -124,7 +124,7 @@ while True:
                     else:
                         WEBSITE_INDEX = i
                         WEBSITE_NAME = website[0]
-            if event.key == pygame.K_RETURN:
+            if event.key == pygame.K_RETURN or event.key == pygame.K_KP_ENTER:
                 apply_settings(WEBSITE_INDEX)
                 exit()
             if event.key == pygame.K_LEFT:
