@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib import admin
 
 # Create your models here.
 class TestModel(models.Model):
@@ -17,4 +18,19 @@ class Language(models.Model):
 
 class Skill(models.Model):
     name = models.CharField(max_length = 30)
-    people = models.ManyToManyField(TestModel) 
+    people = models.ManyToManyField(TestModel)
+
+class Customer(models.Model):
+    num = models.IntegerField()
+
+
+class Account(models.Model):
+    ACCOUNT_TYPES = (
+        (1, 'A'),
+        (2, 'B'),
+    )
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    account_type = models.IntegerField(choices=ACCOUNT_TYPES)
+
+    a = models.CharField(max_length=255, blank=True) # should be edited when type = "A"
+    b = models.CharField(max_length=255, blank=True) # should be edited when type = "B"
