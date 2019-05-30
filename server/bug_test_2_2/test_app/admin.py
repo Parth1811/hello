@@ -23,6 +23,20 @@ class AccountInline(admin.TabularInline):
         """
         return ((None, {'fields': ('account_type',)}),)
 
+    def get_fields(self, request, obj=None):
+        print ("-----From Account field inline---------")
+        print(repr(obj)) # => <Customer>
+        print ("---------------------------------")
+        """
+        if obj and obj.account_type == 1:
+            return ((None, {'fields': ('account_type', 'a')}),)
+        elif obj and obj.account_type == 2:
+            return ((None, {'fields': ('account_type', 'b')}),)
+        """
+        form = self._get_form_for_get_fields(request, obj)
+        return [*form.base_fields, *self.get_readonly_fields(request, obj)]
+
+
 @admin.register(models.Customer)
 class CustomerAdmin(admin.ModelAdmin):
     inlines = (AccountInline,)

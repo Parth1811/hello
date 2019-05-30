@@ -7,8 +7,9 @@ from django.forms import modelformset_factory, inlineformset_factory
 # Create your views here.
 def index(request):
     LanguageFormSet = modelformset_factory(Language, extra=1, fields=('mother_tongue','person'))
-    InlineBFormset = inlineformset_factory(TestModel, Language,formset=LanguageFormSet, form=Language, extra=1)
-    formset = InlineBFormset(request.POST or None, instance=TestModel.objects.get(pk = 1))
+    # InlineBFormset = inlineformset_factory(TestModel, Language,formset=LanguageFormSet, form=Language, extra=1)
+    # formset = InlineBFormset(request.POST or None, instance=TestModel.objects.get(pk = 1))
+    formset = AccountFormInline(request.POST or None, instance=Account.objects.get(pk=1))
 
     # formset = SkillFormSet(queryset = Skill.objects.all())
     #
