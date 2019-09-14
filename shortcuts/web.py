@@ -15,12 +15,21 @@ BLUE    = (30,136,229)  #(0,77,64)
 
 GLOBAL_WEBSITE_LIST = [
     ["Academic",
-        ('ASC', 'https://asc.iitb.ac.in/'),
+        ('EE337', 'https://moodle.iitb.ac.in/course/view.php?id=10057'),
+        ('EE340', 'https://moodle.iitb.ac.in/course/view.php?id=10058'),
+        ('CS663', 'https://moodle.iitb.ac.in/course/view.php?id=9935'),
+        ('HS307', 'https://moodle.iitb.ac.in/course/view.php?id=10679'),
+        ('EE308', 'https://moodle.iitb.ac.in/course/view.php?id=10664'),
+        ('EE309', 'https://moodle.iitb.ac.in/course/view.php?id=10055'),
+        ('GNR638', 'https://moodle.iitb.ac.in/course/view.php?id=10521'),
+        ('EE325', 'https://www.ee.iitb.ac.in/~animesh/ee325/'),
+        ('Drive', 'https://drive.google.com/drive/u/1/folders/19elCjP7PwvlOHL322LcHzfyDuF8_97H7'),
     ],
 
     ["Github",
         ('Django Github', 'https://github.com/django/django'),
         ('Django PR Github', 'https://github.com/django/django/pulls'),
+        ('GSoC gist', 'https://gist.github.com/Parth1811/d34c4b85a4a49b4cf70b5447e3e753ea'),
         ('Robosub Github', 'https://github.com/auv-iitb/robosub'),
         ('Hello Github', 'https://github.com/Parth1811/hello'),
     ],
@@ -39,11 +48,10 @@ GLOBAL_WEBSITE_LIST = [
 
     ('OverLeaf', 'https://www.overleaf.com/project'),
     #('JioSaavn', 'https://www.jiosaavn.com/'),
-    #('VISA', 'https://cgifederal.secure.force.com/ApplicantHome'),
     ('Workflowy', 'https://workflowy.com/'),
     ('WakaTime', 'https://wakatime.com/dashboard'),
-    ('Django tickets', 'https://code.djangoproject.com/ticket/')
-
+    ('Django tickets', 'https://code.djangoproject.com/ticket/'),
+    #('VISA', 'https://cgifederal.secure.force.com/ApplicantHome'),
 ]
 
 WEBSITE_LIST = deepcopy(GLOBAL_WEBSITE_LIST)
@@ -102,7 +110,7 @@ def apply_settings(WEBSITE_INDEX):
 
 screen = pygame.display.set_mode((BASE_APP_WIDTH , BASE_APP_HEIGHT))
 pygame.display.set_caption("select Website to be launced")
-image = pygame.image.load('/home/parth/shortcuts/firefox.jpg')
+image = pygame.image.load('/home/parth/hello/shortcuts/firefox.jpg')
 image = pygame.transform.scale(image, screen.get_size())
 # pygame.transform.scale(image, screen.get_size())
 
