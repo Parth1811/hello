@@ -106,7 +106,7 @@ def apply_settings(WEBSITE_INDEX):
         return
     if WEBSITE_LIST[WEBSITE_INDEX][0] == 'Django tickets':
         get_ticket_no(WEBSITE_LIST, WEBSITE_INDEX)
-    os.system('nohup chromium-browser ' + WEBSITE_LIST[WEBSITE_INDEX][1] + ' >/dev/null 2>&1 &')
+    os.system('nohup google-chrome ' + WEBSITE_LIST[WEBSITE_INDEX][1] + ' >/dev/null 2>&1 &')
 
 screen = pygame.display.set_mode((BASE_APP_WIDTH , BASE_APP_HEIGHT))
 pygame.display.set_caption("select Website to be launced")
