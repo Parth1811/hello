@@ -10,7 +10,7 @@ LARGE_FONT_SIZE = 35
 BLACK   = (0,0,0)
 WHITE   = (255,255,255)
 GREEN   = (0,255,0)
-ORANGE  = (255,143,00)
+ORANGE  = (255,143,00)  #(0, 172, 193)
 BLUE    = (30,136,229)  #(0,77,64)
 
 GLOBAL_WEBSITE_LIST = [
@@ -62,7 +62,7 @@ NESTED_WEBSITE_NAME = ''
 os.environ['SDL_VIDEO_CENTERED'] = '1'
 pygame.init()
 
-def text(screen, label, x_location, y_location, size = NORMAL_FONT_SIZE, color = WHITE, background_color = (0,0,0,0)):
+def text(screen, label, x_location, y_location, size = NORMAL_FONT_SIZE, color = WHITE, background_color = (0,0,0,0), center=True):
     basicfont = pygame.font.SysFont(None, size)
     text_surface2 = basicfont.render(label, True, color)
     text_surface2.set_alpha(128)
@@ -71,7 +71,8 @@ def text(screen, label, x_location, y_location, size = NORMAL_FONT_SIZE, color =
     text_surface.blit(text_surface2, (0,0))
     text_rect = text_surface.get_rect()
     text_rect.center = (x_location , y_location) #self.screen.get_rect().centerx
-    screen.blit(text_surface, text_rect)
+    text_pos = text_rect if center else (x_location , y_location)
+    screen.blit(text_surface, text_pos)
 
 def get_ticket_no(website_list, index):
     width, height = BASE_APP_WIDTH/5, BASE_APP_HEIGHT/10
@@ -165,7 +166,7 @@ while True:
     text(screen, "Please select the " + NESTED_WEBSITE_NAME + " Website to be launched", BASE_APP_WIDTH/2, BASE_APP_HEIGHT/20, LARGE_FONT_SIZE)
 
     for i, website in enumerate(WEBSITE_LIST):
-        text(screen, str(i+1)+") "+ website[0], BASE_APP_WIDTH/2, (i+5)*BASE_APP_HEIGHT/15, size=LARGE_FONT_SIZE, background_color = ORANGE)
+        text(screen, str(i+1)+") "+ website[0], 30, (i+3)*BASE_APP_HEIGHT/15, color = BLACK,size=LARGE_FONT_SIZE, background_color = BLUE, center=False)
 
-    text(screen, "Selected Website:- "+ WEBSITE_NAME, BASE_APP_WIDTH/2, BASE_APP_HEIGHT- (BASE_APP_HEIGHT/20), LARGE_FONT_SIZE, BLUE)
+    text(screen, "Selected Website:- "+ WEBSITE_NAME, BASE_APP_WIDTH/2, BASE_APP_HEIGHT- (BASE_APP_HEIGHT/20), LARGE_FONT_SIZE, BLACK, background_color = BLUE)
     pygame.display.update()
