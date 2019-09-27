@@ -1,0 +1,29 @@
+description:
+    name: torpedo_heart
+    colour: green
+transition:
+    radius: 80
+scan:
+    motion: horizontal
+    size: 25
+    num_of_rounds: 2
+    pose_probability: .3
+    task_detail_name: torpedo_heartheart
+    fixedYaw: 0
+execution:
+    min_probability: .3
+    pose_probability: .65
+    task_detail_name: torpedo_heartheart
+    actions:
+        centering:
+            radiusXY: 5 #camera frame
+            radiusZ: 30 #camera frame
+            camera: front
+    fixedYaw: 0
+postExecution:
+    actions:
+        - moveRelPose:
+            - [0, 0, -4, 0, 0, 0]
+            - [0, 1, 0, 0, 0, 0]
+            - [25, 0, 0, 0, 0, 0]
+        - shootTorpedo: [1, 0]

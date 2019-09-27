@@ -1,0 +1,39 @@
+individualTasks:
+    - home:
+        task: home
+        origin: {x: 0}
+    - depth_setpoint:
+        task: set_point
+        origin: {z: 100}
+    - plank1:
+        task: plank
+        origin: {x: 1000, y: 115, z: 120, rz: 45}
+    - plank2:
+        task: plank
+        set_point2: {x: 550, y: 310, z: 20, rz: 0}
+        #marker_uncovered_X: {x: 200, y: -200, z: 0, rz: 45}
+    - plank3:
+        task: plank
+        origin: {x: 1000, y: -125, z: 120, rz: -45}
+        #marker_uncovered_X: {x: 200, y: 200, z: 0, rz: -45}
+    - plank4:
+        task: plank
+        set_point2: {x: 480, y: -170, z: 20, rz: 0}
+    - plank5:
+        task: plank
+        marker_uncovered_O: {x: 200, y: 0, z: -10, rz: 0}
+    - torpedo_full:
+        task: torpedo_full
+        buoy_not_rot: {x: 200, y: -500, z: 0}
+    - torpedo_heart_full:
+        task: torpedo_heart_full
+        pingerA: {x: 0, y: 0, z: 15}
+    - torpedo_heart:
+        task: torpedo_heart
+        pingerA: {x: 0, y: 0, z: 15}
+    - torpedo_handle_ellipse:
+        task: torpedo_handle_ellipse
+        torpedo_full: {x: 0, y: 0, z: -60}
+    - torpedo_shoot:
+        task: torpedo_full
+        torpedo_full: {x: 0, y: 0, z: 0}

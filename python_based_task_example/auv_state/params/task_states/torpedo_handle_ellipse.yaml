@@ -1,0 +1,44 @@
+description:
+    name: torpedo_handle_ellipse
+    colour: green
+transition:
+    radius: 60
+scan:
+    motion: horizontal
+    size: 25
+    num_of_rounds: 2
+    pose_probability: .3
+    task_detail_name: torpedo_handle_ellipsemiddle
+    fixedYaw: 0
+execution:
+    min_probability: .3
+    pose_probability: .65
+    task_detail_name: torpedo_handle_ellipsemiddle
+    actions:
+        centering:
+            radiusXY: 8 #camera frame
+            radiusZ: 50 #camera frame
+            camera: front
+    fixedYaw: 0
+postExecution:
+    actions:
+        - moveRelPose:
+            cl_or:
+                - [0, 0, 65, 0, 0, 0]
+                - [0, -65, 0, 0, 0, 0]
+                - [40, 0, 0, 0, 0, 0]
+                - [0, 80, 0, 0, 0, 0]
+                - [0, -55, 0, 0, 0, 0]
+                - [0, 0, -55, 0, 0, 0]
+            cr_ol:
+                - [0, 0, 65, 0, 0, 0]
+                - [0, 65, 0, 0, 0, 0]
+                - [40, 0, 0, 0, 0, 0]
+                - [0, -80, 0, 0, 0, 0]
+                - [0, 55, 0, 0, 0, 0]
+                - [0, 0, -55, 0, 0, 0]
+        - checkReattempt:
+            reattempt_name: torpedoMl
+            reattempt_vision_output: torpedo_handle_ellipseopenHole
+            detectObject: True
+        - shootTorpedo: [0, 1]

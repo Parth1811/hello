@@ -1,0 +1,27 @@
+description:
+    name: plank
+    colour: orange
+transition:
+    radius: 0
+    camBottom: true
+scan:
+    motion: horizontal
+    size: 80
+    num_of_rounds: 3
+    pose_probability: .3
+    fixedZ: 0
+execution:
+    min_probability: .3
+    pose_probability: .5
+    fixedZ: 0
+    fixedYaw: 0
+    update_image_yaw: 0
+    actions:
+        centering:
+            radiusXY: 15
+            radiusZ: 75
+            camera: bottom
+postExecution:
+    actions:
+        - moveRelPose:
+            - [0, 0, 0, 0, 0, 0]
