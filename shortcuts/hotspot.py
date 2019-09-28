@@ -27,6 +27,7 @@ def text(screen, label, x_location, y_location, size = NORMAL_FONT_SIZE, color =
 def apply_settings(command):
     if command == "connect":
         os.system("echo 1911 | sudo -S cp ~/hello/shortcuts/laptop_hotspot_auto_connect.bak /etc/NetworkManager/system-connections/laptop_hotspot")
+        os.system("echo 1911 | sudo -S service network-manager restart ")
         os.system("bash ~/hello/shortcuts/hotspot_new.sh")
     if command == "disconnect":
         os.system("echo 1911 | sudo -S cp ~/hello/shortcuts/laptop_hotspot.bak /etc/NetworkManager/system-connections/laptop_hotspot")
