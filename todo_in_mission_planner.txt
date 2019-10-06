@@ -1,0 +1,8 @@
+1) rewrite code and make it more legible    (aj raat)
+2) assert statements and implement lock
+3) having default paramaters, yaml, actions
+4) test likhna
+5) print statements
+6) documentation
+7) memory analysis
+8) there should exists a copy of paramateres with matsya
