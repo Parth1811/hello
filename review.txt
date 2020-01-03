@@ -1,0 +1,15 @@
+In auv_acoustics/daq_acq_ubuntu.h:
+    1. Destructor is missing
+    2. remove byteslen variable  (line 82)
+    3. remove acqData, and use a->data instead (line 97)
+    4. remove fd variable
+    5. remove first time variable
+    6. remove t variable
+    7. separate code from .h file
+
+In auv_daq:
+    packets.h:
+        1. move this function "guidToString" to utlis.h
+        2. document the behaviour of the funciton
+    base_daq_driver.h:
+        1. 
