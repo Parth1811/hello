@@ -15,34 +15,26 @@ BLUE    = (30,136,229)  #(0,77,64)
 
 GLOBAL_WEBSITE_LIST = [
     ["Academic",
-        ('EE337', 'https://moodle.iitb.ac.in/course/view.php?id=10057'),
-        ('EE340', 'https://moodle.iitb.ac.in/course/view.php?id=10058'),
-        ('CS663', 'https://moodle.iitb.ac.in/course/view.php?id=9935'),
-        ('HS307', 'https://moodle.iitb.ac.in/course/view.php?id=10679'),
-        ('EE308', 'https://moodle.iitb.ac.in/course/view.php?id=10664'),
-        ('EE309', 'https://moodle.iitb.ac.in/course/view.php?id=10055'),
-        ('GNR638', 'https://moodle.iitb.ac.in/course/view.php?id=10521'),
-        ('EE325', 'https://www.ee.iitb.ac.in/~animesh/ee325/'),
+        ('Asc', 'https://asc.iitb.ac.in/'),
         ('Drive', 'https://drive.google.com/drive/u/1/folders/19elCjP7PwvlOHL322LcHzfyDuF8_97H7'),
     ],
 
     ["Github",
-        ('Django Github', 'https://github.com/django/django'),
-        ('Django PR Github', 'https://github.com/django/django/pulls'),
-        ('GSoC gist', 'https://gist.github.com/Parth1811/d34c4b85a4a49b4cf70b5447e3e753ea'),
         ('Robosub Github', 'https://github.com/auv-iitb/robosub'),
         ('Hello Github', 'https://github.com/Parth1811/hello'),
+        ('RTD WIP Issue', 'https://github.com/readthedocs/readthedocs.org/issues/5388'),
+        ('RTD Tracking Issue', 'https://github.com/readthedocs/readthedocs.org/issues/5445')
     ],
 
     ["Gmail",
         ('Gmail-parth4iitb', 'https://mail.google.com/mail/u/1/#inbox'),
-        ('Gmail-django.parth', 'https://mail.google.com/mail/u/3/#inbox'),
+        ('Gmail-django.parth', 'https://mail.google.com/mail/u/2/#inbox'),
     ],
 
     ["Google Groups",
-        ('Django Dev', 'https://groups.google.com/forum/#!forum/django-developers'),
-        ('Django Tickets', 'https://code.djangoproject.com/'),
         ('AUV Software', 'https://groups.google.com/forum/#!forum/software_auv'),
+        ('AboutCode IRC', 'https://gitter.im/aboutcode-org/discuss#'),
+        ('ReadTheDocs IRC', 'https://gitter.im/rtfd/readthedocs.org'),
         ('Django IRC', 'http://webchat.freenode.net?nick=Parth1811&channels=%23django&prompt=1'),
     ],
 
