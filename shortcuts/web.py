@@ -15,6 +15,12 @@ BLUE    = (30,136,229)  #(0,77,64)
 
 GLOBAL_WEBSITE_LIST = [
     ["Academic",
+        ('EE 328', 'https://moodle.iitb.ac.in/course/view.php?id=11857'),
+        ('EE 302', 'https://moodle.iitb.ac.in/course/view.php?id=11855'),
+        ('EE 344', 'https://moodle.iitb.ac.in/course/view.php?id=11202'),
+        ('EE 338', 'https://moodle.iitb.ac.in/course/view.php?id=11201'),
+        ('EE 334', 'https://moodle.iitb.ac.in/course/view.php?id=11200'),
+        ('EE 324', 'https://moodle.iitb.ac.in/course/view.php?id=11197'),
         ('Asc', 'https://asc.iitb.ac.in/'),
         ('Drive', 'https://drive.google.com/drive/u/1/folders/19elCjP7PwvlOHL322LcHzfyDuF8_97H7'),
     ],
@@ -22,8 +28,7 @@ GLOBAL_WEBSITE_LIST = [
     ["Github",
         ('Robosub Github', 'https://github.com/auv-iitb/robosub'),
         ('Hello Github', 'https://github.com/Parth1811/hello'),
-        ('RTD WIP Issue', 'https://github.com/readthedocs/readthedocs.org/issues/5388'),
-        ('RTD Tracking Issue', 'https://github.com/readthedocs/readthedocs.org/issues/5445')
+        ('RTD WIP Issue', 'https://github.com/readthedocs/readthedocs.org/issues/5445'),
     ],
 
     ["Gmail",
@@ -31,7 +36,7 @@ GLOBAL_WEBSITE_LIST = [
         ('Gmail-django.parth', 'https://mail.google.com/mail/u/2/#inbox'),
     ],
 
-    ["Google Groups",
+    ["Discussion Groups",
         ('AUV Software', 'https://groups.google.com/forum/#!forum/software_auv'),
         ('AboutCode IRC', 'https://gitter.im/aboutcode-org/discuss#'),
         ('ReadTheDocs IRC', 'https://gitter.im/rtfd/readthedocs.org'),
