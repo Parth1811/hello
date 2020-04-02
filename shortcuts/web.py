@@ -15,12 +15,14 @@ BLUE    = (30,136,229)  #(0,77,64)
 
 GLOBAL_WEBSITE_LIST = [
     ["Academic",
-        ('EE 328', 'https://moodle.iitb.ac.in/course/view.php?id=11857'),
+        ('EE 328', 'https://moodle.iitb.ac.in/course/view.php?id=11199'),
         ('EE 302', 'https://moodle.iitb.ac.in/course/view.php?id=11855'),
         ('EE 344', 'https://moodle.iitb.ac.in/course/view.php?id=11202'),
         ('EE 338', 'https://moodle.iitb.ac.in/course/view.php?id=11201'),
         ('EE 334', 'https://moodle.iitb.ac.in/course/view.php?id=11200'),
         ('EE 324', 'https://moodle.iitb.ac.in/course/view.php?id=11197'),
+        ('EE 706', 'https://moodle.iitb.ac.in/course/view.php?id=11220'),
+        ('ME 604', 'https://moodle.iitb.ac.in/course/view.php?id=11503'),
         ('Asc', 'https://asc.iitb.ac.in/'),
         ('Drive', 'https://drive.google.com/drive/u/1/folders/19elCjP7PwvlOHL322LcHzfyDuF8_97H7'),
     ],
@@ -29,6 +31,7 @@ GLOBAL_WEBSITE_LIST = [
         ('Robosub Github', 'https://github.com/auv-iitb/robosub'),
         ('Hello Github', 'https://github.com/Parth1811/hello'),
         ('RTD WIP Issue', 'https://github.com/readthedocs/readthedocs.org/issues/5445'),
+        ('RTD Tracking Issue', 'https://github.com/readthedocs/readthedocs.org/issues/6569')
     ],
 
     ["Gmail",
@@ -38,16 +41,20 @@ GLOBAL_WEBSITE_LIST = [
 
     ["Discussion Groups",
         ('AUV Software', 'https://groups.google.com/forum/#!forum/software_auv'),
-        ('AboutCode IRC', 'https://gitter.im/aboutcode-org/discuss#'),
-        ('ReadTheDocs IRC', 'https://gitter.im/rtfd/readthedocs.org'),
-        ('Django IRC', 'http://webchat.freenode.net?nick=Parth1811&channels=%23django&prompt=1'),
+        ('SNARE slack', 'https://app.slack.com/client/T3U3LQR6Y/C4CEKSG9E/thread/C3U3LQX7E-1582274203.072500'),
+        # ('Django IRC', 'http://webchat.freenode.net?nick=Parth1811&channels=%23django&prompt=1'),
+        # ('Zulip IRC', "https://chat.zulip.org/#narrow/stream/95-new-members/topic/GSoC.202020"),
+        # ('Processing IRC', 'https://discourse.processing.org/c/summer-of-code')
+        ('Gitter', 'https://gitter.im/'),
     ],
 
     ('OverLeaf', 'https://www.overleaf.com/project'),
     #('JioSaavn', 'https://www.jiosaavn.com/'),
     ('Workflowy', 'https://workflowy.com/'),
     ('WakaTime', 'https://wakatime.com/dashboard'),
-    ('Django tickets', 'https://code.djangoproject.com/ticket/'),
+    # ('Django tickets', 'https://code.djangoproject.com/ticket/'),
+    ('SNARE Issues', 'https://github.com/mushorg/snare/issues/'),
+    ('TANNER Issues', 'https://github.com/mushorg/tanner/issues/'),
     #('VISA', 'https://cgifederal.secure.force.com/ApplicantHome'),
 ]
 
@@ -102,7 +109,7 @@ def get_ticket_no(website_list, index):
 def apply_settings(WEBSITE_INDEX):
     if WEBSITE_INDEX == -1:
         return
-    if WEBSITE_LIST[WEBSITE_INDEX][0] == 'Django tickets':
+    if WEBSITE_LIST[WEBSITE_INDEX][0] in ('Django tickets', 'RTD Issues', 'SNARE Issues', 'TANNER Issues'):
         get_ticket_no(WEBSITE_LIST, WEBSITE_INDEX)
     os.system('nohup google-chrome ' + WEBSITE_LIST[WEBSITE_INDEX][1] + ' >/dev/null 2>&1 &')
 
