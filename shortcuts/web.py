@@ -15,14 +15,9 @@ BLUE    = (30,136,229)  #(0,77,64)
 
 GLOBAL_WEBSITE_LIST = [
     ["Academic",
-        ('EE 328', 'https://moodle.iitb.ac.in/course/view.php?id=11199'),
-        ('EE 302', 'https://moodle.iitb.ac.in/course/view.php?id=11855'),
-        ('EE 344', 'https://moodle.iitb.ac.in/course/view.php?id=11202'),
-        ('EE 338', 'https://moodle.iitb.ac.in/course/view.php?id=11201'),
-        ('EE 334', 'https://moodle.iitb.ac.in/course/view.php?id=11200'),
-        ('EE 324', 'https://moodle.iitb.ac.in/course/view.php?id=11197'),
-        ('EE 706', 'https://moodle.iitb.ac.in/course/view.php?id=11220'),
-        ('ME 604', 'https://moodle.iitb.ac.in/course/view.php?id=11503'),
+        ('EE675', 'https://drive.google.com/drive/u/4/folders/0BwE8-ZHqcquYfkplWHZjemZMcG5HMmVwMmo5Qk4tLWpaNGZZT0NuVFFyb0J4Nk5LeklZbmc'),
+        ('EE789', 'https://moodle.iitb.ac.in/course/view.php?id=351'),
+        ('EE782', 'https://moodle.iitb.ac.in/course/view.php?id=348'),
         ('Asc', 'https://asc.iitb.ac.in/'),
         ('Drive', 'https://drive.google.com/drive/u/1/folders/19elCjP7PwvlOHL322LcHzfyDuF8_97H7'),
     ],
@@ -30,31 +25,30 @@ GLOBAL_WEBSITE_LIST = [
     ["Github",
         ('Robosub Github', 'https://github.com/auv-iitb/robosub'),
         ('Hello Github', 'https://github.com/Parth1811/hello'),
-        ('RTD WIP Issue', 'https://github.com/readthedocs/readthedocs.org/issues/5445'),
-        ('RTD Tracking Issue', 'https://github.com/readthedocs/readthedocs.org/issues/6569')
     ],
 
     ["Gmail",
+        ('Gmail-parthvin', 'https://mail.google.com/mail/u/0/#inbox'),
         ('Gmail-parth4iitb', 'https://mail.google.com/mail/u/1/#inbox'),
-        ('Gmail-django.parth', 'https://mail.google.com/mail/u/2/#inbox'),
+        ('Gmail-django.parth', 'https://mail.google.com/mail/u/3/#inbox'),
     ],
 
-    ["Discussion Groups",
-        ('AUV Software', 'https://groups.google.com/forum/#!forum/software_auv'),
-        ('SNARE slack', 'https://app.slack.com/client/T3U3LQR6Y/C4CEKSG9E/thread/C3U3LQX7E-1582274203.072500'),
-        # ('Django IRC', 'http://webchat.freenode.net?nick=Parth1811&channels=%23django&prompt=1'),
-        # ('Zulip IRC', "https://chat.zulip.org/#narrow/stream/95-new-members/topic/GSoC.202020"),
-        # ('Processing IRC', 'https://discourse.processing.org/c/summer-of-code')
-        ('Gitter', 'https://gitter.im/'),
-    ],
+    # ["Discussion Groups",
+    #     ('AUV Software', 'https://groups.google.com/forum/#!forum/software_auv'),
+    #     # ('SNARE slack', 'https://app.slack.com/client/T3U3LQR6Y/C4CEKSG9E/thread/C3U3LQX7E-1582274203.072500'),
+    #     # ('Django IRC', 'http://webchat.freenode.net?nick=Parth1811&channels=%23django&prompt=1'),
+    #     # ('Zulip IRC', "https://chat.zulip.org/#narrow/stream/95-new-members/topic/GSoC.202020"),
+    #     # ('Processing IRC', 'https://discourse.processing.org/c/summer-of-code')
+    #     # ('Gitter', 'https://gitter.im/'),
+    # ],
 
     ('OverLeaf', 'https://www.overleaf.com/project'),
     #('JioSaavn', 'https://www.jiosaavn.com/'),
     ('Workflowy', 'https://workflowy.com/'),
     ('WakaTime', 'https://wakatime.com/dashboard'),
     # ('Django tickets', 'https://code.djangoproject.com/ticket/'),
-    ('SNARE Issues', 'https://github.com/mushorg/snare/issues/'),
-    ('TANNER Issues', 'https://github.com/mushorg/tanner/issues/'),
+    # ('SNARE Issues', 'https://github.com/mushorg/snare/issues/'),
+    # ('TANNER Issues', 'https://github.com/mushorg/tanner/issues/'),
     #('VISA', 'https://cgifederal.secure.force.com/ApplicantHome'),
 ]
 

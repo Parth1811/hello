@@ -22,8 +22,8 @@ else:
 GLOBAL_WEBSITE_LIST = [
     ["Academic",
         ('EE675', 'https://moodle.iitb.ac.in/course/view.php?id=4'),
-        ('EE679', 'https://moodle.iitb.ac.in/course/view.php?id=335'),
-        ('EE682', 'https://moodle.iitb.ac.in/course/view.php?id=348'),
+        ('EE789', 'https://moodle.iitb.ac.in/course/view.php?id=351'),
+        ('EE782', 'https://moodle.iitb.ac.in/course/view.php?id=348'),
         ('Asc', 'https://asc.iitb.ac.in/'),
         ('Drive', 'https://drive.google.com/drive/u/1/folders/19elCjP7PwvlOHL322LcHzfyDuF8_97H7'),
     ],
