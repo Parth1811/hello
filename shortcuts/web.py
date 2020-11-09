@@ -32,6 +32,9 @@ GLOBAL_WEBSITE_LIST = [
         ('Gmail-parth4iitb', 'https://mail.google.com/mail/u/1/#inbox'),
         ('Gmail-django.parth', 'https://mail.google.com/mail/u/3/#inbox'),
     ],
+    ('Calendar', 'https://calendar.google.com/calendar/u/0/r?hl=en-GB&pli=1'),
+    ('Placement Portal', 'https://campus.placements.iitb.ac.in/'),
+    ('Placement Blog', 'http://placements.iitb.ac.in/blog/'),
 
     # ["Discussion Groups",
     #     ('AUV Software', 'https://groups.google.com/forum/#!forum/software_auv'),
@@ -42,10 +45,10 @@ GLOBAL_WEBSITE_LIST = [
     #     # ('Gitter', 'https://gitter.im/'),
     # ],
 
-    ('OverLeaf', 'https://www.overleaf.com/project'),
+    # ('OverLeaf', 'https://www.overleaf.com/project'),
     #('JioSaavn', 'https://www.jiosaavn.com/'),
-    ('Workflowy', 'https://workflowy.com/'),
-    ('WakaTime', 'https://wakatime.com/dashboard'),
+    # ('Workflowy', 'https://workflowy.com/'),
+    # ('WakaTime', 'https://wakatime.com/dashboard'),
     # ('Django tickets', 'https://code.djangoproject.com/ticket/'),
     # ('SNARE Issues', 'https://github.com/mushorg/snare/issues/'),
     # ('TANNER Issues', 'https://github.com/mushorg/tanner/issues/'),
