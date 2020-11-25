@@ -4,7 +4,8 @@ import os
 with open(os.path.expanduser('~/Desktop/Placements, IIT Bombay.html'), 'r') as f:
     webpage = f.read()
 
-soup = bs4.BeautifulSoup(webpage)
+print('Extracting the Jafs from the html file...........')
+soup = bs4.BeautifulSoup(webpage, "html.parser")
 a = soup.find_all("tr", {"class": "mat-row cdk-row ng-star-inserted"})
 jafs = []
 
@@ -33,6 +34,7 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 # The ID and range of a sample spreadsheet.
 SAMPLE_SPREADSHEET_ID = '1CLTM6d2Q8-MI5QuapXyA3zc9fGi09pXOA7JXSTltSbU'
 SAMPLE_RANGE_NAME = 'Sheet1!A1:D'
+SAMPLE_RANGE_NAME1 = 'Sheet1!A1:A'
 
 def main():
     """Shows basic usage of the Sheets API.
@@ -62,19 +64,64 @@ def main():
     # Call the Sheets API
     sheet = service.spreadsheets()
 
+    result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
+                                range=SAMPLE_RANGE_NAME1).execute()
+    values = result.get('values')
+    values = [x[0] for x in values]
+    new = []
+    if len(jafs) != len(values):
+        for jaf in jafs:
+            if jaf[0] in values:
+                continue
+            new.append(jaf)
+
     batch_update_values_request_body = {
         'value_input_option': '2',
         'data': [{
-            "range": "Sheet1!A1:D"+str(len(jafs)),
-            "values": jafs
+            "range": "Sheet1!A%d:D%d" %(len(values)+1, len(jafs)+1),
+            "values": new
         }],
     }
 
-    request = service.spreadsheets().values().batchUpdate(spreadsheetId=SAMPLE_SPREADSHEET_ID, body=batch_update_values_request_body)
+    sort_filter = {
+        "requests": [
+            {
+            "sortRange": {
+                "range": {
+                "sheetId": 0,
+                "startRowIndex": 0,
+                "endRowIndex": len(jafs),
+                "startColumnIndex": 0,
+                "endColumnIndex": 4
+                },
+                "sortSpecs": [
+                {
+                    "dimensionIndex": 0,
+                    "sortOrder": "ASCENDING"
+                }
+                ]
+            }
+            }
+        ]
+    }
+
+
+    if len(new) != 0:
+        request = service.spreadsheets().values().batchUpdate(spreadsheetId=SAMPLE_SPREADSHEET_ID, body=batch_update_values_request_body)
+        response = request.execute()
+        for jaf in new:
+            print("Added " + jaf[0])
+    else:
+        print("Nothing to update")
+
+    print("Sorrting the new jAFS.........")
+    request = service.spreadsheets().batchUpdate(spreadsheetId=SAMPLE_SPREADSHEET_ID, body=sort_filter)
     response = request.execute()
 
+    return service
+
 if __name__ == '__main__':
-    main()
+    service = main()
 
 
 
