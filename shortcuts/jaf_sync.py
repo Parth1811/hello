@@ -34,7 +34,7 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 # The ID and range of a sample spreadsheet.
 SAMPLE_SPREADSHEET_ID = '1CLTM6d2Q8-MI5QuapXyA3zc9fGi09pXOA7JXSTltSbU'
 SAMPLE_RANGE_NAME = 'Sheet1!A1:D'
-SAMPLE_RANGE_NAME1 = 'Sheet1!A1:A'
+SAMPLE_RANGE_NAME1 = 'Sheet1!D1:D'
 
 def main():
     """Shows basic usage of the Sheets API.
@@ -71,7 +71,7 @@ def main():
     new = []
     if len(jafs) != len(values):
         for jaf in jafs:
-            if jaf[0] in values:
+            if jaf[3] in values:
                 continue
             new.append(jaf)
 
