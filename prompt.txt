@@ -1,0 +1,58 @@
+Please parse the below prompt and convert it into JSON template as mentioned. Output only the json and nothing else.
+
+This json specify action that users can take on entities like 'metrics', 'views' & 'boards'.
+Metrics are entities which are created with table and dimensions.
+Further those metrics are then added or removed to views and boards. These add or remove operation should be treated as UPDATE operation, unless explicitly mention that a new view or board is created. If operation is not clear mark as NONE_OF_ABOVE.
+
+Template with keys and type of value:
+```
+{
+    "entity": string,
+    "action": string,
+    "subAction": string,
+    "name": string,
+    "metrics": string[],
+    "dimensions": string[],
+    "table": string,
+}
+```
+"entity" - can be from following list [METRIC, VIEW, BOARD]
+"action" - can be from following list [CREATE, UPDATE, NONE_OF_ABOVE]
+"subAction" - can be from following list [ADD, REMOVE, RENAME, NONE_OF_ABOVE]. This indicate while updating what exactly user wants.
+"name" - each prompt will specific a name of entity on which the action is taken
+"metrics" - are the name of metrics mentioned in the prompt. This is null in case of 'metric' entity.
+"dimensions" - are the name of dimensions mentioned in the prompt. This not null only for metric entity.
+"table" - This not null only for metric entity.
+
+Example:
+1) add metric Revenue and Porfit to the view aplha one
+output:
+{
+  "entity": "VIEW",
+  "action": "UPDATE",
+  "subAction": "ADD"
+  "name": "aplha one",
+  "metrics": ["Revenue", "Profit"],
+  "dimensions": null,
+  "table": null
+}
+
+2) create metric revenue with user as dataset, and region and city as dimensions
+output:
+{
+  "entity": "METRIC",
+  "action": "CREATE",
+  "subAction": "NONE_OF_ABOVE"
+  "name": "revenue",
+  "metrics": null,
+  "dimensions": ["region", "city"],
+  "table": "dummy"
+}
+
+Prompt:
+```
+For view beta add a metric aplha
+```
+
+
+महसूल नावाचा मेट्रिक तयार करा आणि परिमाण म्हणून प्रदेश जोडा

@@ -1,21 +1,41 @@
-data_file = open('chiru_data.csv', 'r')
-data = data_file.readlines()
-data_file.close()
+import re 
 
-data = data[3:]
 
-answer_key = [
-    0, 1, 0, 1, 0,
-    1, 0, 1, 0, 1,
-    0, 1, 0, 1, 0,
-    1, 1, 1, 0, 1,
-    1, 1
-]
+f = open("data.txt", "r")
+lines = [x.split('\n')[0] for x  in f.readlines()]
 
-for i, person_data in enumerate(data):
-    responses = person_data.split(',')[7:29]
-    score = 0
-    for j, response in enumerate(responses):
-        if (answer_key[j] and response == 'Yes') or ((not answer_key[j]) and response == 'No'):
-            score += 1
-    data[i] = person_data[:-2] + ',' + str(score) + '\r\n'
+regex = "(\\DS|\\DE|\\DO|\\DT|\\TSE|\\TSO|\\TST|\\TTO|\\TTT|\\LL|\\SN|\\WLX|\\WLZ|\\EQZ|\\EQX|\\DI|\\WLIX|\\WLIZ)"
+param = ["DS","DE","DO","DT","TSE","TSO","TST","TTO","TTT","LL","SN","WLX","WLZ","EQZ","EQX","DI","WLIX","WLIZ"]
+slm = []
+
+for equation in lines:
+    terms = re.split("([\\+|\\-][0-9A-z.]*)", equation)
+    mp = { x:0 for x in param}
+    for term in terms:
+        if term == "" or term == None:
+            continue
+        num, var, _ = re.split("([A-Z]+)", term)
+        mp[var.upper()] = float(num)
+    slm.append(mp)
+    
+print(slm)
+l = []
+result = "Ultimate,"
+for p in param:
+    result += p + ','
+
+l.append(result + "\n")
+
+for i in range(len(lines)):
+    result = lines[i] + ','
+    for p in param:
+        result += str(slm[i][p]) + ','
+
+    result += '\n'
+    l.append(result)
+
+fr = open("data.csv", 'w')
+fr.writelines(l)
+
+fr.close()
+f.close()

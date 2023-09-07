@@ -2,6 +2,8 @@ from copy import deepcopy
 import os
 import pygame
 
+CURRENT_FILE_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
+
 BASE_APP_HEIGHT = 400
 BASE_APP_WIDTH = 600
 NORMAL_FONT_SIZE = 25
@@ -14,28 +16,36 @@ ORANGE  = (255,143,00)  #(0, 172, 193)
 BLUE    = (30,136,229)  #(0,77,64)
 
 GLOBAL_WEBSITE_LIST = [
-    ["Academic",
-        ('EE675', 'https://drive.google.com/drive/u/4/folders/0BwE8-ZHqcquYfkplWHZjemZMcG5HMmVwMmo5Qk4tLWpaNGZZT0NuVFFyb0J4Nk5LeklZbmc'),
-        ('EE789', 'https://moodle.iitb.ac.in/course/view.php?id=351'),
-        ('EE782', 'https://moodle.iitb.ac.in/course/view.php?id=348'),
-        ('Asc', 'https://asc.iitb.ac.in/'),
-        ('Drive', 'https://drive.google.com/drive/u/1/folders/19elCjP7PwvlOHL322LcHzfyDuF8_97H7'),
+    ["Masters",
+        ('Univ List', 'https://docs.google.com/spreadsheets/d/1-4-QPh9VTTqRrTzTmvqum-0r3oNe70P-DpvimYsz_z8/edit#gid=0'),
+        ('My Masters Drive', 'https://drive.google.com/drive/folders/1GiQS_gAi7X69T-e3byqriHdHS861HUBe?usp=sharing'),
+        ("Chad's drive", 'https://drive.google.com/drive/folders/1pKAFV7vOl1sT4xlc27T_dHoA4m18Yi4p'),
     ],
-
-    ["Github",
-        ('Robosub Github', 'https://github.com/auv-iitb/robosub'),
-        ('Hello Github', 'https://github.com/Parth1811/hello'),
+    ["Admission Portal",
+        ("Carnegie Mellon University", "https://admissions.scs.cmu.edu/portal/apply_gr"),
+        ("University of Pennslyvenia", "https://www.applyweb.com/upenng/index.ftl"),
+        ("Johns Hopkins University", "https://applygrad.jhu.edu/apply/"),
+        ("Georgia Institute of Technology", "https://gradapp.gatech.edu/apply/"),
+        ("New York University", "https://apply.engineering.nyu.edu/apply/"),
+        ("Northwestern University", "https://apply.mccormick.northwestern.edu/apply/"),
+        ("University of Michigen", "https://www.applyweb.com/cgi-bin/app?s=umgrad"),
+        ("University of Maryland", "https://terpengage.force.com/community/ERx_Forms__Homepage"),
+        ("Northeastern University", "https://enroll.northeastern.edu/apply/"),
     ],
-
-    ["Gmail",
-        ('Gmail-parthvin', 'https://mail.google.com/mail/u/0/#inbox'),
-        ('Gmail-parth4iitb', 'https://mail.google.com/mail/u/1/#inbox'),
-        ('Gmail-django.parth', 'https://mail.google.com/mail/u/3/#inbox'),
-    ],
-    ('Calendar', 'https://calendar.google.com/calendar/u/0/r?hl=en-GB&pli=1'),
-    ('Placement Portal', 'https://campus.placements.iitb.ac.in/'),
-    ('Placement Blog', 'http://placements.iitb.ac.in/blog/'),
-
+    ('Drivetrain', 'https://%s.drivetrain.ai/'),
+    # ["Github",
+    #     ('Netra Explainability', 'https://github.com/udaan-com/udaan-netra-explainability'),
+    #     ('Robosub Github', 'https://github.com/auv-iitb/robosub'),
+    #     ('Hello Github', 'https://github.com/Parth1811/hello'),
+    # ],
+    # ["Gmail",
+    #     ('Gmail-parthvin', 'https://mail.google.com/mail/u/0/#inbox'),
+    #     ('Gmail-parthpatil-udaan', 'https://mail.google.com/mail/u/1/#inbox'),
+    #     # ('Gmail-django.parth', 'https://mail.google.com/mail/u/3/#inbox'),
+    # ],
+    # ('Calendar', 'https://calendar.google.com/calendar/u/1/r?hl=en-GB&pli=1'),
+    # ('Placement Portal', 'https://campus.placements.iitb.ac.in/'),
+    # ('Placement Blog', 'http://placements.iitb.ac.in/blog/'),
     # ["Discussion Groups",
     #     ('AUV Software', 'https://groups.google.com/forum/#!forum/software_auv'),
     #     # ('SNARE slack', 'https://app.slack.com/client/T3U3LQR6Y/C4CEKSG9E/thread/C3U3LQX7E-1582274203.072500'),
@@ -44,12 +54,11 @@ GLOBAL_WEBSITE_LIST = [
     #     # ('Processing IRC', 'https://discourse.processing.org/c/summer-of-code')
     #     # ('Gitter', 'https://gitter.im/'),
     # ],
-
-    # ('OverLeaf', 'https://www.overleaf.com/project'),
+    ('OverLeaf', 'https://www.overleaf.com/project'),
     #('JioSaavn', 'https://www.jiosaavn.com/'),
     # ('Workflowy', 'https://workflowy.com/'),
     # ('WakaTime', 'https://wakatime.com/dashboard'),
-    # ('Django tickets', 'https://code.djangoproject.com/ticket/'),
+    # ('Django tickets', 'https://code.djangoproject.com/ticket/%s'),
     # ('SNARE Issues', 'https://github.com/mushorg/snare/issues/'),
     # ('TANNER Issues', 'https://github.com/mushorg/tanner/issues/'),
     #('VISA', 'https://cgifederal.secure.force.com/ApplicantHome'),
@@ -75,7 +84,7 @@ def text(screen, label, x_location, y_location, size = NORMAL_FONT_SIZE, color =
     text_pos = text_rect if center else (x_location , y_location)
     screen.blit(text_surface, text_pos)
 
-def get_ticket_no(website_list, index):
+def get_ticket_no(website_list, index, format=True):
     width, height = BASE_APP_WIDTH/5, BASE_APP_HEIGHT/10
     screen = pygame.display.set_mode((width, height))
     pygame.display.set_caption("Type ticket to be launced")
@@ -89,10 +98,21 @@ def get_ticket_no(website_list, index):
                 for i in range(10):
                     if (event.key == pygame.K_0 + i) or (event.key == pygame.K_KP0 + i):
                         TICKET_NO += str(i)
+                if event.unicode == "S":
+                    TICKET_NO += ".stagingv2"
+                    continue
+                if event.unicode == "P":
+                    TICKET_NO += ".preprodv2"
+                    continue
+                if event.key in range(pygame.K_a, pygame.K_z + 1):
+                    TICKET_NO += event.unicode
                 if event.key == pygame.K_BACKSPACE:
                     TICKET_NO = TICKET_NO[:-1]
                 if event.key == pygame.K_RETURN or event.key == pygame.K_KP_ENTER:
-                    website_list[index] = (website_list[index][0], website_list[index][1]+TICKET_NO)
+                    if format:
+                        website_list[index] = (website_list[index][0], website_list[index][1] % TICKET_NO)
+                    else:
+                        website_list[index] = (website_list[index][0], website_list[index][int(TICKET_NO)][1])
                     return
                 if event.key == pygame.K_DOWN or event.key == pygame.K_q:
                     exit()
@@ -106,13 +126,18 @@ def get_ticket_no(website_list, index):
 def apply_settings(WEBSITE_INDEX):
     if WEBSITE_INDEX == -1:
         return
-    if WEBSITE_LIST[WEBSITE_INDEX][0] in ('Django tickets', 'RTD Issues', 'SNARE Issues', 'TANNER Issues'):
+    if WEBSITE_LIST[WEBSITE_INDEX][0] in ('Django tickets', 'RTD Issues', 'SNARE Issues', 'TANNER Issues', 'Drivetrain'):
         get_ticket_no(WEBSITE_LIST, WEBSITE_INDEX)
-    os.system('nohup google-chrome ' + WEBSITE_LIST[WEBSITE_INDEX][1] + ' >/dev/null 2>&1 &')
+    if WEBSITE_LIST[WEBSITE_INDEX][0] in ('Vocab Lists'):
+        get_ticket_no(WEBSITE_LIST, WEBSITE_INDEX, False)
+
+    # os.system('nohup google-chrome ' + WEBSITE_LIST[WEBSITE_INDEX][1] + ' >/dev/null 2>&1 &')
+    os.system(f'open -a "Google Chrome" "{WEBSITE_LIST[WEBSITE_INDEX][1]}"')
+
 
 screen = pygame.display.set_mode((BASE_APP_WIDTH , BASE_APP_HEIGHT))
 pygame.display.set_caption("select Website to be launced")
-image = pygame.image.load('/home/parth/hello/shortcuts/firefox.jpg')
+image = pygame.image.load(os.path.join(CURRENT_FILE_DIRECTORY, 'firefox.jpg'))
 image = pygame.transform.scale(image, screen.get_size())
 # pygame.transform.scale(image, screen.get_size())
 
