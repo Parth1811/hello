@@ -45,19 +45,20 @@ if req.status_code == 200:
     #  'date_updated', 'url', 'locations', 'sponsorship', 'active', 'company_name', 
     # 'title', 'season', 'source', 'id', 'date_posted', 'company_url', 'is_visible'
 
-    sorted_listings = sorted(listings, key=lambda x: x["date_posted"])
-    header = ["Id", "Title", "Posted on", "Deadline", "Company", "Location(s)", "Season", "Status"]
+    sorted_listings = sorted(listings, key=lambda x: x["date_updated"])
+    header = ["Title", "Posted on", "Deadline", "Company", "Location(s)", "Season", "Status", "ID"]
     rows = [header]
     for listing in listings:        
-        row = [""] * len(header)
-        row[0] = listing["id"]
-        row[1] = f'=HYPERLINK("{listing["url"]}", "{sanitize_title(listing["title"])}")'
-        row[2] = datetime.fromtimestamp(listing["date_posted"]).strftime("%d, %b %y")
-        row[3] = ""
-        row[4] = listing["company_name"]
-        row[5] = ", ".join(listing["locations"])
-        row[6] = get_season(listing["title"])
-        row[7] = ""
+        row = [
+            f'=HYPERLINK("{listing["url"]}", "{sanitize_title(listing["title"])}")',
+            datetime.fromtimestamp(listing["date_posted"]).strftime("%d, %b %y"),
+            "",
+            listing["company_name"],
+            ", ".join(listing["locations"]),
+            get_season(listing["title"]),
+            "",
+            listing["id"],
+        ]
 
         rows.append(row)
 
