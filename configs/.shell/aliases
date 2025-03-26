@@ -1,0 +1,12 @@
+alias szrc='source ~/.zshrc';
+alias cda="cd ~/Academics/SEM\ 1\ -\ Spring\ 24/"
+
+
+alias kdev="kubectl -n dev --context=cen0"
+alias k8dev="kubectl -n dev --context=k8s0"
+alias kprod="kubectl -n prod --context=sin0"
+alias kprodc="kubectl -n prod --context=cen0"
+
+alias dev-redis="redis-cli -c -h ud-redis-cache1-dev.redis.cache.windows.net -a cWINtYriBWC0W1LSwdK4uhrICTSUig714p5vzoZrkuY"
+alias clean-orig="find . -name '*.orig' -delete"
+alias fill_dependency='python ~/hello/fill_dependency.py "$(fc -r -l -n | head -n 1)"'

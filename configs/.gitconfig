@@ -1,0 +1,33 @@
+[user]
+	name = Parth Patil
+	email = parthvin@gmail.com
+
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	cp = cherry-pick
+	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+	unstage = restore --staged
+	type = cat-file -t
+	dump = cat-file -p
+
+[merge]
+	tool = vscode
+[mergetool "vscode"]
+	cmd = code --wait $MERGED
+[core]
+	autocrlf = false
+	safecrlf = true
+	symlinks = true
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[diff]
+	tool = vscode
+[difftool]
+	prompt = false
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[push]
+	autoSetupRemote = true

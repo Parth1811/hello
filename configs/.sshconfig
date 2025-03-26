@@ -1,0 +1,46 @@
+Host github.com
+     HostName github.com
+     User git
+     IdentityFile ~/.ssh/id_ed25519_2
+
+Host cloudserver.local
+     HostName cloudserver.local
+     User parth
+     IdentityFile ~/.ssh/id_ed25519_2
+
+Host corallab
+     HostName 10.164.8.169
+     User corallab-s1
+     IdentityFile ~/.ssh/id_ed25519_2
+
+Host eceprog
+     HostName eceprog.ecn.purdue.edu
+     User patil185
+     IdentityFile ~/.ssh/id_ed25519
+
+Host tokyo
+     HostName dl-tokyo.ecn.purdue.edu
+     User parth
+
+Host tokyo-via
+     HostName dl-tokyo.ecn.purdue.edu
+     User parth
+     ProxyJump eceprog
+
+Host ec2-dharun
+     HostName ec2-35-173-190-74.compute-1.amazonaws.com
+     User ec2-user
+     IdentityFile ~/.ssh/ServerKeyPair.pem
+
+Host nano
+     HostName 128.46.74.150
+     User parth
+
+Host tx1
+     HostName 128.46.74.151
+     User ubuntu
+
+Host berlin
+     HostName dl-berlin.ecn.purdue.edu
+     User patil185
+     IdentityFile ~/.ssh/id_ed25519_2

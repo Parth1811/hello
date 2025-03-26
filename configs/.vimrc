@@ -27,3 +27,5 @@ nnoremap <C-t> :tabnew <bar> :Ex<CR>
 nnoremap <C-w> :q!<CR>
 nnoremap <C-e> :Ex<CR>
 nnoremap <C-b> :Rex<CR>
+syntax on
+set number

@@ -1,0 +1,25 @@
+export PATH="~/Library/Python/3.10/bin:$PATH"
+export PATH="/usr/local/go/bin:$PATH"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export PATH="/Users/parth/cbmc/build/bin:/tmp/cbmc-viewer/bin/:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+# export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-11.0.17.jdk/Contents/Home"
+# export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-22.jdk/Contents/Home/"
+
+export DB_DATABASE='drivetrain_dev'
+export DB_HOST='127.0.0.1'
+export DB_USER='postgres'
+export DB_PORT='5432'
+export DB_PASS=''
+export TESSERACT_ENV="dev"
+export DEBUG=5
+export LOG_FILE_PATH="/Users/parthpatil/tesseract/logs/tess.log"
+export GOARCH=arm64
+export GOOGLE_APPLICATION_CREDENTIALS=/Users/parthpatil/gcn-key-staging.json
+export PROJECT_ID=drivetrain-staging
+export OPENAI_API_KEY=
+
+export SUPERUSER_EMAIL_ID=parth@drivetrain.ai
+export SUPERUSER_PASSWORD=iluvkurkure
