@@ -48,7 +48,10 @@ if req.status_code == 200:
     sorted_listings = sorted(listings, key=lambda x: x["date_updated"])
     header = ["Title", "Posted on", "Deadline", "Company", "Location(s)", "Season", "Status", "ID"]
     rows = [header]
-    for listing in listings:        
+    for listing in listings:
+        if all("canada" in loc.lower() for loc in listing["locations"]):
+            continue
+
         row = [
             f'=HYPERLINK("{listing["url"]}", "{sanitize_title(listing["title"])}")',
             datetime.fromtimestamp(listing["date_posted"]).strftime("%d, %b %y"),

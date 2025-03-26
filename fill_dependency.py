@@ -28,16 +28,11 @@ if missing_include == "":
     
 print("Missing #include:", missing_include)
 
-contiki_folder = os.path.expanduser("~/contiki")
+contiki_folder = os.path.expanduser("~/zephyr")
 missing_files = []
 
-# i = 0
 for root, dirs, files in os.walk(contiki_folder):
     for file in files:
-        # print(missing_include, file)
-        # i += 1
-        # if i == 10:
-        #     break
         if missing_include in file:
             missing_files.append(os.path.join(root, file))
 
@@ -49,8 +44,8 @@ if len(missing_files) > 0:
     selected_folder = int(input("Select folder: "))
     selected_folder = os.path.dirname(missing_files[selected_folder]).replace(contiki_folder, "~/contiki")
 
-    old_command_slices = old_command.split("--trace")
-    new_command = f"{old_command_slices[0]} -I {selected_folder} --trace {old_command_slices[1]}"
+    # old_command_slices = old_command.split("--trace")
+    new_command = f"{old_command} -I {selected_folder}"
     print("New command (also copied to clipboard):")
     pyperclip.copy(new_command)
     print(new_command)

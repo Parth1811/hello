@@ -1,5 +1,8 @@
-from copy import deepcopy
 import os
+import subprocess
+import sys
+from copy import deepcopy
+
 import pygame
 
 CURRENT_FILE_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
@@ -16,23 +19,44 @@ ORANGE  = (255,143,00)  #(0, 172, 193)
 BLUE    = (30,136,229)  #(0,77,64)
 
 GLOBAL_WEBSITE_LIST = [
-    ["Masters",
-        ('Univ List', 'https://docs.google.com/spreadsheets/d/1-4-QPh9VTTqRrTzTmvqum-0r3oNe70P-DpvimYsz_z8/edit#gid=0'),
-        ('My Masters Drive', 'https://drive.google.com/drive/folders/1GiQS_gAi7X69T-e3byqriHdHS861HUBe?usp=sharing'),
-        ("Chad's drive", 'https://drive.google.com/drive/folders/1pKAFV7vOl1sT4xlc27T_dHoA4m18Yi4p'),
+    ["Academics",
+        ["ECE 602", 
+            ("BrightSpace", 'https://purdue.brightspace.com/d2l/home/1096470'),
+            ("Discussion", 'https://piazza.com/class/lzvfo9f8pbo35x'),
+            ("Drive", 'https://drive.google.com/drive/folders/1Caz_1OrrC-fykZfbOxYt46YlQLhE8umq?usp=drive_link'),
+            ("Gradescope", "https://www.gradescope.com/courses/829304"),
+        ],
+        ["ECE 461", 
+            ("BrightSpace", 'https://purdue.brightspace.com/d2l/home/1096370'),
+            ("Discussion", 'https://piazza.com/class/lzvpabcdwx83b0'),
+            ("Drive", 'https://purdue0-my.sharepoint.com/:f:/g/personal/davisjam_purdue_edu/EgqgWBmDKn9Ol6AI-6XPmUcBqTYAZIc2DcudUrZ1q7aNiw'),
+            ("Gradescope", "https://www.gradescope.com/courses/825720"),
+            ("Asana", "https://app.asana.com/0/1207999039125077/1207999039125077"),
+        ]
     ],
-    ["Admission Portal",
-        ("Carnegie Mellon University", "https://admissions.scs.cmu.edu/portal/apply_gr"),
-        ("University of Pennslyvenia", "https://www.applyweb.com/upenng/index.ftl"),
-        ("Johns Hopkins University", "https://applygrad.jhu.edu/apply/"),
-        ("Georgia Institute of Technology", "https://gradapp.gatech.edu/apply/"),
-        ("New York University", "https://apply.engineering.nyu.edu/apply/"),
-        ("Northwestern University", "https://apply.mccormick.northwestern.edu/apply/"),
-        ("University of Michigen", "https://www.applyweb.com/cgi-bin/app?s=umgrad"),
-        ("University of Maryland", "https://terpengage.force.com/community/ERx_Forms__Homepage"),
-        ("Northeastern University", "https://enroll.northeastern.edu/apply/"),
+    ["Purdue",
+        ("myPurdue", 'https://wl.mypurdue.purdue.edu/'),
+        ("Outlook", 'https://outlook.office.com/mail/'),
+        ('Scheduling Assitant', 'https://timetable.mypurdue.purdue.edu/Timetabling/gwt.jsp?page=sectioning'),
+        ("Push Portal", 'https://myhealth.push.purdue.edu/home.aspx'),
     ],
-    ('Drivetrain', 'https://%s.drivetrain.ai/'),
+    # ["Masters",
+    #     ('Univ List', 'https://docs.google.com/spreadsheets/d/1-4-QPh9VTTqRrTzTmvqum-0r3oNe70P-DpvimYsz_z8/edit#gid=0'),
+    #     ('My Masters Drive', 'https://drive.google.com/drive/folders/1GiQS_gAi7X69T-e3byqriHdHS861HUBe?usp=sharing'),
+    #     ("Chad's drive", 'https://drive.google.com/drive/folders/1pKAFV7vOl1sT4xlc27T_dHoA4m18Yi4p'),
+    # ],
+    # ["Admission Portal",
+    #     ("Carnegie Mellon University", "https://admissions.scs.cmu.edu/portal/apply_gr"),
+    #     ("University of Pennslyvenia", "https://www.applyweb.com/upenng/index.ftl"),
+    #     ("Johns Hopkins University", "https://applygrad.jhu.edu/apply/"),
+    #     ("Georgia Institute of Technology", "https://gradapp.gatech.edu/apply/"),
+    #     ("New York University", "https://apply.engineering.nyu.edu/apply/"),
+    #     ("Northwestern University", "https://apply.mccormick.northwestern.edu/apply/"),
+    #     ("University of Michigen", "https://www.applyweb.com/cgi-bin/app?s=umgrad"),
+    #     ("University of Maryland", "https://terpengage.force.com/community/ERx_Forms__Homepage"),
+    #     ("Northeastern University", "https://enroll.northeastern.edu/apply/"),
+    # ],
+    # ('Drivetrain', 'https://%s.drivetrain.ai/'),
     # ["Github",
     #     ('Netra Explainability', 'https://github.com/udaan-com/udaan-netra-explainability'),
     #     ('Robosub Github', 'https://github.com/auv-iitb/robosub'),
@@ -55,6 +79,11 @@ GLOBAL_WEBSITE_LIST = [
     #     # ('Gitter', 'https://gitter.im/'),
     # ],
     ('OverLeaf', 'https://www.overleaf.com/project'),
+    ["Google Sheets",
+        ("Intern", "https://docs.google.com/spreadsheets/d/1gtHfQ5kkoTUma-_VejWQyBAvYn4Bf58Q75eeaPUa--Q/edit?gid=1713903924#gid=1713903924"),
+        ("CBMC Sheet", "https://docs.google.com/spreadsheets/d/161X1THr_XqXr7HQ3FnKfecgxQCyI0aZVlrxQMHTzdoY/edit?gid=0#gid=0"),
+        ("461 Handoff", "https://docs.google.com/spreadsheets/d/1T_908snvNCGikO8o4qFtUT7QTz9usmmh0pCtogHVbYE/edit?gid=0#gid=0"),
+    ],
     #('JioSaavn', 'https://www.jiosaavn.com/'),
     # ('Workflowy', 'https://workflowy.com/'),
     # ('WakaTime', 'https://wakatime.com/dashboard'),
@@ -62,15 +91,31 @@ GLOBAL_WEBSITE_LIST = [
     # ('SNARE Issues', 'https://github.com/mushorg/snare/issues/'),
     # ('TANNER Issues', 'https://github.com/mushorg/tanner/issues/'),
     #('VISA', 'https://cgifederal.secure.force.com/ApplicantHome'),
+    ["Macros",
+        ("Macro:\\begin{bmatrix} \\end{bmatrix}", r"\\begin{bmatrix} \\end{bmatrix}"),
+        ("Macro:C++ template",\
+r'''
+#include <bits/stdc++.h>
+using namespace std;
+
+#define fo(i, n) for (i = 0; i < n; i++)
+#define Fo(i, k, n) for (i = k; k < n ? i < n : i > n; k < n ? i += 1 : i -= 1)
+#define ll long long
+#define deb(x) cout << #x << "=" << x << endl
+#define deb2(x, y) cout << #x << "=" << x << "," << #y << "=" << y << endl
+#define pb push_back
+#define all(x) x.begin(), x.end()
+#define clr(x) memset(x, 0, sizeof(x))
+typedef vector<int> vi;
+typedef vector<ll> vl;
+'''),
+    ]
 ]
 
 WEBSITE_LIST = deepcopy(GLOBAL_WEBSITE_LIST)
 PREV_WEBSITE_LIST = None
 NEXT_WEBSITE_LIST = None
 NESTED_WEBSITE_NAME = ''
-
-os.environ['SDL_VIDEO_CENTERED'] = '1'
-pygame.init()
 
 def text(screen, label, x_location, y_location, size = NORMAL_FONT_SIZE, color = WHITE, background_color = (0,0,0,0), center=True):
     basicfont = pygame.font.SysFont(None, size)
@@ -130,19 +175,39 @@ def apply_settings(WEBSITE_INDEX):
         get_ticket_no(WEBSITE_LIST, WEBSITE_INDEX)
     if WEBSITE_LIST[WEBSITE_INDEX][0] in ('Vocab Lists'):
         get_ticket_no(WEBSITE_LIST, WEBSITE_INDEX, False)
+    if WEBSITE_LIST[WEBSITE_INDEX][0].startswith("Macro:"):
+        os.popen(f"echo '{WEBSITE_LIST[WEBSITE_INDEX][1]}' | pbcopy")
+        return
 
     # os.system('nohup google-chrome ' + WEBSITE_LIST[WEBSITE_INDEX][1] + ' >/dev/null 2>&1 &')
     os.system(f'open -a "Google Chrome" "{WEBSITE_LIST[WEBSITE_INDEX][1]}"')
 
+
+
+WEBSITE_INDEX = -1
+WEBSITE_NAME = ''
+
+
+if len(sys.argv) > 1:
+    for index in sys.argv[1]:
+        if type(WEBSITE_LIST[int(index)-1]) == type([]):
+            NESTED_WEBSITE_NAME = WEBSITE_LIST[int(index)-1][0]
+            WEBSITE_LIST = WEBSITE_LIST[int(index)-1][1:]
+            continue
+        WEBSITE_INDEX = int(index)-1
+
+    apply_settings(WEBSITE_INDEX)
+    exit()
+
+
+os.environ['SDL_VIDEO_CENTERED'] = '1'
+pygame.init()
 
 screen = pygame.display.set_mode((BASE_APP_WIDTH , BASE_APP_HEIGHT))
 pygame.display.set_caption("select Website to be launced")
 image = pygame.image.load(os.path.join(CURRENT_FILE_DIRECTORY, 'firefox.jpg'))
 image = pygame.transform.scale(image, screen.get_size())
 # pygame.transform.scale(image, screen.get_size())
-
-WEBSITE_INDEX = -1
-WEBSITE_NAME = ''
 
 while True:
     for event in pygame.event.get():

@@ -1,41 +1,13 @@
-import re 
+import numpy as np
+from sympy import Matrix
+
+a = np.array([[-1,2,-1],[2,-2,-2],[-3,2,1]])
+m = Matrix(a)
+
+T, J = m.jordan_form()
+
+print(f"Jordan form of matrix a: {J}")
+print(f"Matrix T: {T}")
+print(f"Matrix T^-1: {T.inv()}")
 
 
-f = open("data.txt", "r")
-lines = [x.split('\n')[0] for x  in f.readlines()]
-
-regex = "(\\DS|\\DE|\\DO|\\DT|\\TSE|\\TSO|\\TST|\\TTO|\\TTT|\\LL|\\SN|\\WLX|\\WLZ|\\EQZ|\\EQX|\\DI|\\WLIX|\\WLIZ)"
-param = ["DS","DE","DO","DT","TSE","TSO","TST","TTO","TTT","LL","SN","WLX","WLZ","EQZ","EQX","DI","WLIX","WLIZ"]
-slm = []
-
-for equation in lines:
-    terms = re.split("([\\+|\\-][0-9A-z.]*)", equation)
-    mp = { x:0 for x in param}
-    for term in terms:
-        if term == "" or term == None:
-            continue
-        num, var, _ = re.split("([A-Z]+)", term)
-        mp[var.upper()] = float(num)
-    slm.append(mp)
-    
-print(slm)
-l = []
-result = "Ultimate,"
-for p in param:
-    result += p + ','
-
-l.append(result + "\n")
-
-for i in range(len(lines)):
-    result = lines[i] + ','
-    for p in param:
-        result += str(slm[i][p]) + ','
-
-    result += '\n'
-    l.append(result)
-
-fr = open("data.csv", 'w')
-fr.writelines(l)
-
-fr.close()
-f.close()
