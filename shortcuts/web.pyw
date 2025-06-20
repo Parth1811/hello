@@ -2,10 +2,6 @@
 
 from copy import deepcopy
 import os
-import subprocess
-import sys
-from copy import deepcopy
-
 import pygame
 
 CURRENT_FILE_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
@@ -30,10 +26,14 @@ GLOBAL_WEBSITE_LIST = [
         ('Quip Home', 'https://quip-amazon.com/browse'),
         ('Claim Commuter Benefits', 'https://myaccount.edenredbenefits.com/dashboard/home'),
         ('Embark', 'https://embark.talent.a2z.com/plans/launch-1036771'),
+        ('Lyft Ride', 'https://amazon-subsidiary.luum.com/accounts/ridehome'),
     ],
     ["Quip EoAT",
         ('EoAT Landing', 'https://quip-amazon.com/jXMiArbXrqwy/Robotic-Stow-EoAT70-Beta-MTAC-Landing-Page-WIP'),
         ('Quip FOlder', 'https://quip-amazon.com/6k6xOiNIWhv2/EoAT7'),
+        ('Test plan', 'https://amazon.awsapps.com/workdocs-amazon/index.html#/document/d3ffd0c92b91b15fa2a4c989f60bcfd56b644fcf9589b7f96931853ead6aa186'),
+        ('Schedule', 'https://app.smartsheet.com/sheets/2PxFg8Fcp9GH9MCMmcpVHp4VCJxHGFGrfrP2Q7R1?view=gantt'),
+        ('Design Review', 'https://amazon.awsapps.com/workdocs-amazon/index.html#/document/bfe8c98595ce5ddce8cab8e5eb7ee22eeda151714692c9bc630e64b02ef70d9c'),
     ],
     ["Quip Vulcan",
         ('Landing', 'https://quip-amazon.com/FbQAAztJu7Wm/Vulcan-Stow-MTAC-Project-Landing-Page'),
@@ -45,9 +45,7 @@ GLOBAL_WEBSITE_LIST = [
         ("Outlook", 'https://outlook.office.com/mail/'),
         ('Scheduling Assitant', 'https://timetable.mypurdue.purdue.edu/Timetabling/gwt.jsp?page=sectioning'),
         ("Push Portal", 'https://myhealth.push.purdue.edu/home.aspx'),
-    ]
-
-
+    ],
     # ('Drivetrain', 'https://%s.drivetrain.ai/'),
     # ["Github",
     #     ('Netra Explainability', 'https://github.com/udaan-com/udaan-netra-explainability'),
@@ -71,11 +69,6 @@ GLOBAL_WEBSITE_LIST = [
     #     # ('Gitter', 'https://gitter.im/'),
     # ],
     ('OverLeaf', 'https://www.overleaf.com/project'),
-    ["Google Sheets",
-        ("Intern", "https://docs.google.com/spreadsheets/d/1gtHfQ5kkoTUma-_VejWQyBAvYn4Bf58Q75eeaPUa--Q/edit?gid=1713903924#gid=1713903924"),
-        ("CBMC Sheet", "https://docs.google.com/spreadsheets/d/161X1THr_XqXr7HQ3FnKfecgxQCyI0aZVlrxQMHTzdoY/edit?gid=0#gid=0"),
-        ("461 Handoff", "https://docs.google.com/spreadsheets/d/1T_908snvNCGikO8o4qFtUT7QTz9usmmh0pCtogHVbYE/edit?gid=0#gid=0"),
-    ],
     #('JioSaavn', 'https://www.jiosaavn.com/'),
     # ('Workflowy', 'https://workflowy.com/'),
     # ('WakaTime', 'https://wakatime.com/dashboard'),
@@ -83,31 +76,15 @@ GLOBAL_WEBSITE_LIST = [
     # ('SNARE Issues', 'https://github.com/mushorg/snare/issues/'),
     # ('TANNER Issues', 'https://github.com/mushorg/tanner/issues/'),
     #('VISA', 'https://cgifederal.secure.force.com/ApplicantHome'),
-    ["Macros",
-        ("Macro:\\begin{bmatrix} \\end{bmatrix}", r"\\begin{bmatrix} \\end{bmatrix}"),
-        ("Macro:C++ template",\
-r'''
-#include <bits/stdc++.h>
-using namespace std;
-
-#define fo(i, n) for (i = 0; i < n; i++)
-#define Fo(i, k, n) for (i = k; k < n ? i < n : i > n; k < n ? i += 1 : i -= 1)
-#define ll long long
-#define deb(x) cout << #x << "=" << x << endl
-#define deb2(x, y) cout << #x << "=" << x << "," << #y << "=" << y << endl
-#define pb push_back
-#define all(x) x.begin(), x.end()
-#define clr(x) memset(x, 0, sizeof(x))
-typedef vector<int> vi;
-typedef vector<ll> vl;
-'''),
-    ]
 ]
 
 WEBSITE_LIST = deepcopy(GLOBAL_WEBSITE_LIST)
 PREV_WEBSITE_LIST = None
 NEXT_WEBSITE_LIST = None
 NESTED_WEBSITE_NAME = ''
+
+os.environ['SDL_VIDEO_CENTERED'] = '1'
+pygame.init()
 
 def text(screen, label, x_location, y_location, size = NORMAL_FONT_SIZE, color = WHITE, background_color = (0,0,0,0), center=True):
     basicfont = pygame.font.SysFont(None, size)
@@ -167,34 +144,11 @@ def apply_settings(WEBSITE_INDEX):
         get_ticket_no(WEBSITE_LIST, WEBSITE_INDEX)
     if WEBSITE_LIST[WEBSITE_INDEX][0] in ('Vocab Lists'):
         get_ticket_no(WEBSITE_LIST, WEBSITE_INDEX, False)
-    if WEBSITE_LIST[WEBSITE_INDEX][0].startswith("Macro:"):
-        os.popen(f"echo '{WEBSITE_LIST[WEBSITE_INDEX][1]}' | pbcopy")
-        return
 
     # os.system('nohup google-chrome ' + WEBSITE_LIST[WEBSITE_INDEX][1] + ' >/dev/null 2>&1 &')
     # os.system(f'open -a "Google Chrome" "{WEBSITE_LIST[WEBSITE_INDEX][1]}"')
     os.system(f'"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe" {WEBSITE_LIST[WEBSITE_INDEX][1]}')
 
-
-
-WEBSITE_INDEX = -1
-WEBSITE_NAME = ''
-
-
-if len(sys.argv) > 1:
-    for index in sys.argv[1]:
-        if type(WEBSITE_LIST[int(index)-1]) == type([]):
-            NESTED_WEBSITE_NAME = WEBSITE_LIST[int(index)-1][0]
-            WEBSITE_LIST = WEBSITE_LIST[int(index)-1][1:]
-            continue
-        WEBSITE_INDEX = int(index)-1
-
-    apply_settings(WEBSITE_INDEX)
-    exit()
-
-
-os.environ['SDL_VIDEO_CENTERED'] = '1'
-pygame.init()
 
 screen = pygame.display.set_mode((BASE_APP_WIDTH , BASE_APP_HEIGHT))
 pygame.display.set_caption("select Website to be launced")
@@ -202,6 +156,9 @@ image = pygame.image.load(os.path.join(CURRENT_FILE_DIRECTORY, 'firefox.jpg'))
 image = pygame.transform.scale(image, screen.get_size())
 pygame.mouse.set_pos(BASE_APP_HEIGHT // 2, BASE_APP_WIDTH // 2)
 # pygame.transform.scale(image, screen.get_size())
+
+WEBSITE_INDEX = -1
+WEBSITE_NAME = ''
 
 while True:
     for event in pygame.event.get():
