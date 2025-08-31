@@ -1,6 +1,5 @@
 #!  C:\\Users\\parthvp\\.virtualenv\\ar\\Scripts\\pythonw.exe
 
-from copy import deepcopy
 import os
 import subprocess
 import sys
@@ -22,30 +21,27 @@ ORANGE  = (255,143,00)  #(0, 172, 193)
 BLUE    = (30,136,229)  #(0,77,64)
 
 GLOBAL_WEBSITE_LIST = [
-    ["Work",
-        ('A to Z', 'https://atoz.amazon.work/home'),
-        ('Flex Desk Booking', 'https://indoorfinders.robotics.a2z.com/UserSite/WIO/VisualRegistration.aspx?rand=iewdpsvohy'),
-        ('Room Booking', 'https://meetings.amazon.com/#/'),
-        ('Amazon Wiki', 'https://wiki.amazon.com/bin/view/Main/'),
-        ('Quip Home', 'https://quip-amazon.com/browse'),
-        ('Claim Commuter Benefits', 'https://myaccount.edenredbenefits.com/dashboard/home'),
-        ('Embark', 'https://embark.talent.a2z.com/plans/launch-1036771'),
-    ],
-    ["Quip EoAT",
-        ('EoAT Landing', 'https://quip-amazon.com/jXMiArbXrqwy/Robotic-Stow-EoAT70-Beta-MTAC-Landing-Page-WIP'),
-        ('Quip FOlder', 'https://quip-amazon.com/6k6xOiNIWhv2/EoAT7'),
-    ],
-    ["Quip Vulcan",
-        ('Landing', 'https://quip-amazon.com/FbQAAztJu7Wm/Vulcan-Stow-MTAC-Project-Landing-Page'),
-        ('Test Stratergy', 'https://quip-amazon.com/DnIDABl0jKgI#bJL9BAr1Wfi'),
-        ('Beta Build Plan', 'https://quip-amazon.com/eoYdAVi1CNCH/Vulcan-Stow-Beta-Build-Plan-Spreadsheet#temp:C:WOP85c0d51382fa4472a7afbdc83'),    
+    ["Academics",
+        ["ECE 608",
+            ("BrightSpace", 'https://purdue.brightspace.com/d2l/home/1361050'),
+            ("Discussion", 'https://piazza.com/class/mednscy22lt2ce'),
+            ("Drive", 'https://drive.google.com/drive/folders/1VYHjpSXFMVDur7XEUp0To15-ErAsMFoo?usp=drive_link'),
+            ("Gradescope", "https://www.gradescope.com/courses/1093119"),
+        ],
+        ["ECE 461",
+            ("BrightSpace", 'https://purdue.brightspace.com/d2l/home/1360878'),
+            ("Discussion", 'https://piazza.com/purdue/fall2025/ece30861'),
+            ("Drive", 'https://drive.google.com/drive/folders/1brxEYILH1vhyKwlUFrY2thEM5rwdrs9X?usp=drive_link'),
+            ("Gradescope", "https://www.gradescope.com/courses/1092438"),
+            ("Prev Onedrive", 'https://purdue0-my.sharepoint.com/:f:/g/personal/davisjam_purdue_edu/EgqgWBmDKn9Ol6AI-6XPmUcBqTYAZIc2DcudUrZ1q7aNiw'),
+        ]
     ],
     ["Purdue",
         ("myPurdue", 'https://wl.mypurdue.purdue.edu/'),
         ("Outlook", 'https://outlook.office.com/mail/'),
         ('Scheduling Assitant', 'https://timetable.mypurdue.purdue.edu/Timetabling/gwt.jsp?page=sectioning'),
         ("Push Portal", 'https://myhealth.push.purdue.edu/home.aspx'),
-    ]
+    ],
 
 
     # ('Drivetrain', 'https://%s.drivetrain.ai/'),
@@ -71,11 +67,11 @@ GLOBAL_WEBSITE_LIST = [
     #     # ('Gitter', 'https://gitter.im/'),
     # ],
     ('OverLeaf', 'https://www.overleaf.com/project'),
-    ["Google Sheets",
-        ("Intern", "https://docs.google.com/spreadsheets/d/1gtHfQ5kkoTUma-_VejWQyBAvYn4Bf58Q75eeaPUa--Q/edit?gid=1713903924#gid=1713903924"),
-        ("CBMC Sheet", "https://docs.google.com/spreadsheets/d/161X1THr_XqXr7HQ3FnKfecgxQCyI0aZVlrxQMHTzdoY/edit?gid=0#gid=0"),
-        ("461 Handoff", "https://docs.google.com/spreadsheets/d/1T_908snvNCGikO8o4qFtUT7QTz9usmmh0pCtogHVbYE/edit?gid=0#gid=0"),
-    ],
+    # ["Google Sheets",
+    #     ("Intern", "https://docs.google.com/spreadsheets/d/1gtHfQ5kkoTUma-_VejWQyBAvYn4Bf58Q75eeaPUa--Q/edit?gid=1713903924#gid=1713903924"),
+    #     ("CBMC Sheet", "https://docs.google.com/spreadsheets/d/161X1THr_XqXr7HQ3FnKfecgxQCyI0aZVlrxQMHTzdoY/edit?gid=0#gid=0"),
+    #     ("461 Handoff", "https://docs.google.com/spreadsheets/d/1T_908snvNCGikO8o4qFtUT7QTz9usmmh0pCtogHVbYE/edit?gid=0#gid=0"),
+    # ],
     #('JioSaavn', 'https://www.jiosaavn.com/'),
     # ('Workflowy', 'https://workflowy.com/'),
     # ('WakaTime', 'https://wakatime.com/dashboard'),
