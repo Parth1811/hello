@@ -97,6 +97,10 @@ using namespace std;
 typedef vector<int> vi;
 typedef vector<ll> vl;
 '''),
+    ],
+    ["Passwords",
+        ("PWD:common", "PASSWORD_COMMON"),
+        ("PWD:VPN", "PASSWORD_VPN")
     ]
 ]
 
@@ -166,10 +170,13 @@ def apply_settings(WEBSITE_INDEX):
     if WEBSITE_LIST[WEBSITE_INDEX][0].startswith("Macro:"):
         os.popen(f"echo '{WEBSITE_LIST[WEBSITE_INDEX][1]}' | pbcopy")
         return
+    if WEBSITE_LIST[WEBSITE_INDEX][0].startswith("PWD"):
+        os.popen(f"echo '{os.environ[WEBSITE_LIST[WEBSITE_INDEX][1]]}' | pbcopy")
+        return
 
     # os.system('nohup google-chrome ' + WEBSITE_LIST[WEBSITE_INDEX][1] + ' >/dev/null 2>&1 &')
-    # os.system(f'open -a "Google Chrome" "{WEBSITE_LIST[WEBSITE_INDEX][1]}"')
-    os.system(f'"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe" {WEBSITE_LIST[WEBSITE_INDEX][1]}')
+    os.system(f'open -a "Google Chrome" "{WEBSITE_LIST[WEBSITE_INDEX][1]}"')
+    # os.system(f'"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe" {WEBSITE_LIST[WEBSITE_INDEX][1]}')
 
 
 
