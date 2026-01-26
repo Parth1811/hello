@@ -188,7 +188,8 @@ def apply_settings(WEBSITE_INDEX):
         return
 
     # os.system('nohup google-chrome ' + WEBSITE_LIST[WEBSITE_INDEX][1] + ' >/dev/null 2>&1 &')
-    os.system(f'open -a "Arc" "{WEBSITE_LIST[WEBSITE_INDEX][1]}"')
+    # os.system(f'open -a "Google Chrome" "{WEBSITE_LIST[WEBSITE_INDEX][1]}"')
+    os.system(f'open "{WEBSITE_LIST[WEBSITE_INDEX][1]}"')
     # os.system(f'"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe" {WEBSITE_LIST[WEBSITE_INDEX][1]}')
 
 
