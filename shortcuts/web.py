@@ -31,16 +31,28 @@ GLOBAL_WEBSITE_LIST = [
         ["ECE 461",
             ("BrightSpace", 'https://purdue.brightspace.com/d2l/home/1360878'),
             ("Discussion", 'https://piazza.com/purdue/fall2025/ece30861'),
-            ("Drive", 'https://drive.google.com/drive/folders/1brxEYILH1vhyKwlUFrY2thEM5rwdrs9X?usp=drive_link'),
+            ("Drive Students", 'https://drive.google.com/drive/folders/17xqM8oqQ5iKu3ZawsQH77ggTy-tREi6b'),
             ("Gradescope", "https://www.gradescope.com/courses/1092438"),
+            ("Autograder Server", "http://dl-berlin.ecn.purdue.edu"),
+            ("TA Zoom Meeting", "https://purdue-edu.zoom.us/j/8720262746"),
+            ("Team signup sheet", "https://docs.google.com/spreadsheets/d/1uwEMKLyfXoBK0__5uJB3DNlvc_VU6_ZQJ0XThxax-rI/edit?usp=sharing"),
+            ("Drive Staff", "https://drive.google.com/drive/folders/1EpCQG1bkAblFPESTUcOF2klQSl62crVa?usp=drive_link"),
             ("Prev Onedrive", 'https://purdue0-my.sharepoint.com/:f:/g/personal/davisjam_purdue_edu/EgqgWBmDKn9Ol6AI-6XPmUcBqTYAZIc2DcudUrZ1q7aNiw'),
+        ],
+        ["ECE 694",
+            ("BrightSpace", 'https://purdue.brightspace.com/d2l/home/1361311'),
         ]
     ],
     ["Purdue",
         ("myPurdue", 'https://wl.mypurdue.purdue.edu/'),
         ("Outlook", 'https://outlook.office.com/mail/'),
         ('Scheduling Assitant', 'https://timetable.mypurdue.purdue.edu/Timetabling/gwt.jsp?page=sectioning'),
-        ("Push Portal", 'https://myhealth.push.purdue.edu/home.aspx'),
+        ("Push Portal", 'https://www.purdue.edu/push/patient-portal.php'),
+    ],
+    ["Research",
+        ("The Dirty Details", "https://docs.google.com/spreadsheets/d/1-JYW60MK-SEji_e3Jdd7cxQXFn1tAniPV7Mmif07ZwI/edit?gid=0#gid=0"),
+        ("Glibreth Dashboard", "https://gateway.gilbreth.rcac.purdue.edu/"),
+        ("Gilbreth Usage", "https://www.rcac.purdue.edu/knowledge/gilbreth"),
     ],
 
 
@@ -79,29 +91,30 @@ GLOBAL_WEBSITE_LIST = [
     # ('SNARE Issues', 'https://github.com/mushorg/snare/issues/'),
     # ('TANNER Issues', 'https://github.com/mushorg/tanner/issues/'),
     #('VISA', 'https://cgifederal.secure.force.com/ApplicantHome'),
-    ["Macros",
-        ("Macro:\\begin{bmatrix} \\end{bmatrix}", r"\\begin{bmatrix} \\end{bmatrix}"),
-        ("Macro:C++ template",\
-r'''
-#include <bits/stdc++.h>
-using namespace std;
+#     ["Macros",
+#         ("Macro:\\begin{bmatrix} \\end{bmatrix}", r"\\begin{bmatrix} \\end{bmatrix}"),
+#         ("Macro:C++ template",\
+# r'''
+# #include <bits/stdc++.h>
+# using namespace std;
 
-#define fo(i, n) for (i = 0; i < n; i++)
-#define Fo(i, k, n) for (i = k; k < n ? i < n : i > n; k < n ? i += 1 : i -= 1)
-#define ll long long
-#define deb(x) cout << #x << "=" << x << endl
-#define deb2(x, y) cout << #x << "=" << x << "," << #y << "=" << y << endl
-#define pb push_back
-#define all(x) x.begin(), x.end()
-#define clr(x) memset(x, 0, sizeof(x))
-typedef vector<int> vi;
-typedef vector<ll> vl;
-'''),
-    ],
+# #define fo(i, n) for (i = 0; i < n; i++)
+# #define Fo(i, k, n) for (i = k; k < n ? i < n : i > n; k < n ? i += 1 : i -= 1)
+# #define ll long long
+# #define deb(x) cout << #x << "=" << x << endl
+# #define deb2(x, y) cout << #x << "=" << x << "," << #y << "=" << y << endl
+# #define pb push_back
+# #define all(x) x.begin(), x.end()
+# #define clr(x) memset(x, 0, sizeof(x))
+# typedef vector<int> vi;
+# typedef vector<ll> vl;
+# '''),
+#     ],
     ["Passwords",
         ("PWD:common", "PASSWORD_COMMON"),
         ("PWD:VPN", "PASSWORD_VPN")
-    ]
+    ],
+    ("USCIS API", "https://my.uscis.gov/account/case-service/api/cases/IOE9321565277"),
 ]
 
 WEBSITE_LIST = deepcopy(GLOBAL_WEBSITE_LIST)
@@ -175,7 +188,7 @@ def apply_settings(WEBSITE_INDEX):
         return
 
     # os.system('nohup google-chrome ' + WEBSITE_LIST[WEBSITE_INDEX][1] + ' >/dev/null 2>&1 &')
-    os.system(f'open -a "Google Chrome" "{WEBSITE_LIST[WEBSITE_INDEX][1]}"')
+    os.system(f'open -a "Arc" "{WEBSITE_LIST[WEBSITE_INDEX][1]}"')
     # os.system(f'"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe" {WEBSITE_LIST[WEBSITE_INDEX][1]}')
 
 
