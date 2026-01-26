@@ -38,3 +38,11 @@ zmodload -i zsh/complist
 fpath+=~/.zfunc; autoload -Uz compinit; compinit
 
 zstyle ':completion:*' menu select
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/parth/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+
+complete -o default -o nospace -W "$(awk '/^Host / {print $2}' ~/.ssh/config)" ssh
+export PATH="$HOME/.local/bin:$PATH"
