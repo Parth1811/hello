@@ -3,3 +3,7 @@ a.out
 token*
 test.*
 cred*
+.vscode/
+.DS_Store
+**/.DS_Store**
+__MACOSX/
