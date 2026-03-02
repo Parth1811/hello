@@ -1,0 +1,7 @@
+{
+  "name": "com.zsa.launcher",
+  "description": "Native messaging host for ZSA Token Launcher",
+  "path": "/usr/local/bin/zsa_launcher.sh",
+  "type": "stdio",
+  "allowed_origins": []
+}

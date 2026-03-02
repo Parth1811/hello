@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "ZSA Token Launcher",
+  "version": "1.0",
+  "description": "Adds a button on the Zscaler SAML page to open Microsoft Edge with the ZSA token.",
+  "permissions": ["nativeMessaging"],
+  "content_scripts": [
+    {
+      "matches": ["https://samlsp.private.zscaler.com/auth/*"],
+      "js": ["content.js"],
+      "css": ["style.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
